@@ -1,4 +1,4 @@
-! [Banner] (img / logoReadme.jpg "Banner") 
+! [Banner] (./img/logoReadme.jpg "Banner") 
 
 # Ecommerce artículos informáticos
 
