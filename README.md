@@ -1,4 +1,8 @@
-! [Banner] (./img/logoReadme.jpg "Banner") 
+<img src="./img/logoReadme.jpg" width="50%" style = "display:block;  margin: 10px auto" />
+
+<img src="https://img.shields.io/docker/v/gregoriomartocci/Proyecto_eCommerce"/>
+<img src= "https://img.shields.io/github/last-commit/gregoriomartocci/Proyecto_eCommerce">
+<img src= "https://img.shields.io/github/repo-size/gregoriomartocci/Proyecto_eCommerce"/>
 
 # Ecommerce artículos informáticos
 
