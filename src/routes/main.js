@@ -6,7 +6,8 @@ const router = express.Router();
 const mainController = require('../controllers/mainController');
 
 router.get('/', mainController.root); /* GET - home page */
-router.get('/search', mainController.search); /* GET - search results */
+
+router.get('/checkout', mainController.checkout); /* GET - home page */
 
 module.exports = router;
 
