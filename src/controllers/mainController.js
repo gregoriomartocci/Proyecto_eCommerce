@@ -15,6 +15,11 @@ const controller = {
 	// Check-Out
 	checkout: (req, res) => {
 		res.render("checkout")
+	},
+	
+	// ProductView
+	productView: (req, res) => {
+		res.render("product")
 	}
 }
 
