@@ -7,13 +7,13 @@
   
   body, html {
       height: 100%;
-      font-family: OpenSans-Regular, sans-serif;
+      font-family: Montserrat;
       background-color: #15161D;
   }
   
   /*---------------------------------------------*/
   a {
-      font-family: OpenSans-Regular;
+      font-family: Montserrat;
       font-size: 14px;
       line-height: 1.7;
       color: #666666;
@@ -93,14 +93,14 @@
   
   /*Para manejar el texto*/
   .txt1 {
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 30px;
     line-height: 1.4;
     color: #999999;
   }
   
   .txt {
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 22px;
     line-height: 1.4;
     color: #15161D;
@@ -150,7 +150,7 @@
   
   .login100-form-title {
     display: block;
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 50px;
     color: black;
     line-height: 2;
@@ -176,7 +176,7 @@
     display: block;
     width: 100%;
     background: transparent;
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 15px;
     color: #666666;
     line-height: 1.2;
@@ -316,7 +316,7 @@
     height: 60px;
     background-color: #D10024;
   
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -357,7 +357,7 @@
     right: 12px;
     pointer-events: none;
   
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     color: #c80000;
     font-size: 13px;
     line-height: 1.4;
