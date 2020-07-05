@@ -24,6 +24,14 @@ const controller = {
 
   newProduct: (req, res) => {
     res.render("newProduct");
+  },
+
+  login:(req,res) => {
+    res.render("login")
+  },
+
+  register:(req,res) => {
+    res.render("register")
   }
 };
 

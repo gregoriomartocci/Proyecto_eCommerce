@@ -9,8 +9,12 @@ router.get("/", mainController.root); /* GET - home page */
 
 router.get("/checkout", mainController.checkout); /* GET - checkout */
 
-router.get("/productView", mainController.productView); /* GET - product */
+router.get("/productView", mainController.productView); /* GET - productView */
 
-router.get("/newProduct", mainController.newProduct); /* GET - product */
+router.get("/newProduct", mainController.newProduct); /* GET - newProduct */
+
+router.get("/login", mainController.login) /* GET - login */
+
+router.get("/register", mainController.register) /* GET - login */
 
 module.exports = router;
