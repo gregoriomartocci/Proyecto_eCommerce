@@ -26,7 +26,7 @@ Gris: #E4E7ED #FBFBFC #8D99AE #B9BABC
 
 .row {
   width: 100%;
-  justify-content: space-between;
+  margin: auto;
 }
 
 /*----------------------------*\
@@ -51,7 +51,7 @@ h6 {
 }
 
 a {
-  color: #2B2D42;
+  color: #2b2d42;
   font-weight: 500;
   -webkit-transition: 0.2s color;
   transition: 0.2s color;
@@ -103,9 +103,112 @@ ol {
 }
 
 .dropdown-menu {
-  padding: 0px;
-  margin-top: 15px;
+  position: absolute;
+  top: 50px;
+  right: -20px;
+  left: unset;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: unset;
+  margin: unset;
+  font-size: 1rem;
+  color: #15161d;
+  text-align: left;
+  list-style: none;
+  background-color: #fbfbfc;
+  background-clip: unset;
+  border: unset;
+  border-radius: unset;
 }
+
+.dropdown-item {
+  display: block;
+  padding: 15px 15px;
+  width: 100%;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.input-number {
+  position: relative;
+}
+
+.input-number input[type="number"]::-webkit-inner-spin-button,
+.input-number input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-number input[type="number"] {
+  -moz-appearance: textfield;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #e4e7ed;
+  background-color: #fff;
+  padding: 0px 35px 0px 15px;
+}
+
+.input-number .qty-up,
+.input-number .qty-down {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #e4e7ed;
+  background-color: #fff;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input-number .qty-up {
+  right: 0;
+  top: 0;
+  border-bottom: 0px;
+}
+
+.input-number .qty-down {
+  right: 0;
+  bottom: 0;
+}
+
+.input-number .qty-up:hover,
+.input-number .qty-down:hover {
+  background-color: #e4e7ed;
+  color: #d10024;
+}
+
+/*----------------------------*\
+	Inputs
+\*----------------------------*/
+
+/*-- Text input --*/
+
+.input {
+  height: 40px;
+  padding: 0px 15px;
+  border: 1px solid #e4e7ed;
+  background-color: #fff;
+  width: 100%;
+}
+
+textarea.input {
+  padding: 15px;
+  min-height: 90px;
+}
+
+/*-- Number input --*/
 
 .input-number {
   position: relative;
@@ -441,7 +544,6 @@ ol {
   color: #d10024;
 }
 
-/*
 .section-tab-nav li a:hover:after,
 .section-tab-nav li a:focus:after,
 .section-tab-nav li.active a:after {
@@ -452,7 +554,6 @@ ol {
   top: 0px;
   right: 0px;
 }
-*/
 
 /*=========================================================
 	06 -> PRODUCT
@@ -464,7 +565,7 @@ ol {
 
 .product {
   position: relative;
-  margin: 50px 0px;
+  margin: 45px 0px;
   -webkit-box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 1px #e4e7ed;
   box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 1px #e4e7ed;
   -webkit-transition: 0.2s all;

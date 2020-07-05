@@ -1,0 +1,250 @@
+<!-- HEADER -->
+<header>
+  <!-- MAIN HEADER -->
+  <div id="header">
+    <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <div class="row align-items-center mx-auto justify-content-between">
+          <!-- LOGO -->
+
+          <div class="col">
+            <div class="header-logo">
+              <a href="/" class="logo">
+                <img src="/images/logo/logo.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+          <!-- /LOGO -->
+
+          <!-- Toogle Button -->
+
+          <div class="col-auto d-md-none">
+            <div class="dropdown">
+              <button
+                class="btn btn-dark dropdown-toggle rounded-circle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fa fa-bars"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">
+                  <i class="fa fa-user-circle" style="margin-right: 10px;"></i
+                  ><h7>Mi Cuenta</h7></a
+                >
+                <a class="dropdown-item" href="#">
+                  <i class="fa fa-user-circle" style="margin-right: 10px;"></i>
+                  <h7>Vender</h7></a
+                >
+                <a class="dropdown-item" href="#"
+                  ><i class="fa fa-power-off" style="margin-right: 10px;"></i
+                  ><h7>Mi Compras</h7></a
+                >
+                <a class="dropdown-item" href="#">
+                  <i class="fa fa-power-off" style="margin-right: 10px;"></i
+                  ><h7>Cerrar Sesión</h7>
+                </a>
+                <a class="dropdown-item" href="#"
+                  ><i class="fa fa-power-off" style="margin-right: 10px;"></i
+                  ><h7>Registrarse</h7></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- /Toogle Button -->
+
+          <!-- SEARCH BAR -->
+
+          <div class="col-sm-12 col-md-5 col-lg-6">
+            <div class="input-group md-form form-sm form-2 pl-0">
+              <input
+                class="form-control my-0 py-1 amber-border"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text amber lighten-3" id="basic-text1"
+                  ><i class="fa fa-search text-grey" aria-hidden="true"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- /SEARCH BAR -->
+
+          <!-- Right Navbar Menu -->
+
+          <div class="col-3 d-none d-md-block">
+            <div
+              class="row"
+              style="justify-content: space-evenly; align-items: center;"
+            >
+              <!-- Wishlist -->
+
+              <div>
+                <button type="button" class="btn btn-dark rounded-circle">
+                  <i class="fa fa-heart"></i>
+                </button>
+              </div>
+
+              <!-- /Wishlist -->
+
+              <!-- Carrito -->
+
+              <div>
+                <div class="dropdown">
+                  <button
+                    class="visible-md btn btn-dark dropdown-toggle rounded-circle"
+                    class="dropdownMenuButton"
+                    data-toggle="dropdown"
+                  >
+                    <i class="fa fa-shopping-cart"></i>
+
+                    <div
+                      class="qty"
+                      style="position: absolute; right: -5px; top: -12px;"
+                    >
+                      <span class="badge badge-danger">2</span>
+                    </div>
+                  </button>
+                  <div class="dropdown-menu">
+                    <!-- Cart -->
+                    <div class="cart-dropdown">
+                      <div class="cart-list">
+                        <div class="product-widget">
+                          <div class="product-img">
+                            <img src="/images/products/product01.png" alt="" />
+                          </div>
+                          <div class="product-body">
+                            <h3 class="product-name">
+                              <a href="#">Nombre del Producto</a>
+                            </h3>
+                            <h4 class="product-price">
+                              <span class="qty">1x</span>$980.00
+                            </h4>
+                          </div>
+                          <button class="delete">
+                            <i class="fa fa-close"></i>
+                          </button>
+                        </div>
+                        <div class="product-widget">
+                          <div class="product-img">
+                            <img src="/images/products/product02.png" alt="" />
+                          </div>
+                          <div class="product-body">
+                            <h3 class="product-name">
+                              <a href="#">Nombre del Producto</a>
+                            </h3>
+                            <h4 class="product-price">
+                              <span class="qty">3x</span>$980.00
+                            </h4>
+                          </div>
+                          <button class="delete">
+                            <i class="fa fa-close"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="cart-summary">
+                        <small>3 Item(s) selecteccionados</small>
+                        <h5>SUBTOTAL: $2940.00</h5>
+                      </div>
+                      <div class="cart-btns">
+                        <a href="#">Carrito</a>
+                        <a href="/checkout"
+                          >Checkout <i class="fa fa-arrow-circle-right"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <!-- /Cart -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- /Carrito -->
+
+              <!-- Mi Cuenta -->
+
+              <div>
+                <div class="btn-group">
+                  <button
+                    type="button"
+                    class="btn btn-dark dropdown-toggle rounded-circle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-user"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      style="padding: 20px 20px;"
+                    >
+                      <i
+                        class="fa fa-user-circle"
+                        style="margin-right: 10px;"
+                      ></i
+                      ><h7>Mi Cuenta</h7></a
+                    >
+                    <a
+                      class="dropdown-item"
+                      href="/newProduct"
+                      style="padding: 15px 15px;"
+                    >
+                      <i
+                        class="fa fa-user-circle"
+                        style="margin-right: 10px;"
+                      ></i>
+                      <h7>Vender</h7></a
+                    >
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      style="padding: 20px 20px;"
+                      ><i
+                        class="fa fa-power-off"
+                        style="margin-right: 10px;"
+                      ></i
+                      ><h7>Mi Compras</h7></a
+                    >
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      style="padding: 20px 20px;"
+                    >
+                      <i class="fa fa-power-off" style="margin-right: 10px;"></i
+                      ><h7>Cerrar Sesión</h7>
+                    </a>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      style="padding: 20px 20px;"
+                      ><i
+                        class="fa fa-power-off"
+                        style="margin-right: 10px;"
+                      ></i
+                      ><h7>Registrarse</h7></a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- /Mi Cuenta -->
+            </div>
+          </div>
+          <!-- /Right Navbar Menu -->
+
+          <!-- /Right Navbar Menu -->
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
