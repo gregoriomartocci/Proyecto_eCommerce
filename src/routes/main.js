@@ -13,8 +13,4 @@ router.get("/productView", mainController.productView); /* GET - productView */
 
 router.get("/newProduct", mainController.newProduct); /* GET - newProduct */
 
-router.get("/login", mainController.login) /* GET - login */
-
-router.get("/register", mainController.register) /* GET - login */
-
 module.exports = router;
