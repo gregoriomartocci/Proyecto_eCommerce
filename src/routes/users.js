@@ -4,12 +4,28 @@ var router = express.Router();
 const userController = require("../controllers/userController");
 const avatarController = require("../controllers/avatarController")
 
-let registerValidation =require('../middlewares/registerValidation')
+let registerValidation = require('../middlewares/registerValidation')
 
+router.get("/login", userController.login);
 
+router.get("/register", userController.showRegister);
 
-router.get("/login", userController.create);
+router.post("/register", userController.submit);
 
-router.get("/register", userController.store);
+module.exports = router;
+
+/*
+var storage = multer.diskStorage({
+  destination:(req,res,cb) => {
+    cb(null,'./public/images')
+  },
+  filename:(req,file,cb) => {
+    let ext = path.extname(file.originalname)
+    cb(null, `${file.fieldname}-${Date.now()}-${ext}`)
+  }
+})
+
+var upload = multer({storage})
+*/
 
 module.exports = router;
