@@ -10,22 +10,8 @@ const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 // const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {
-  create: (req, res) => {
-    res.render("login");
-  },
 
-  store: (req, res) => {
-    let result = validationResult(req);
-
-    if (!result.isEmpty()) {
-      res.render("register", {
-        errors: result.errors,
-        data: req.body,
-      });
-    }
-
-    res.send('Te has registrado correctamente')
-  },
-};
+    check('email').isEmail().withMessage('El campo email es invalido'),
+}
 
 module.exports = controller;
