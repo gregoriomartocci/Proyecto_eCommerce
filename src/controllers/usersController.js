@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const fs = require ('fs');
 let {check, validationResult, body} = require('express-validator');
+let users = require('../data/users.json');
 
 
 let usersController = {
@@ -12,17 +13,19 @@ let usersController = {
     },
     processLogin: function (req, res) {
         let errors = validationResult(req);
-        res.redirect("/");
+        res.redirect("/")
     },
-
-create: function(req, res) {
-let usuario = {
-    email: req.body.email,
-    password: req.body.password,
-}
-res.redirect("/");
-},
-
+    postLogin: function(req,res){
+        let chequeo = users.find(user => (user.email == req.body.email) && (user.password = req.body.password))
+        chequeo ? res.send("Existe el usuario " + chequeo.email ) : res.send("No existe el usuario")
+    },
+    create: function(req, res) {
+    let usuario = {
+        email: req.body.email,
+        password: req.body.password,
+    }
+    res.redirect("/");
+    },
     store: function(req,res) {
         let errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -45,9 +48,10 @@ res.redirect("/");
                {msg: 'Credenciales invaldias'}
            ]});
        }
-    req.session.usuarioLogueado = usuarioALoguearse;
-res.render('Se ha logueado exitosamente') }
+        req.session.usuarioLogueado = usuarioALoguearse;
+        res.render('Se ha logueado exitosamente') 
     }
+}
 
 
 module.exports = usersController;    
