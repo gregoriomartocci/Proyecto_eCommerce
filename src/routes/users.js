@@ -5,6 +5,7 @@ const userController = require("../controllers/userController");
 const avatarController = require("../controllers/avatarController")
 const path = require('path')
 
+
 var multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -26,7 +27,7 @@ router.get("/login", userController.login);
 
 router.get("/register", userController.showRegister);
 
-router.post("/registerPrueba",upload.any(), userController.submit);
+router.post("/register",upload.any(), userController.submit);
 
 
 module.exports = router;
