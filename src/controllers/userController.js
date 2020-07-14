@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 var bcrypt = require("bcrypt");
-var multer = require("multer");
 var { check, validationResult, body } = require("express-validator");
+
 
 const usersFilePath = path.join(__dirname, "../data/users.json");
 const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
@@ -15,36 +15,44 @@ const controller = {
   },
 
   showRegister: (req, res) => {
-    res.render("register");
+    res.render("registerPrueba");
   },
 
   submit: (req, res) => {
-    let result = validationResult(req);
+    let encripted = bcrypt.hashSync(req.body.password, 10);
+    users = JSON.parse(users);
 
-    if (!result.isEmpty()) {
-      //console.log(req.files);
+    // delete req.body.password_confirmation SI QUEREMOS BORRAR UN PARAMETRO
 
-      let encripted = bcrypt.hashSync(req.body.password, 10);
+    console.log(req.body.email)
 
-      users = JSON.parse(users);
+    let user = {
+      ...req.body,
+      id:users[users.length-1].id+1,
+      password: encripted,
 
-      let user = {
-        ...req.body,
-        id: users[users.length - 1].id + 1,
-        password: encripted,
-        confirm_password: encripted,
+      // LA RUTA QUE VA A USAR EL USUARIO NO ES CON
+      // PUBLIC ADELANTE ENTONCES TENGO QUE HACER REPLACE
+      // QUE ES UN METODO DE STRING
 
-        //avatar: req.files[0].path.replace("public", ""),
-      };
+      avatar: req.files[0].path.replace("public", ""),
+    };
 
-      users.push(user);
+    users.push(user);
 
-      users = JSON.stringify(users);
-      fs.writeFileSync("./data/users.json", users);
-      res.render("/");
-    }
+    // leo de la variable users para parsear
 
-    res.render("/");
+    // ahora bien,  como tengo un array puedo hacer un push
+    // le puedo agregar el usuario que estoy recibiendo atraves del
+    // body, esta modificacion se hace en la memoria del script
+    // pero NO SE ESTA GUARDANDO EN EL ARCHIVO ASI QUE TENGO QUE
+    // HACER ESTO:
+
+    console.log(user);
+
+    users = JSON.stringify(users);
+    fs.writeFileSync("./data/users.json", users);
+    res.render("profile", { user });
   },
 };
 
