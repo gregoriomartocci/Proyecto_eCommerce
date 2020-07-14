@@ -1,7 +1,7 @@
 // ************ Require's ************
 var express = require("express");
 var router = express.Router();
-const userController = require("../controllers/userController");
+const usersController = require("../controllers/usersController");
 const avatarController = require("../controllers/avatarController")
 const path = require('path')
 
@@ -23,11 +23,11 @@ var upload = multer({storage})
 
 let registerValidation = require('../middlewares/registerValidation')
 
-router.get("/login", userController.login);
+router.get("/login", usersController.login);
 
-router.get("/register", userController.showRegister);
+router.get("/register", usersController.register);
 
-router.post("/register",upload.any(), userController.submit);
+router.post("/register",upload.any(), usersController.store);
 
 
 module.exports = router;
