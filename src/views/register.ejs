@@ -9,16 +9,19 @@
           <form
             action="/users/register"
             method="POST"
-            class="login100-form validate-form"
+            class="login100-form"
           >
             <span class="login100-form-title p-b-33">
               Registrate
-            </span>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Valid email is required: ex@abc.xyz"
-            >
+            </span>       
+            <%if(typeof errors != 'undefined') { %>
+              <%for(let i=0; i < errors.length; i++) { %>
+                <span class="login20-title-err p-b-33">
+                  <%= errors[i].msg%>
+                </span>
+              <%}%>
+            <%}%> 
+            <div class="wrap-input100">
               <input
                 class="input100"
                 type="email"
@@ -30,10 +33,7 @@
               <span class="focus-input100-2"></span>
             </div>
 
-            <div
-              class="wrap-input100 rs1 validate-input"
-              data-validate="Password is required"
-            >
+            <div class="wrap-input100 rs1">
               <input
                 class="input100"
                 type="password"
@@ -44,10 +44,7 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-            <div
-              class="wrap-input100 rs1 validate-input"
-              data-validate="Password is required"
-            >
+            <div class="wrap-input100 rs1">
               <input
                 class="input100"
                 type="password"
@@ -58,7 +55,6 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-
             <div class="container-login100-form-btn m-t-20">
               <button type="submit" value="enviar" class="login100-form-btn">
                 Enviar

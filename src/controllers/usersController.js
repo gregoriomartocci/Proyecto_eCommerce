@@ -52,19 +52,22 @@ let usersController = {
         res.render('Se ha logueado exitosamente') 
     },
     createUser: function(req,res){
-        let chequeo = users.find(user => (user.email == req.body.email))
-        if(chequeo){
-            res.send("Ya existe el usuario");
-        } else {
-            let user = {
-            email: req.body.email, 
-            password: req.body.password
+        let existsUser = users.find(user => (user.email == req.body.email))
+        if(existsUser){
+            return res.render("register", {errors: [{msg:"Usuario existente"}]})
+        } else if(req.body.password == req.body.confirm_password){
+            let newUser = {
+                email: req.body.email, 
+                password: req.body.password
             };
-            users.push(user);
+            users.push(newUser);
             usersJSON = JSON.stringify(users);
             fs.writeFileSync("src/data/users.json", usersJSON);
-            res.send("Usuario creado")
-        }
+            req.session.usuarioLogueado = newUser.email;
+            return res.redirect("/")
+            }else {
+                return res.render("register", {errors: [{msg:"Contraseñas inconsistentes"}]})
+            }
     }
 }
 
