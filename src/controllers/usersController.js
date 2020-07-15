@@ -50,6 +50,21 @@ let usersController = {
        }
         req.session.usuarioLogueado = usuarioALoguearse;
         res.render('Se ha logueado exitosamente') 
+    },
+    createUser: function(req,res){
+        let chequeo = users.find(user => (user.email == req.body.email))
+        if(chequeo){
+            res.send("Ya existe el usuario");
+        } else {
+            let user = {
+            email: req.body.email, 
+            password: req.body.password
+            };
+            users.push(user);
+            usersJSON = JSON.stringify(users);
+            fs.writeFileSync("src/data/users.json", usersJSON);
+            res.send("Usuario creado")
+        }
     }
 }
 
