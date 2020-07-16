@@ -4,6 +4,7 @@ var router = express.Router();
 const usersController = require("../controllers/usersController");
 const avatarController = require("../controllers/avatarController")
 const path = require('path')
+let { check, validationResult, body } = require("express-validator");
 
 
 var multer = require('multer');
@@ -24,7 +25,10 @@ var upload = multer({storage})
 let registerValidation = require('../middlewares/registerValidation')
 
 router.get("/login", usersController.login);
-router.post("/login", usersController.processLogin);
+router.post("/login",[
+  check('email').isEmail().withMessage('Email Invalido'),
+  check('password').isLength({min:8}).withMessage('Minimo 8 car')
+], usersController.processLogin);
 router.get("/register", usersController.register);
 router.post("/register", usersController.createUser);
 //router.post("/register",upload.any(), usersController.store);
