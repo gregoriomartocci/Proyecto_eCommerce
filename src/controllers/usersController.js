@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 let { check, validationResult, body } = require("express-validator");
 let users = require("../data/users.json");
+const { render } = require("../app");
 
 let usersController = {
   register: function (req, res) {
@@ -12,38 +13,19 @@ let usersController = {
     return res.render("login");
   },
 
+  // Login
+
   processLogin: function (req, res) {
-    let errors = validationResult;
-
-    if (errors.isEmpty()) {
-      let usersJSON = fs.readFileSync("src/data/users.json", { encoding: "utf8" });
-      let users;
-      if (usersJSON == "") {
-        users = [];
-      } else {
-        users = JSON.parse(usersJSON);
-      }
-
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].email == req.body.email) {
-          if (bcrypt.compareSync(req.body.password, users[i].password)) {
-            let usuarioALoguearse = users[i];
-            break;
-          }
-        }
-      }
-
-      if (usuarioALoguearse == undefined) {
-        return res.render("login", {
-          errors: [{ msg: "Credenciales Invalidas" }],
-        });
-      }
-
-      req.session.usuarioLogueado = usuarioALoguearse;
+    let existsUser = users.find((user) => user.email == req.body.email);
+    if (existsUser) {
+      req.session.usuarioLogueado = req.body.email;
+      res.redirect("/");
     } else {
-      return res.render("login", { errors: errors.errors });
+      res.render("login", { errors: [{ msg: "Usuario existente" }] });
     }
   },
+
+  // Create
 
   createUser: function (req, res) {
     let existsUser = users.find((user) => user.email == req.body.email);
@@ -69,3 +51,4 @@ let usersController = {
 };
 
 module.exports = usersController;
+

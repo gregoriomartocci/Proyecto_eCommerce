@@ -25,30 +25,29 @@ var upload = multer({storage})
 let registerValidation = require('../middlewares/registerValidation')
 
 router.get("/login", usersController.login);
+
 router.post("/login",[
   check('email').isEmail().withMessage('Email Invalido'),
   check('password').isLength({min:8}).withMessage('Minimo 8 car')
 ], usersController.processLogin);
+
 router.get("/register", usersController.register);
+
 router.post("/register", usersController.createUser);
+
 //router.post("/register",upload.any(), usersController.store);
 
-module.exports = router;
 
 
 
+router.get('/check',function(req,res){
 
+  req.session.usuarioLog = "prueba@hotmail.com"
 
+  console.log(req.session)
 
+  console.log(req.session.usuariolog)
 
+})
 
-
-
-
-
-
-
-
-
-
-
+module.exports = router
