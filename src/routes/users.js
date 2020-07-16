@@ -24,7 +24,7 @@ var upload = multer({storage})
 let registerValidation = require('../middlewares/registerValidation')
 
 router.get("/login", usersController.login);
-router.post("/login", usersController.postLogin);
+router.post("/login", usersController.processLogin);
 router.get("/register", usersController.register);
 router.post("/register", usersController.createUser);
 //router.post("/register",upload.any(), usersController.store);
