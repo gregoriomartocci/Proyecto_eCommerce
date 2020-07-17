@@ -13,7 +13,7 @@ let usersController = {
   // Store
 
   store: function (req, res) {
-
+    
     let userExists = users.find((user) => user.email == req.body.email);
 
     if (userExists) {
@@ -24,6 +24,7 @@ let usersController = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
         confirm_password: bcrypt.hashSync(req.body.confirm_password, 10),
+        // avatar:req.file.filename
       };
 
       users.push(user);
@@ -40,3 +41,4 @@ let usersController = {
 };
 
 module.exports = usersController;
+
