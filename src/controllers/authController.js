@@ -15,7 +15,6 @@ module.exports = {
   },
 
   login: function (req, res) {
-
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
@@ -27,13 +26,10 @@ module.exports = {
     }
 
     let user = users.find((user) => {
-
-      return user.email == req.body.email;  // devolveme el usuario que coincide con lo que viene del form
-      
+      return user.email == req.body.email; // devolveme el usuario que coincide con lo que viene del form
     });
 
     if (user) {
-
       var result = bcrypt.compareSync(req.body.password, user.password);
 
       if (result) {
