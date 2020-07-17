@@ -4,9 +4,11 @@ var router = express.Router();
 const usersController = require("../controllers/usersController");
 const avatarController = require("../controllers/avatarController");
 const path = require("path");
-let { check, validationResult, body } = require("express-validator");
+let { check } = require("express-validator");
+let registerValidation = require("../middlewares/registerValidation")
 
 var multer = require("multer");
+const authController = require("../controllers/authController");
 
 var storage = multer.diskStorage({
   destination: (req, res, cb) => {
@@ -20,7 +22,13 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage });
 
-let registerValidation = require("../middlewares/registerValidation");
+router.get('/', authController.home)
+router.get("/login", authController.showForm);
+router.post("/login", authController.login);
+router.get("/login", authController.logout);
+
+
+/*
 
 router.get("/login", usersController.login);
 
@@ -35,17 +43,16 @@ router.post(
   usersController.processLogin
 );
 
+*/
+
 router.get("/register", usersController.register);
 
-router.post("/register", usersController.createUser);
+router.post("/register", registerValidation, usersController.create);
 
 //router.post("/register",upload.any(), usersController.store);
 
-router.get("/logout", function (req, res) {
-  req.session.destroy(() => {
-    res.redirect("/users/login");
-  });
-});
+
+// Probando Session
 
 router.get("/check", function (req, res) {
   req.session.usuarioLog = "prueba@hotmail.com";

@@ -1,43 +1,18 @@
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-let { check, validationResult, body } = require("express-validator");
+let { validationResult } = require("express-validator");
 let users = require("../data/users.json");
 
+
 let usersController = {
+
   register: function (req, res) {
     return res.render("register");
   },
 
-  login: function (req, res) {
-    return res.render("login");
-  },
-
-  // Login
-
-  processLogin: function (req, res) {
-    let existsUser = users.find((user) => user.email == req.body.email);
-    if (existsUser) {
-
-      for (let i = 0; i < users.length; i++) {
-
-        var result = bcrypt.compareSync(req.body.password, users[i].password);
-
-        if (result) {
-          console.log("Password correct");
-          req.session.usuarioLogueado = req.body.email;
-          res.redirect("/");
-        } else {
-          res.render("login", { errors: [{ msg: "Contraseña incorrecta" }] });
-        }
-      }
-    } else {
-      res.render("login", { errors: [{ msg: "Usuario Inexistente" }] });
-    }
-  },
-
   // Create
 
-  createUser: function (req, res) {
+  create: function (req, res) {
     let existsUser = users.find((user) => user.email == req.body.email);
     if (existsUser) {
       return res.render("register", { errors: [{ msg: "Usuario existente" }] });
