@@ -28,7 +28,7 @@ router.get("/login", usersController.login);
 
 router.post("/login",[
   check('email').isEmail().withMessage('Email Invalido'),
-  check('password').isLength({min:8}).withMessage('Minimo 8 car')
+  check('password').isLength({min:8}).withMessage('La contrasenia debe tener al menos 8 caracteres')
 ], usersController.processLogin);
 
 router.get("/register", usersController.register);
