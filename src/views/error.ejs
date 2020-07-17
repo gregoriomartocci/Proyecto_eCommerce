@@ -1,10 +1,7 @@
-<% if (typeof errors != "undefined") { %>
-    <p style="color:red">ERROR</p>
-    <ul>
-        <% for (let i = 0 ; i < errors.length; i++) { %>
-        <li>
-            <%=errors[i].msg %>
-        </li>
-        <% } %>
-    </ul>
-<% } %>
+<%if(typeof errors != 'undefined') { %>
+    <%for(let i=0; i < errors.length; i++) { %>
+      <span class="login20-title-err p-b-33">
+        <%= errors[i].msg%>
+      </span>
+    <%}%>
+  <%}%> 

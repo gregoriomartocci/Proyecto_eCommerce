@@ -14,13 +14,7 @@
             <span class="login100-form-title p-b-33">
               Registrate
             </span>       
-            <%if(typeof errors != 'undefined') { %>
-              <%for(let i=0; i < errors.length; i++) { %>
-                <span class="login20-title-err p-b-33">
-                  <%= errors[i].msg%>
-                </span>
-              <%}%>
-            <%}%> 
+            <%- include('error') %>
             <div class="wrap-input100">
               <input
                 class="input100"

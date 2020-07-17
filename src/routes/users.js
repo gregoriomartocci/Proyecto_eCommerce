@@ -5,19 +5,21 @@ const { check } = require("express-validator");
 const registerValidation = require("../middlewares/registerValidation");
 const controllers = require('../controllers')
 const upload = require("../config/multer");
+const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
+const invitadosMiddlewares = require("../middlewares/invitadosMiddlewares");
 
 // Log In
 
 //router.get("/", controllers.auth.home);
 
-router.get("/login", controllers.auth.showForm);
-router.post("/login", controllers.auth.login);
-router.get("/logout", controllers.auth.logout);
+router.get("/login", invitadosMiddlewares ,controllers.auth.showForm);
+router.post("/login", registerValidation , controllers.auth.login);
+router.get("/logout", usuariosMiddlewares , controllers.auth.logout);
 
 // Register
 
-router.get("/register", controllers.users.create);
-router.post("/register", registerValidation, controllers.users.store);
+router.get("/register", invitadosMiddlewares , controllers.users.create);
+router.post("/register", registerValidation , controllers.users.store);
 //router.post("/register", upload, usersController.store);
 
 // Probando Session

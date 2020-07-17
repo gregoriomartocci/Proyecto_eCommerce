@@ -18,34 +18,29 @@ module.exports = {
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
-      res.render("login"),
-        {
-          errors: result.errors,
-          data: req.body,
-        };
+      res.render("login",{errors: result.errors});
     }
 
-    let user = users.find((user) => {
-      return user.email == req.body.email; // devolveme el usuario que coincide con lo que viene del form
-    });
+    // devolveme el usuario que coincide con lo que viene del form
+    let user = users.find( user => { return user.email == req.body.email});
 
     if (user) {
       var result = bcrypt.compareSync(req.body.password, user.password);
-
-      if (result) {
-        req.session.usuarioLogueado = req.body.email;
-        res.redirect("/");
-      } else {
-        res.render("login", { errors: [{ msg: "Contraseña incorrecta" }] });
-      }
     } else {
-      res.render("login", { errors: [{ msg: "Usuario Inexistente" }] });
-    }
+        return res.render("login", { errors: [{ msg: "Usuario inexistente" }] });
+      }
+
+    if (result) {
+      req.session.usuarioLogueado = req.body.email;
+      return res.redirect("/");
+    } else {
+        return res.render("login", { errors: [{ msg: "Contraseña incorrecta" }] });
+      } 
   },
 
   logout: function (req, res) {
     req.session.destroy(() => {
-      res.redirect("/users/login");
+      res.redirect("/");
     });
   },
 };
