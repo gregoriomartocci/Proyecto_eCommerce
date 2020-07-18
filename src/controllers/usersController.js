@@ -27,13 +27,14 @@ module.exports = {
         let user = {
           email: req.body.email,
           password: bcrypt.hashSync(req.body.password, 10),
-          // avatar:req.file.filename
+          confirm_password: bcrypt.hashSync(req.body.password, 10),
+          avatar:req.files
         };
 
+        req.session.usuarioLogueado = user.email;
         users.push(user);
         usersJSON = JSON.stringify(users);
         fs.writeFileSync("src/data/users.json", usersJSON);
-        //req.session.usuarioLogueado = req.body.email; NO FUNCIONA FS ACTUALIZA EL SERVIDOR
         return res.redirect("/");
     } else {
         return res.render("register", {errors: [{ msg: "Contraseñas inconsistentes" }]});
