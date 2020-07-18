@@ -9,8 +9,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 const controller = {
   // Root
   root: (req, res) => {
-    console.log(req.session.usuarioLogueado)
-    res.render("index", { products: products, user: req.session.usuarioLogueado });
+    res.render("index", { products: products});
   },
 
   // Check-Out

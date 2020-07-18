@@ -10,17 +10,20 @@
             action="/users/register"
             method="POST"
             class="login100-form"
+            enctype="multipart/form-data"
           >
             <span class="login100-form-title p-b-33">
               Registrate
-            </span>       
-            <%if(typeof errors != 'undefined') { %>
-              <%for(let i=0; i < errors.length; i++) { %>
-                <span class="login20-title-err p-b-33">
-                  <%= errors[i].msg%>
-                </span>
-              <%}%>
-            <%}%> 
+            </span>
+
+            <%if(typeof errors != 'undefined') { %> <%for(let i=0; i <
+            errors.length; i++) { %>
+            <span class="login20-title-err p-b-33">
+              <%= errors[i].msg%>
+            </span>
+            <%} }%>
+
+            <!-- Email -->
             <div class="wrap-input100">
               <input
                 class="input100"
@@ -32,7 +35,7 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-
+            <!-- Password -->
             <div class="wrap-input100 rs1">
               <input
                 class="input100"
@@ -44,6 +47,7 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
+            <!-- Confirm Password-->
             <div class="wrap-input100 rs1">
               <input
                 class="input100"
@@ -54,6 +58,30 @@
               />
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
+            </div>
+            <!-- Image Upload-->
+
+            <div class="wrap-input">
+              <input
+                type="file"
+                class="input100"
+                id="exampleFormControlFile1"
+                style="height: unset; margin-top: 25px;"
+                name="avatar"
+                accept="image/png,image/jpg"
+              />
+            </div>
+
+            <!--Chekbox-->
+            <div class="checkbox" style="margin: 25px;">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Recordar mi usuario al iniciar sesión</label
+              >
             </div>
             <div class="container-login100-form-btn m-t-20">
               <button type="submit" value="enviar" class="login100-form-btn">

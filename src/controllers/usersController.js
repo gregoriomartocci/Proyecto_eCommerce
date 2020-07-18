@@ -13,27 +13,31 @@ let usersController = {
   // Store
 
   store: function (req, res) {
-    
+    let result = validationResult(req);
+
+    if (!result) {
+      return res.render("register", { result: errors, data: req.body });
+    }
+
     let userExists = users.find((user) => user.email == req.body.email);
 
     if (userExists) {
-      return res.render("register", { errors: [{ msg: "Usuario existente" }] });
+      res.render("register", { errors: [{ msg: "Usuario existente" }] });
     } else if (req.body.password == req.body.confirm_password) {
-
       let user = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
         confirm_password: bcrypt.hashSync(req.body.confirm_password, 10),
-        // avatar:req.file.filename
+        avatar: req.files,
       };
 
+      req.session.usuarioLogueado = user.email;
       users.push(user);
       usersJSON = JSON.stringify(users);
       fs.writeFileSync("src/data/users.json", usersJSON);
-      req.session.usuarioLogueado = user.email;
       return res.redirect("/");
     } else {
-      return res.render("register", {
+      res.render("register", {
         errors: [{ msg: "Contraseñas inconsistentes" }],
       });
     }
@@ -41,4 +45,3 @@ let usersController = {
 };
 
 module.exports = usersController;
-
