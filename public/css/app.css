@@ -104,6 +104,7 @@ ol {
 
 .dropdown-menu {
   position: absolute;
+  width: 300px;
   top: 50px;
   right: -20px;
   left: unset;
@@ -117,7 +118,7 @@ ol {
   color: #15161d;
   text-align: left;
   list-style: none;
-  background-color: #fbfbfc;
+  background-color: #FFF;
   background-clip: unset;
   border: unset;
   border-radius: unset;
@@ -188,6 +189,27 @@ ol {
   background-color: #e4e7ed;
   color: #d10024;
 }
+
+/*----------------------------*\
+	Avatar
+\*----------------------------*/
+
+.avatar{
+
+  border-radius: 50%;
+  width:60px;
+  height:60px;
+  background-image: url("/images/avatar-1594721625432-.jpg");
+  background-size: cover;
+  
+}
+
+.account-info{
+
+  margin: 5px;
+
+}
+
 
 /*----------------------------*\
 	Inputs
@@ -465,12 +487,14 @@ textarea.input {
 .cart-dropdown .cart-btns > a {
   padding: 12px;
   background-color: #d10024;
-  color: #fff;
+  color: #FFF;
   text-align: center;
   font-weight: 700;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
+
+/* Gris: #E4E7ED #FBFBFC #8D99AE #B9BABC */
 
 .cart-dropdown .cart-btns > a:first-child {
   margin-right: -4px;

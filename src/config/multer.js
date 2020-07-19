@@ -8,20 +8,8 @@ const config = multer.diskStorage({
   },
 
   destination: function (req, file, cb) {
-    cb(null, path.resolve('src','uploads'));
+    cb(null, path.resolve('src','uploads','avatar'));
   },
 });
 
-const imageFilter = function(req, file, cb) {
-  
-  // Accept images only
-  if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
-      req.fileValidationError = 'Imagen solo JPEG/PNG';
-      cb(null, true)
-      //return cb(new Error('Only image files are allowed!'), false);
-  }
-  console.log('else')
-  cb(null, true);
-};
-
-module.exports = multer({ storage: config , fileFilter: imageFilter });
+module.exports = multer({ storage: config });

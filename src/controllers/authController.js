@@ -3,10 +3,10 @@ let { validationResult } = require("express-validator");
 let users = require("../data/users.json");
 
 module.exports = {
-
   home: function (req, res, next) {
     res.render("/", {
       user: req.session.usuarioLogueado,
+      errors:errors.errors
     });
   },
 
@@ -18,24 +18,28 @@ module.exports = {
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
-      res.render("login",{errors: result.errors});
+      res.render("login", { errors: result.errors });
     }
 
     // devolveme el usuario que coincide con lo que viene del form
-    let user = users.find( user => { return user.email == req.body.email});
+    let user = users.find((user) => {
+      return user.email == req.body.email;
+    });
 
     if (user) {
       var result = bcrypt.compareSync(req.body.password, user.password);
     } else {
-        return res.render("login", { errors: [{ msg: "Usuario inexistente" }] });
-      }
+      return res.render("login", { errors: [{ msg: "Usuario inexistente" }] });
+    }
 
     if (result) {
       req.session.usuarioLogueado = req.body.email;
       return res.redirect("/");
     } else {
-        return res.render("login", { errors: [{ msg: "Contraseña incorrecta" }] });
-      } 
+      return res.render("login", {
+        errors: [{ msg: "Contraseña incorrecta" }],
+      });
+    }
   },
 
   logout: function (req, res) {
