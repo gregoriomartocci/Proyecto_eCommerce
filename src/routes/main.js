@@ -8,10 +8,10 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
 router.get("/", controllers.main.root); /* GET - home page */
 
-router.get("/checkout", controllers.main.checkout); /* GET - checkout */
+router.get("/checkout",usuariosMiddlewares, controllers.main.checkout); /* GET - checkout */
 
-router.get("/productView",  controllers.main.productView); /* GET - productView */
+router.get("/productView",usuariosMiddlewares, controllers.main.productView); /* GET - productView */
 
-router.get("/newProduct",  controllers.main.newProduct); /* GET - newProduct */
+router.get("/newProduct",usuariosMiddlewares,  controllers.main.newProduct); /* GET - newProduct */
 
 module.exports = router;

@@ -39,6 +39,13 @@ module.exports = {
       };
 
       req.session.usuarioLogueado = user.email;
+
+      if(req.body.rememberme != undefined){
+        res.cookie('remember-me',
+        user.email, { maxAge: 99999}
+        )
+      }
+
       users.push(user);
       usersJSON = JSON.stringify(users);
       fs.writeFileSync("src/data/users.json", usersJSON);

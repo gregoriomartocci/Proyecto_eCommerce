@@ -6,6 +6,7 @@ const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
 const logMiddleware = require('./middlewares/user-logs')
+const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware')
 const session = require('express-session')
 // ************ express() - (don't touch) ************
 const app = express();
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 app.use(logMiddleware)
 app.use(session({secret: "frase secreta" , resave: false, saveUninitialized: true}))
+app.use(cookieAuthMiddleware)
 
 
 // ************ Template Engine - (don't touch) ************

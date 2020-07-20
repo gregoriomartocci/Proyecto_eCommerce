@@ -33,7 +33,16 @@ module.exports = {
     }
 
     if (result) {
+
+      
+      if(req.body.rememberme != undefined){
+        res.cookie('remember-me',
+        user.email, { maxAge: 99999}
+        )
+      }
+
       req.session.usuarioLogueado = req.body.email;
+
       return res.redirect("/");
     } else {
       return res.render("login", {
@@ -44,7 +53,7 @@ module.exports = {
 
   logout: function (req, res) {
     req.session.destroy(() => {
-      res.redirect("/");
+      return res.redirect("/user/login");
     });
   },
 };
