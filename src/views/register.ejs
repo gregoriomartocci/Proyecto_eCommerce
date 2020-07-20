@@ -14,21 +14,10 @@
           >
             <span class="login100-form-title p-b-33">
               Registrate
-<<<<<<< HEAD
             </span>
-
-            <%if(typeof errors != 'undefined') { %> <%for(let i=0; i <
-            errors.length; i++) { %>
-            <span class="login20-title-err p-b-33">
-              <%= errors[i].msg%>
-            </span>
-            <%} }%>
-
-            <!-- Email -->
-=======
-            </span>       
             <%- include('error') %>
->>>>>>> 57effffb2885a9714fd2aa903b24e50b20672d1b
+
+            <!--Email-->
             <div class="wrap-input100">
               <input
                 class="input100"
@@ -40,7 +29,8 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-            <!-- Password -->
+
+            <!--Password-->
             <div class="wrap-input100 rs1">
               <input
                 class="input100"
@@ -52,7 +42,8 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-            <!-- Confirm Password-->
+
+            <!--Confirm Password-->
             <div class="wrap-input100 rs1">
               <input
                 class="input100"
@@ -64,8 +55,8 @@
               <span class="focus-input100-1"></span>
               <span class="focus-input100-2"></span>
             </div>
-            <!-- Image Upload-->
 
+            <!-- Image Upload-->
             <div class="wrap-input">
               <input
                 type="file"
