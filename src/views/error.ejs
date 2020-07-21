@@ -1,1 +1,7 @@
-<h1>Error!</h1>
+<%if(typeof errors != 'undefined') { %>
+    <%for(let i=0; i < errors.length; i++) { %>
+      <span class="login20-title-err p-b-33">
+        <%= errors[i].msg%>
+      </span>
+    <%}%>
+  <%}%> 

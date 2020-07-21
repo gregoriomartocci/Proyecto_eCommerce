@@ -155,6 +155,15 @@
     line-height: 2;
     text-align: center;
   }
+
+  .login20-title-err {
+    display: block;
+    font-family: Montserrat;
+    font-size: 20px;
+    color: #D10024;
+    line-height: 2;
+    text-align: center;
+  }
   
   /*------------------------------------------------------------------
   [ Input ]*/

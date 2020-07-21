@@ -1,28 +1,31 @@
 // ************ Require's ************
-var express = require("express");
-var router = express.Router();
-var {check, validationResult} = require('express-validator');
-var users = require ('../data/users.json');
-const multer = require('multer');
-//const upload = require('../config/multer');
-// var authMiddleware = require('../middlewares/auth');
+const express = require("express");
+const router = express.Router();
+const { check } = require("express-validator");
+const registerValidation = require("../middlewares/registerValidation");
+const controllers = require("../controllers");
+const upload = require("../config/multer");
+const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
+const invitadosMiddlewares = require("../middlewares/invitadosMiddlewares");
+
+// Log In
+
+//router.get("/", controllers.auth.home);
+
+router.get("/login", invitadosMiddlewares, controllers.auth.showForm);
+router.post("/login", registerValidation, controllers.auth.login);
+router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
+
+// Register
+router.get("/register", invitadosMiddlewares, controllers.users.create);
+router.post("/register", [upload.any() ,registerValidation], controllers.users.store);
 
 
+router.post("/avatar", upload.any() , controllers.avatars.store)
+// Probando Session
 
-// ************ Controller Require ************
-const userController = require("../controllers/usersController");
-
-router.get('/', userController.home);
-
-router.get('/login', userController.showLoginForm);
-
-router.get('/register', userController.showRegisterForm);
-
-router.get('/logout', userController.logout);
-
-router.post('/login', userController.processLogin);
-
-router.post('/register', userController.create);
-
+router.get("/", function (req, res) {
+  console.log(req.session.usuarioLogueado);
+});
 
 module.exports = router;

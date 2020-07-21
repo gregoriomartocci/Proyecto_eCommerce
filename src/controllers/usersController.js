@@ -1,61 +1,49 @@
-const bcrypt = require('bcrypt');
-const fs = require ('fs');
-let {check, validationResult, body} = require('express-validator');
+const bcrypt = require("bcrypt");
+const fs = require("fs");
+let { validationResult } = require("express-validator");
+let users = require("../data/users.json");
 
+module.exports = {
+  // Create
 
-let usersController = {
-    home: function (req, res) {
-        res.send('Home');
-     },
-    
-    showLoginForm: function (req, res) {
-       res.render('login');
-    },
-    
-    showRegisterForm: function (req, res) {
-      res.render('register')
-    },
-    
-    logout: function(req, res) {
-        req.session.destroy(()=>
-        res.redirect('/users/login'))
-    },
-   
-    processLogin: function (req, res) {
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            let usersJSON = fs.readFileSync('../data/users.json');
-            let users;
-            if (usersJSON == " ") {
-                users = [ ];
-            } else {
-                users = JSON.parse(usersJSON);
-            }
-        for (let i = 0; i <users.length; i++) {
-            if (users[i].email == req.body.email) {
-                if (bcrypt.compareSync(req.body.password, user))
-                usuarioALoguearse = users[i];
-                break;
-            }
-        }    }
-       if (usuarioALoguearse == undefined) {
-           return res.render('login', {errors: [
-               {msg: 'Credenciales invalidas'}
-           ]});
-       }
-    req.session.usuarioLogueado = usuarioALoguearse;
-res.render('Se ha logueado exitosamente') 
-    },
+  create: function (req, res) {
+    return res.render("register");
+  },
 
+  // Store
 
-create: function (req, res) {
-let newUser = {
-    email: req.body.email,
-    password: req.body.password,
-}
-res.send("Ha creado el usuario exitosamente")
-},
+  store: function (req, res) {
+  
+    let = result = validationResult(req);
 
-}
+    if (!result.isEmpty()) {
+      return res.render("register",{errors: result.errors});
+    }
 
-module.exports = usersController;    
+    //Validacion imagen
+    if(req.fileValidationError){
+      return res.render("register",{errors: [{ msg: req.fileValidationError }]});
+    }
+
+    let userExists = users.find((user) => user.email == req.body.email);
+
+    if (userExists) {
+      return res.render("register", { errors: [{ msg: "Usuario existente" }] });
+    } else if (req.body.password == req.body.confirm_password) {
+        let user = {
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, 10),
+          confirm_password: bcrypt.hashSync(req.body.password, 10),
+          avatar:req.files
+        };
+
+        req.session.usuarioLogueado = user.email;
+        users.push(user);
+        usersJSON = JSON.stringify(users);
+        fs.writeFileSync("src/data/users.json", usersJSON);
+        return res.redirect("/");
+    } else {
+        return res.render("register", {errors: [{ msg: "Contraseñas inconsistentes" }]});
+    }
+  },
+};

@@ -15,7 +15,8 @@
             <span class="login100-form-title p-b-33">
               Login
             </span>
-
+            <!-- Include Errors-->
+            <%- include('error') %>
             <div
               class="wrap-input100 validate-input"
               data-validate="Valid email is required: ex@abc.xyz"
@@ -53,7 +54,7 @@
             </div>
             <div class="registro">
               <a class="txt"> ¿Sos Nuevo? </a>
-              <a href="/register" class="txt hov1">
+              <a href="/users/register" class="txt hov1">
                 Registrate
               </a>
             </div>
