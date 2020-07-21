@@ -2,10 +2,9 @@ function cookieAuthMiddleware(req,res,next){
 
     let users = require("../data/users.json");
 
-    next()
-
+    
     if(req.cookies.rememberme != undefined && req.session.usuarioLogueado == undefined){
-
+        
         for (let i = 0; i < users.length; i++) {
             
             if(user[i].email == req.cookies.rememberme){
@@ -13,10 +12,10 @@ function cookieAuthMiddleware(req,res,next){
                 break
             }
         }
-
-        console.log('Todo ok')
+        
         req.session.usuarioLogueado = usuarioALoguearse
-}
+    }
+    next()
 }
 
 module.exports = cookieAuthMiddleware
