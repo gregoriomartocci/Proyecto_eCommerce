@@ -53,7 +53,7 @@ module.exports = {
 
   logout: function (req, res) {
     req.session.destroy(() => {
-      return res.redirect("/user/login");
+      return res.redirect("/");
     });
   },
 };
