@@ -13,6 +13,7 @@ module.exports = {
   // Store
 
   store: function (req, res) {
+  
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
@@ -24,6 +25,11 @@ module.exports = {
       return res.render("register", {
         errors: [{ msg: req.fileValidationError }],
       });
+    }
+
+    //Validacion imagen
+    if(req.fileValidationError){
+      return res.render("register",{errors: [{ msg: req.fileValidationError }]});
     }
 
     let userExists = users.find((user) => user.email == req.body.email);
