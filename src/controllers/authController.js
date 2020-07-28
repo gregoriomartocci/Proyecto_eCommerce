@@ -33,10 +33,9 @@ module.exports = {
     }
 
     if (result) {
-
-      
-      if(req.body.rememberme != undefined){
-        res.cookie('remember-me',
+   
+      if(req.body.recordarUser){
+        res.cookie('recordarUser',
         user.email, { maxAge: 99999}
         )
       }
@@ -52,6 +51,7 @@ module.exports = {
   },
 
   logout: function (req, res) {
+    res.clearCookie('recordarUser');
     req.session.destroy(() => {
       return res.redirect("/");
     });

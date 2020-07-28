@@ -46,8 +46,8 @@ module.exports = {
 
       req.session.usuarioLogueado = user.email;
 
-      if(req.body.rememberme != undefined){
-        res.cookie('remember-me',
+      if(req.body.recordarUser){
+        res.cookie('recordarUser',
         user.email, { maxAge: 99999}
         )
       }

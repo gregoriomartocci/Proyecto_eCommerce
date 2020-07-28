@@ -18,7 +18,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
-app.use(logMiddleware)
+//app.use(logMiddleware) LUCAS - Se comento para no estar borrando siempre que commiteo
 app.use(session({secret: "frase secreta" , resave: false, saveUninitialized: true}))
 app.use(cookieAuthMiddleware)
 
