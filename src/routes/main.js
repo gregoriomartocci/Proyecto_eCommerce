@@ -18,8 +18,24 @@ router.get("/productView",usuariosMiddlewares, controllers.main.productView); /*
 
 router.get("/newProduct",usuariosMiddlewares,  controllers.main.newProduct); /* GET - newProduct */
 
+
+
+// Probando las consultas
+
+// Trayendo usuarios
 router.get("/prueba", function(req,res){
     db.User.findAll().then(result => {
+        res.json(result)
+    }).catch(err => {
+        console.log(err)
+        res.json({'error':true})
+    })
+})
+
+
+// Trayendo Productos
+router.get("/pruebaProduct", function(req,res){
+    db.Product.findAll().then(result => {
         res.json(result)
     }).catch(err => {
         console.log(err)
