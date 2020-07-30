@@ -4,7 +4,7 @@ module.exports = function (sequelize, dataTypes) {
     {
       idUsuario: {
         type: dataTypes.INTEGER(6),
-        autoIncrement:true,
+        autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
@@ -30,13 +30,19 @@ module.exports = function (sequelize, dataTypes) {
         type: dataTypes.INTEGER(5),
         allowNull: true,
       },
+      createdAt: {
+        type: dataTypes.DATE,
+      },
+      updatedAt: {
+        type: dataTypes.DATE,
+      },
+      deletedAt: {
+        type: dataTypes.DATE,
+      },
     },
     {
-      tableName: "usuario",
-      timestamps: "true",
-      createdAt: "created_at",
-      updatedAt: "updated_at",
-      deletedAt: "deleted_at",
+      tableName: "usuarios",
+      timestamps: "false",
     }
   );
 

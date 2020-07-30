@@ -2,7 +2,7 @@ module.exports = function (sequelize, dataTypes) {
   let Product = sequelize.define(
     "Product",
     {
-      idProducto: {
+      idProductos: {
         type: dataTypes.INTEGER(11),
         autoIncrement: true,
         primaryKey: true,
@@ -38,13 +38,24 @@ module.exports = function (sequelize, dataTypes) {
         type: dataTypes.BOOLEAN,
         allowNull: true,
       },
+      createdAt: {
+        type: dataTypes.DATE,
+        allowNull: true,
+      },
+      updatedAt: {
+        type: dataTypes.DATE,
+        allowNull: true,
+      },
+      deletedAt: {
+        type: dataTypes.DATE,
+        allowNull: true,
+      },
+
     },
     {
-      tableName: "producto",
+      tableName: "productos",
       timestamps: "true",
-      createdAt: "created_at",
-      updatedAt: "updated_at",
-      deletedAt: "deleted_at",
+      paranoid:"true",
     }
   );
 
