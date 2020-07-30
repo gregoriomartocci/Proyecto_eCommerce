@@ -17,14 +17,7 @@ module.exports = {
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
-      return res.render("register", { errors: result.errors });
-    }
-
-    //Validacion imagen
-    if (req.fileValidationError) {
-      return res.render("register", {
-        errors: [{ msg: req.fileValidationError }],
-      });
+      return res.render("register",{errors: result.errors});
     }
 
     //Validacion imagen
@@ -37,29 +30,29 @@ module.exports = {
     if (userExists) {
       return res.render("register", { errors: [{ msg: "Usuario existente" }] });
     } else if (req.body.password == req.body.confirm_password) {
-      let user = {
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10),
-        confirm_password: bcrypt.hashSync(req.body.password, 10),
-        avatar: req.files,
-      };
+        let user = {
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, 10),
+          confirm_password: bcrypt.hashSync(req.body.password, 10),
+          avatar: req.files,
+        };
 
-      req.session.usuarioLogueado = user.email;
+        req.session.usuarioLogueado = user.email;
 
-      if(req.body.recordarUser){
-        res.cookie('recordarUser',
-        user.email, { maxAge: 99999}
-        )
-      }
+        if(req.body.recordarUser){
+          res.cookie('recordarUser',
+          user.email, { maxAge: 99999}
+          )
+        }
 
-      users.push(user);
-      usersJSON = JSON.stringify(users);
-      fs.writeFileSync("src/data/users.json", usersJSON);
-      return res.redirect("/");
+        users.push(user);
+        usersJSON = JSON.stringify(users);
+        fs.writeFileSync("src/data/users.json", usersJSON);
+        return res.redirect("/");
     } else {
       return res.render("register", {
         errors: [{ msg: "Contraseñas inconsistentes" }],
-      });
+      });    
     }
   },
 };
