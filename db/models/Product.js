@@ -4,60 +4,42 @@ module.exports = function (sequelize, dataTypes) {
     {
       idProductos: {
         type: dataTypes.INTEGER(11),
-        autoIncrement: true,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
       },
       nombre: {
         type: dataTypes.STRING(45),
       },
-      categoria: {
-        type: dataTypes.INTEGER(5),
-      },
       precio: {
-        type: dataTypes.FLOAT,
-        allowNull: true,
-      },
-      stock: {
-        type: dataTypes.INTEGER(6),
-        allowNull: true,
+        type: dataTypes.DECIMAL,
       },
       descripcion: {
-        type: dataTypes.TEXT("tiny"),
+        type: dataTypes.TEXT,
         allowNull: true,
       },
       rating: {
-        type: dataTypes.DECIMAL(5, 2),
+        type: dataTypes.DECIMAL,
         allowNull: true,
       },
-      descuento: {
-        type: dataTypes.BOOLEAN,
-        allowNull: true,
-      },
-      nuevo: {
-        type: dataTypes.BOOLEAN,
-        allowNull: true,
-      },
-      createdAt: {
-        type: dataTypes.DATE,
-        allowNull: true,
-      },
-      updatedAt: {
-        type: dataTypes.DATE,
-        allowNull: true,
-      },
-      deletedAt: {
-        type: dataTypes.DATE,
-        allowNull: true,
-      },
-
     },
     {
       tableName: "productos",
-      timestamps: "true",
-      paranoid:"true",
+      timeStamps: true,
+      paranoid: true,
     }
   );
+
+  Product.associate = function (models) {
+
+    Product.belongsTo(models.Condition, {
+      foreignKey: "idEstado",
+      as: "estadoProducto",
+    });
+
+
+
+  };
 
   return Product;
 };

@@ -60,30 +60,29 @@ router.get("/form/:id", function (req, res) {
 
 // Enviar los datos del formulario de creacion
 router.post("/", function (req, res) {
-  db.User.create(req.body).then(result => {
-    res.send('ok')
-  })
+  db.User.create(req.body).then((result) => {
+    res.redirect("/dashboard");
+  });
 });
 
 // PUT Enviar los datos del formulario de Edicion
 router.put("/:id", function (req, res) {
   db.User.update(req.body, {
     where: { idUsuario: req.params.id },
-  }).then(result => {
-    res.redirect("/dashboard")
+  }).then((result) => {
+    res.redirect("/dashboard");
   });
 });
 
 // DELETE Borrar el usuario con el ID
 router.delete("/:id", function (req, res) {
   db.User.destroy({
-    where:{idUsuario:req.params.id}
-  }).then(result => {
-    res.redirect("/dashboard")
-  })
+    where: { idUsuario: req.params.id },
+  }).then((result) => {
+    res.redirect("/dashboard");
+  });
 });
 
 module.exports = router;
-
 
 // Deberiamos Validar

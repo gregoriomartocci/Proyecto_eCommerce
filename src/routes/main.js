@@ -34,8 +34,22 @@ router.get(
 // Probando las consultas
 
 // Trayendo usuarios
-router.get("/prueba", function (req, res) {
+router.get("/usuarioLogueado", function (req, res) {
   db.User.findAll()
+    .then((result) => {
+      res.send(`el usuario logueado es ${req.session.usuarioLogueado}`);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+// Trayendo Producto
+router.get("/traerProducto", function (req, res) {
+  db.Product.findAll({
+    include:["estadoProducto"]
+  })
     .then((result) => {
       res.json(result);
     })
@@ -45,11 +59,11 @@ router.get("/prueba", function (req, res) {
     });
 });
 
-// Trayendo usuarios
-router.get("/usuarioLogueado", function (req, res) {
-  db.User.findAll()
+// Trayendo Estados
+router.get("/traer", function (req, res) {
+  db.Condition.findAll()
     .then((result) => {
-      res.send(`el usuario logueado es ${req.session.usuarioLogueado}`);
+      res.json(result);
     })
     .catch((err) => {
       console.log(err);

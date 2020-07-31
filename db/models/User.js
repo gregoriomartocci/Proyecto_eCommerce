@@ -10,6 +10,9 @@ module.exports = function (sequelize, dataTypes) {
       },
       email: {
         type: dataTypes.STRING(50),
+        validate: {
+          len: [3, 100],
+        },
       },
       password: {
         type: dataTypes.STRING(45),
@@ -30,20 +33,11 @@ module.exports = function (sequelize, dataTypes) {
         type: dataTypes.INTEGER(5),
         allowNull: true,
       },
-      createdAt: {
-        type: dataTypes.DATE,
-      },
-      updatedAt: {
-        type: dataTypes.DATE,
-      },
-      deletedAt: {
-        type: dataTypes.DATE,
-      },
     },
     {
       tableName: "usuarios",
-      timestamps: "true",
-      paranoid:"true"
+      timestamps: true,
+      paranoid: true,
     }
   );
 
