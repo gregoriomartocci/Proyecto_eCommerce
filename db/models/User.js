@@ -8,8 +8,8 @@ module.exports = function (sequelize, dataTypes) {
         primaryKey: true,
         allowNull: false,
       },
-      username: {
-        type: dataTypes.STRING(45),
+      email: {
+        type: dataTypes.STRING(50),
       },
       password: {
         type: dataTypes.STRING(45),
@@ -42,7 +42,8 @@ module.exports = function (sequelize, dataTypes) {
     },
     {
       tableName: "usuarios",
-      timestamps: "false",
+      timestamps: "true",
+      paranoid:"true"
     }
   );
 

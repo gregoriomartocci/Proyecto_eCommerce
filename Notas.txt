@@ -30,3 +30,6 @@ NPM INSTALL --SAVE MYSQL2
 
 NPM INSTALL "SEQUELIZE-CLI@5.*"
 
+
+El navegador solo tiene GET y POST, si queremos
+usar los otros metodos necesitamos el METHOD OVERRIDE

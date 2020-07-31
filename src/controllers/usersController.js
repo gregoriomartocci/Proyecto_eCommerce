@@ -3,6 +3,10 @@ const fs = require("fs");
 let { validationResult } = require("express-validator");
 let users = require("../data/users.json");
 
+const path = require("path");
+dbDir = path.resolve("db", "models");
+const db = require(dbDir);
+
 module.exports = {
   // Create
 
@@ -11,9 +15,7 @@ module.exports = {
   },
 
   // Store
-
   store: function (req, res) {
-  
     let = result = validationResult(req);
 
     if (!result.isEmpty()) {
@@ -28,8 +30,10 @@ module.exports = {
     }
 
     //Validacion imagen
-    if(req.fileValidationError){
-      return res.render("register",{errors: [{ msg: req.fileValidationError }]});
+    if (req.fileValidationError) {
+      return res.render("register", {
+        errors: [{ msg: req.fileValidationError }],
+      });
     }
 
     let userExists = users.find((user) => user.email == req.body.email);
@@ -46,16 +50,24 @@ module.exports = {
 
       req.session.usuarioLogueado = user.email;
 
-      if(req.body.rememberme != undefined){
-        res.cookie('remember-me',
-        user.email, { maxAge: 99999}
-        )
+      if (req.body.rememberme != undefined) {
+        res.cookie("remember-me", user.email, { maxAge: 999 });
       }
 
-      users.push(user);
-      usersJSON = JSON.stringify(users);
-      fs.writeFileSync("src/data/users.json", usersJSON);
-      return res.redirect("/");
+      // Creando Usuario
+      db.User.create(req.body)
+        .then((result) => {
+          res.redirect('/')
+        })
+        .catch((err) => {
+          console.log(err);
+          res.json({ error: true });
+        });
+
+      //users.push(user);
+      //usersJSON = JSON.stringify(users);
+      //fs.writeFileSync("src/data/users.json", usersJSON);
+      //return res.redirect("/");
     } else {
       return res.render("register", {
         errors: [{ msg: "Contraseñas inconsistentes" }],

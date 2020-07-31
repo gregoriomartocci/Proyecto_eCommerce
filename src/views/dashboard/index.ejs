@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Listado de usuarios (<%= users.length %>)</h1>
+
+    
+    <table border="1">
+        <a href="/dashboard/form"> Agregar Pelicula</a>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Password</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.idUsuario %></td>
+          <td>
+            <a href="/dashboard/<%= user.idUsuario %>"><%= user.email %></a>
+          </td>
+          <td><%= user.password %></td>
+          <td>
+            <form
+              method="post"
+              action="/dashboard/<%= user.idUsuario %>?_method=DELETE"
+            >
+              <button>Borrar</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

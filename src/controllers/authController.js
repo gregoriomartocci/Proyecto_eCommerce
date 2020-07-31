@@ -2,6 +2,11 @@ const bcrypt = require("bcrypt");
 let { validationResult } = require("express-validator");
 let users = require("../data/users.json");
 
+// DB
+const path = require("path");
+dbDir = path.resolve("db", "models");
+const db = require(dbDir);
+
 module.exports = {
   home: function (req, res, next) {
     res.render("/", {
@@ -52,8 +57,7 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    req.session.destroy(() => {
-      return res.redirect("/user/login");
-    });
+    req.session.destroy();
+    return res.redirect("/user/login");
   },
 };
