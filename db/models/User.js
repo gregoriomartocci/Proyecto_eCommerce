@@ -48,10 +48,10 @@ module.exports = function (sequelize, dataTypes) {
     });
 
     User.belongsToMany(models.Invoice, {
-      as: "Factura",
+      as: "Facturacion",
       through: "usuariofactura",
-      foreignKey: "idFactura",
-      otherKey: "idUsuario",
+      foreignKey: "idUsuario",
+      otherKey: "idFactura",
       timestamps: false,
     });
   };

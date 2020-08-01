@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes) {
-  let paymentMethod = sequelize.define(
-    "paymentMethod",
+  let PaymentMethod = sequelize.define(
+    "PaymentMethod",
     {
       idmedioPago: {
         type: dataTypes.INTEGER(11),
@@ -18,5 +18,5 @@ module.exports = function (sequelize, dataTypes) {
     }
   );
 
-  return paymentMethod;
+  return PaymentMethod;
 };

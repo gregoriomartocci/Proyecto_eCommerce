@@ -74,8 +74,9 @@ router.get("/traer", function (req, res) {
 // Trayendo Usuarios
 router.get("/traerUsuarios", function (req, res) {
   db.User.findAll({
-    include: ["Cart"],
-    include: ["Factura"],
+    include: ["Cart","Facturacion"],
+    raw:true,
+    nest:true,
   })
     .then((result) => {
       res.json(result);
@@ -98,8 +99,7 @@ router.get("/traerCart", function (req, res) {
     });
 });
 
-
-// Trayendo Carrito
+// Trayendo Facturas
 router.get("/traerFacturas", function (req, res) {
   db.Invoice.findAll()
     .then((result) => {
@@ -111,10 +111,9 @@ router.get("/traerFacturas", function (req, res) {
     });
 });
 
-
 // Trayendo medioDePago
 router.get("/traerformasPago", function (req, res) {
-  db.paymentMethod.findAll()
+  db.PaymentMethod.findAll()
     .then((result) => {
       res.json(result);
     })
@@ -123,6 +122,5 @@ router.get("/traerformasPago", function (req, res) {
       res.json({ error: true });
     });
 });
-
 
 module.exports = router;

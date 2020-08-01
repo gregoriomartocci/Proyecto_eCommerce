@@ -16,17 +16,17 @@ module.exports = function (sequelize, dataTypes) {
       },
     },
     {
-      tableName: "factura",
+      tableName: "facturas",
       timestamps: false,
     }
   );
 
   Invoice.associate = function (models) {
     Invoice.belongsToMany(models.User, {
-      as: "Factura",
+      as: "Usuarios",
       through: "usuariofactura",
-      foreignKey: "idUsuario",
-      otherKey: "idFactura",
+      foreignKey: "idFactura",
+      otherKey: "idUsuario",
       timestamps: false,
     });
   };
