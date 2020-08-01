@@ -12,19 +12,15 @@
     <div class="section">
       <!-- container -->
       <div class="container">
-        <!-- row -->
         <div class="row">
           <div class="col-md-7">
-            <!-- Titulo -->
-
             <div class="section-title">
               <h3 class="title">Agregar Producto</h3>
             </div>
 
-            <form
-              action="/product/add-product"
-              method="POST"
-            >
+            <form action="/product/add-product" method="POST">
+              <!-- Nombre -->
+
               <div class="form-group">
                 <input
                   class="input"
@@ -34,6 +30,8 @@
                 />
               </div>
 
+              <!-- Precio -->
+
               <div class="form-group">
                 <input
                   class="input"
@@ -41,6 +39,22 @@
                   name="precio"
                   placeholder="Ingrese el precio del producto"
                 />
+              </div>
+
+              <!-- Precio -->
+
+              <div class="form-group">
+                <label for="">Categoria</label>
+
+                <select name="categoria">
+                  <% categorias.forEach(categoria =>{ %>
+
+                  <option value="<%= categoria.id %>">
+                    <%= categoria.nombre %>
+                  </option>
+
+                  <% }) %>
+                </select>
               </div>
 
               <!-- Description -->
@@ -75,7 +89,9 @@
               <!-- /row -->
               <div>
                 <button type="submit">
-                  <a class="primary-btn order-submit text-white">Agregar Producto</a>
+                  <a class="primary-btn order-submit text-white"
+                    >Agregar Producto</a
+                  >
                 </button>
               </div>
 

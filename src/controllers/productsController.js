@@ -10,7 +10,14 @@ module.exports = {
   },
 
   form: function (req, res) {
-    res.render("product/form");
+    db.Category.findAll()
+      .then((result) => {
+        res.render("product/form", { categorias: result });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ error: true });
+      });
   },
 
   store: function (req, res) {

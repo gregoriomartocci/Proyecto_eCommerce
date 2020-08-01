@@ -111,4 +111,16 @@ router.get("/traerformasPago", function (req, res) {
     });
 });
 
+// Trayendo medioDePago
+router.get("/traercategorias", function (req, res) {
+  db.Category.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
 module.exports = router;
