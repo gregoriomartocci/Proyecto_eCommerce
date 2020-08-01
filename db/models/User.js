@@ -41,5 +41,12 @@ module.exports = function (sequelize, dataTypes) {
     }
   );
 
+  User.associate = function (models) {
+    User.belongsTo(models.Product, {
+      foreignKey: "idCarrito",
+      as: "userProduct",
+    });
+  };
+
   return User;
 };

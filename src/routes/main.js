@@ -48,7 +48,7 @@ router.get("/usuarioLogueado", function (req, res) {
 // Trayendo Producto
 router.get("/traerProducto", function (req, res) {
   db.Product.findAll({
-    include:["estadoProducto"]
+    include: ["estadoProducto"],
   })
     .then((result) => {
       res.json(result);
@@ -62,6 +62,30 @@ router.get("/traerProducto", function (req, res) {
 // Trayendo Estados
 router.get("/traer", function (req, res) {
   db.Condition.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+// Trayendo Usuarios
+router.get("/traerUsuarios", function (req, res) {
+  db.User.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+// Trayendo Carrito
+router.get("/traerCart", function (req, res) {
+  db.Cart.findAll()
     .then((result) => {
       res.json(result);
     })

@@ -2,7 +2,7 @@ module.exports = function (sequelize, dataTypes) {
   let Product = sequelize.define(
     "Product",
     {
-      idProductos: {
+      idProducto: {
         type: dataTypes.INTEGER(11),
         primaryKey: true,
         allowNull: false,
@@ -31,14 +31,10 @@ module.exports = function (sequelize, dataTypes) {
   );
 
   Product.associate = function (models) {
-
     Product.belongsTo(models.Condition, {
       foreignKey: "idEstado",
       as: "estadoProducto",
     });
-
-
-
   };
 
   return Product;

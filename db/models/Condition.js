@@ -20,7 +20,7 @@ module.exports = function (sequelize, dataTypes) {
 
   Condition.associate = function (models) {
     Condition.hasMany(models.Product, {
-      foreignKey: "idProductos",
+      foreignKey: "idProducto",
       as:"estadoProducto"
     });
   };
