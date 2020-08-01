@@ -21,7 +21,10 @@
               <h3 class="title">Agregar Producto</h3>
             </div>
 
-            <form action="">
+            <form
+              action="/product/add-product"
+              method="POST"
+            >
               <div class="form-group">
                 <input
                   class="input"
@@ -35,7 +38,7 @@
                 <input
                   class="input"
                   type="text"
-                  name="Precio"
+                  name="precio"
                   placeholder="Ingrese el precio del producto"
                 />
               </div>
@@ -70,10 +73,10 @@
               </div>
 
               <!-- /row -->
-              <div class="row mx-auto">
-                <a href="#" class="primary-btn order-submit"
-                  >Agregar Producto</a
-                >
+              <div>
+                <button type="submit">
+                  <a class="primary-btn order-submit text-white">Agregar Producto</a>
+                </button>
               </div>
 
               <!-- /form -->

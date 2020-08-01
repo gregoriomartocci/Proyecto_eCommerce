@@ -12,4 +12,13 @@ module.exports = {
   form: function (req, res) {
     res.render("product/form");
   },
+
+  store: function (req, res) {
+    db.Product.create({
+      nombre: req.body.nombre,
+      precio: req.body.precio,
+    });
+
+    res.redirect("/");
+  },
 };

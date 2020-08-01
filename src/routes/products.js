@@ -13,5 +13,6 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
 router.get("/product-view", controllers.products.show);
 router.get("/add-product", controllers.products.form);
+router.post("/add-product", controllers.products.store);
 
 module.exports = router;
