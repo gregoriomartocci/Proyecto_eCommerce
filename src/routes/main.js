@@ -98,4 +98,31 @@ router.get("/traerCart", function (req, res) {
     });
 });
 
+
+// Trayendo Carrito
+router.get("/traerFacturas", function (req, res) {
+  db.Invoice.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+
+// Trayendo medioDePago
+router.get("/traerformasPago", function (req, res) {
+  db.paymentMethod.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+
 module.exports = router;
