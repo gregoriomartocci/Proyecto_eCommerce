@@ -15,8 +15,15 @@
             <span class="login100-form-title p-b-33">
               Login
             </span>
-            <!-- Include Errors-->
-            <%- include('error') %>
+
+            <!-- Validation Result -->
+
+            <% errors.forEach(error => { %>
+              <span class="login20-title-err p-b-33">
+                <%= error.msg %>
+              </span>
+            <% }) %>
+
             <div
               class="wrap-input100 validate-input"
               data-validate="Valid email is required: ex@abc.xyz"
@@ -47,8 +54,8 @@
               <span class="focus-input100-2"></span>
             </div>
 
-             <!--Chekbox-->
-             <div class="checkbox" style="margin: 25px;">
+            <!--Chekbox-->
+            <div class="checkbox" style="margin: 25px;">
               <input
                 type="checkbox"
                 name="rememberme"

@@ -24,8 +24,10 @@ module.exports = {
     db.Product.create({
       nombre: req.body.nombre,
       precio: req.body.precio,
+      idCategoria: req.body.idCategoria
     });
 
+    console.log(req.body)
     res.redirect("/");
   },
 };
