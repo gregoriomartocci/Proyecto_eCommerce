@@ -42,9 +42,17 @@ module.exports = function (sequelize, dataTypes) {
   );
 
   User.associate = function (models) {
-    User.belongsTo(models.Product, {
+    User.belongsTo(models.Cart, {
       foreignKey: "idCarrito",
-      as: "userProduct",
+      as: "Cart",
+    });
+
+    User.belongsToMany(models.Invoice, {
+      as: "Factura",
+      through: "usuariofactura",
+      foreignKey: "idFactura",
+      otherKey: "idUsuario",
+      timestamps: false,
     });
   };
 

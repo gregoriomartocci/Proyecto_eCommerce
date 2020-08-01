@@ -73,7 +73,10 @@ router.get("/traer", function (req, res) {
 
 // Trayendo Usuarios
 router.get("/traerUsuarios", function (req, res) {
-  db.User.findAll()
+  db.User.findAll({
+    include: ["Cart"],
+    include: ["Factura"],
+  })
     .then((result) => {
       res.json(result);
     })
