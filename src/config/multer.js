@@ -17,11 +17,9 @@ const imageFilter = function(req, file, cb) {
   // Accept images only
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
       req.fileValidationError = 'Imagen solo JPEG/PNG';
-      cb(null, true)
-      //return cb(new Error('Only image files are allowed!'), false);
+      return cb(null, false)
   }
-  console.log('else')
-  cb(null, true);
+  return cb(null, true);
 };
 
 module.exports = multer({ storage: config , fileFilter: imageFilter });
