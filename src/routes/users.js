@@ -12,8 +12,8 @@ const invitadosMiddlewares = require("../middlewares/invitadosMiddlewares");
 
 //router.get("/", controllers.auth.home);
 
-router.get("/login", invitadosMiddlewares, controllers.auth.showForm);
-router.post("/login", controllers.auth.login);
+router.get("/login", invitadosMiddlewares, controllers.auth.show);
+router.post("/login", controllers.auth.form);
 router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
 
 // Register

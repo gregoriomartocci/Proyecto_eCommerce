@@ -8,22 +8,15 @@ dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
 module.exports = {
-  home: function (req, res, next) {
-    res.render("/", {
-      user: req.session.usuarioLogueado,
-      errors:errors.errors
-    });
-  },
-
-  showForm: function (req, res) {
+  show: function (req, res) {
     res.render("login");
   },
 
-  login: function (req, res) {
+  form: function (req, res) {
+    
     let = result = validationResult(req);
-
     if (!result.isEmpty()) {
-      res.render("login", { errors: result.errors });
+      res.render("login", { error: result.errors });
     }
 
     // devolveme el usuario que coincide con lo que viene del form
@@ -38,12 +31,8 @@ module.exports = {
     }
 
     if (result) {
-
-      
-      if(req.body.rememberme != undefined){
-        res.cookie('remember-me',
-        user.email, { maxAge: 99999}
-        )
+      if (req.body.rememberme != undefined) {
+        res.cookie("remember-me", user.email, { maxAge: 99999 });
       }
 
       req.session.usuarioLogueado = req.body.email;

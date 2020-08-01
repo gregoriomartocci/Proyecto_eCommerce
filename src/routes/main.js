@@ -19,18 +19,6 @@ router.get(
   controllers.main.checkout
 ); /* GET - checkout */
 
-router.get(
-  "/productView",
-  usuariosMiddlewares,
-  controllers.main.productView
-); /* GET - productView */
-
-router.get(
-  "/newProduct",
-  usuariosMiddlewares,
-  controllers.main.newProduct
-); /* GET - newProduct */
-
 // Probando las consultas
 
 // Trayendo usuarios
@@ -74,9 +62,9 @@ router.get("/traer", function (req, res) {
 // Trayendo Usuarios
 router.get("/traerUsuarios", function (req, res) {
   db.User.findAll({
-    include: ["Cart","Facturacion"],
-    raw:true,
-    nest:true,
+    include: ["Cart", "Facturacion"],
+    raw: true,
+    nest: true,
   })
     .then((result) => {
       res.json(result);
