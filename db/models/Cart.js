@@ -7,21 +7,20 @@ module.exports = function (sequelize, dataTypes) {
         allowNull: false,
         primaryKey: true,
       },
-      idUsuario: {
+      userEmail: {
         type: dataTypes.INTEGER(5),
-        allowNull: false,
       },
       idProducto: {
         type: dataTypes.INTEGER(5),
-        allowNull: false,
       },
       cantidad: {
         type: dataTypes.INTEGER(5),
-        allowNull: false,
+      },
+      new:{
+        type: dataTypes.BOOLEAN(true),
       },
       subtotal: {
         type: dataTypes.DECIMAL,
-        allowNull: false,
       },
     },
     {

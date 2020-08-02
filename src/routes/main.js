@@ -124,3 +124,4 @@ router.get("/traercategorias", function (req, res) {
 });
 
 module.exports = router;
+

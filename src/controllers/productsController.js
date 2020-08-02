@@ -4,6 +4,7 @@ dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
 module.exports = {
+  
   // ProductView
   show: function (req, res) {
     res.render("product/show");
@@ -24,10 +25,10 @@ module.exports = {
     db.Product.create({
       nombre: req.body.nombre,
       precio: req.body.precio,
-      idCategoria: req.body.idCategoria
+      idCategoria: req.body.idCategoria,
     });
 
-    console.log(req.body)
+    console.log(req.body);
     res.redirect("/");
   },
 };
