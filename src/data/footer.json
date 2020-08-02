@@ -1,0 +1,77 @@
+[
+    {
+        "title":"Categorías", 
+        "links": [
+            {
+                "label":"Ofertas",
+                "href":"#"
+            },
+            {
+                "label":"Laptops",
+                "href":"#"
+            },
+            {
+                "label":"Smartphones",
+                "href":"#"
+            },
+            {
+                "label":"Cámaras",
+                "href":"#"
+            },
+            {
+                "label":"Accessorios",
+                "href":"#"
+            }
+        ]
+    },
+    {
+        "title":"Información", 
+        "links": [
+            {
+                "label":"About Us",
+                "href":"#"
+            },
+            {
+                "label":"Contacto",
+                "href":"#"
+            },
+            {
+                "label":"Política de Privacidad",
+                "href":"#"
+            },
+            {
+                "label":"Ordenes y Devoluciones",
+                "href":"#"
+            },
+            {
+                "label":"Términos y Condiciones",
+                "href":"#"
+            }
+        ]
+    },
+    {
+        "title":"Servicio", 
+        "links": [
+            {
+                "label":"My Cuenta",
+                "href":"#"
+            },
+            {
+                "label":"Carrito",
+                "href":"#"
+            },
+            {
+                "label":"Favoritos",
+                "href":"#"
+            },
+            {
+                "label":"Trackear mi Pedido",
+                "href":"#"
+            },
+            {
+                "label":"Ayuda",
+                "href":"#"
+            }
+        ]
+    }
+]
