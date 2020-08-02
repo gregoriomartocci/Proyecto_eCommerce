@@ -1,9 +1,8 @@
 const bcrypt = require("bcrypt");
-const fs = require("fs");
 let { validationResult } = require("express-validator");
-let users = require("../data/users.json");
 
 const path = require("path");
+const { users } = require(".");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
@@ -11,67 +10,49 @@ module.exports = {
   // Create
 
   create: function (req, res) {
-    return res.render("register");
+    let = result = validationResult(req);
+    if (result.isEmpty()) {
+      res.render("register", { errors: result.errors });
+    }
   },
 
   // Store
   store: function (req, res) {
     let = result = validationResult(req);
-
     if (!result.isEmpty()) {
-      return res.render("register", { errors: result.errors });
+      res.render("register", { errors: result.errors });
     }
 
-    //Validacion imagen
-    if (req.fileValidationError) {
-      return res.render("register", {
-        errors: [{ msg: req.fileValidationError }],
-      });
-    }
+    const userData = {
+      email: req.body.email,
+      pasword: bcrypt.hashSync(req.body.password, 10),
+      //avatar: req.files,
+    };
 
-    //Validacion imagen
-    if (req.fileValidationError) {
-      return res.render("register", {
-        errors: [{ msg: req.fileValidationError }],
-      });
-    }
-
-    let userExists = users.find((user) => user.email == req.body.email);
-
-    if (userExists) {
-      return res.render("register", { errors: [{ msg: "Usuario existente" }] });
-    } else if (req.body.password == req.body.confirm_password) {
-      let user = {
+    db.User.findOne({
+      where: {
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10),
-        confirm_password: bcrypt.hashSync(req.body.password, 10),
-        avatar: req.files,
-      };
-
-      req.session.usuarioLogueado = user.email;
-
-      if (req.body.rememberme != undefined) {
-        res.cookie("remember-me", user.email, { maxAge: 999 });
-      }
-
-      // Creando Usuario
-      db.User.create(req.body)
-        .then((result) => {
-          res.redirect('/')
-        })
-        .catch((err) => {
-          console.log(err);
-          res.json({ error: true });
+      },
+    }).then((user) => {
+      if (!user) {
+        if (req.body.password == req.body.confirm_password) {
+          console.log("Usuario registrado con exito");
+          if (req.body.rememberme != undefined) {
+            res.cookie("remember-me", userData.email, { maxAge: 5000 });
+          }
+          db.User.create(userData).then();
+          req.session.usuarioLogueado = userData.email;
+          return res.redirect("/");
+        } else {
+          return res.render("register", {
+            errors: [{ msg: "Contraseñas inconsistentes" }],
+          });
+        }
+      } else {
+        return res.render("register", {
+          errors: [{ msg: "Usuario existente" }],
         });
-
-      //users.push(user);
-      //usersJSON = JSON.stringify(users);
-      //fs.writeFileSync("src/data/users.json", usersJSON);
-      //return res.redirect("/");
-    } else {
-      return res.render("register", {
-        errors: [{ msg: "Contraseñas inconsistentes" }],
-      });
-    }
+      }
+    });
   },
 };

@@ -6,16 +6,18 @@
     <div class="limiter">
       <div class="container-login100">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-          <form
-            action="/users/register"
-            method="POST"
-            class="login100-form"
-            enctype="multipart/form-data"
-          >
+          <form action="/users/register" method="POST" class="login100-form">
             <span class="login100-form-title p-b-33">
               Registrate
             </span>
-            <%- include('error') %>
+
+            <!-- Validation Result -->
+
+            <% errors.forEach(error => { %>
+            <span class="login20-title-err p-b-33">
+              <%= error.msg %>
+            </span>
+            <% }) %>
 
             <!--Email-->
             <div class="wrap-input100">

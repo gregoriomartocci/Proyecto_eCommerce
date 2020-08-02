@@ -13,8 +13,12 @@ const invitadosMiddlewares = require("../middlewares/invitadosMiddlewares");
 //router.get("/", controllers.auth.home);
 
 router.get("/login", invitadosMiddlewares, controllers.auth.show);
-router.post("/login", controllers.auth.form);
+router.post("/login", registerValidation, controllers.auth.form);
 router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
+
+router.post("/login",function(req,res){
+  console.log(req.body.password)
+})
 
 // Register
 router.get("/register", invitadosMiddlewares, controllers.users.create);

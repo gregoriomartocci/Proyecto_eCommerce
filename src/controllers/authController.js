@@ -9,40 +9,43 @@ const db = require(dbDir);
 
 module.exports = {
   show: function (req, res) {
-    res.render("login");
+    let = result = validationResult(req);
+    if (result.isEmpty()) {
+      res.render("login", { errors: result.errors });
+    }
   },
 
   form: function (req, res) {
-    
     let = result = validationResult(req);
     if (!result.isEmpty()) {
       res.render("login", { error: result.errors });
     }
 
-    // devolveme el usuario que coincide con lo que viene del form
-    let user = users.find((user) => {
-      return user.email == req.body.email;
-    });
+    db.User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    }).then((user) => {
+      if (user) {
+        if (bcrypt.compareSync(req.body.password, user.password)) {
+          if (req.body.rememberme != undefined) {
+            res.cookie("remember-me", user.email, { maxAge: 99999 });
+          }
 
-    if (user) {
-      var result = bcrypt.compareSync(req.body.password, user.password);
-    } else {
-      return res.render("login", { errors: [{ msg: "Usuario inexistente" }] });
-    }
+          req.session.usuarioLogueado = req.body.email;
 
-    if (result) {
-      if (req.body.rememberme != undefined) {
-        res.cookie("remember-me", user.email, { maxAge: 99999 });
+          return res.redirect("/");
+        } else {
+          return res.render("login", {
+            errors: [{ msg: "Contraseña incorrecta" }],
+          });
+        }
+      } else {
+        return res.render("login", {
+          errors: [{ msg: "Usuario Inexistente" }],
+        });
       }
-
-      req.session.usuarioLogueado = req.body.email;
-
-      return res.redirect("/");
-    } else {
-      return res.render("login", {
-        errors: [{ msg: "Contraseña incorrecta" }],
-      });
-    }
+    });
   },
 
   logout: function (req, res) {
@@ -50,3 +53,34 @@ module.exports = {
     return res.redirect("/user/login");
   },
 };
+
+/*
+
+
+// devolveme el usuario que coincide con lo que viene del form
+    let user = users.find((user) => {
+      return user.email == req.body.email;
+    });
+
+if (user) {
+  var result = bcrypt.compareSync(req.body.password, user.password);
+} else {
+  return res.render("login", { errors: [{ msg: "Usuario inexistente" }] });
+}
+
+if (result) {
+  if (req.body.rememberme != undefined) {
+    res.cookie("remember-me", user.email, { maxAge: 99999 });
+  }
+
+  req.session.usuarioLogueado = req.body.email;
+
+  return res.redirect("/");
+} else {
+  return res.render("login", {
+    errors: [{ msg: "Contraseña incorrecta" }],
+  });
+}
+
+
+*/

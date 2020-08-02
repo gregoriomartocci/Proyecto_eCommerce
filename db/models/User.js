@@ -15,7 +15,7 @@ module.exports = function (sequelize, dataTypes) {
         },
       },
       password: {
-        type: dataTypes.STRING(45),
+        type: dataTypes.STRING(200),
       },
       nombre: {
         type: dataTypes.STRING(45),
