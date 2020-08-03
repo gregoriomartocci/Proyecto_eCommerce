@@ -17,7 +17,7 @@ module.exports = {
     db.Product.findAll().then((product) => {
       res.render("index", {
         product,
-        user: req.session.usuarioLogueado,
+        user: req.session.usuarioActual,
       });
     });
   },

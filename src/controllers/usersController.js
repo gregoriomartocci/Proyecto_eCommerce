@@ -23,12 +23,6 @@ module.exports = {
       res.render("register", { errors: result.errors });
     }
 
-    const userData = {
-      email: req.body.email,
-      pasword: bcrypt.hashSync(req.body.password, 10),
-      //avatar: req.files,
-    };
-
     db.User.findOne({
       where: {
         email: req.body.email,
@@ -37,11 +31,17 @@ module.exports = {
       if (!user) {
         if (req.body.password == req.body.confirm_password) {
           console.log("Usuario registrado con exito");
+          const userData = {
+            email: req.body.email,
+            pasword: bcrypt.hashSync(req.body.password, 10),
+            //avatar: req.files,
+          };
           if (req.body.rememberme != undefined) {
             res.cookie("remember-me", userData.email, { maxAge: 5000 });
           }
-          db.User.create(userData).then();
-          req.session.usuarioLogueado = userData.email;
+
+          db.User.create(userData);
+          req.session.usuarioActual = userData.email;
           return res.redirect("/");
         } else {
           return res.render("register", {

@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+  <!-- Include Head -->
+  <%- include('../partials/head', {title: 'Proyecto'}) %>
   <body>
     <h1>Listado de usuarios (<%= users.length %>)</h1>
 
-    
     <table border="1">
-        <a href="/dashboard/form"> Agregar Pelicula</a>
+      <a href="/dashboard/form"> Agregar Pelicula</a>
       <thead>
         <tr>
           <th>ID</th>

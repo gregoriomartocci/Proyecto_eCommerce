@@ -29,7 +29,7 @@ module.exports = {
       if (user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           if (req.body.rememberme != undefined) {
-            res.cookie("remember-me", user.email, { maxAge: 99999 });
+            res.cookie("remember-me", user.email, { maxAge: 9999 });
           }
 
           req.session.usuarioLogueado = req.body.email;

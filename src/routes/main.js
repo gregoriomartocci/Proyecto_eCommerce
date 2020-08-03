@@ -23,14 +23,7 @@ router.get(
 
 // Trayendo usuarios
 router.get("/usuarioLogueado", function (req, res) {
-  db.User.findAll()
-    .then((result) => {
-      res.send(`el usuario logueado es ${req.session.usuarioLogueado}`);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ error: true });
-    });
+  res.send(`el usuario logueado es ${req.session.usuarioActual}`);
 });
 
 // Trayendo Producto
@@ -123,5 +116,10 @@ router.get("/traercategorias", function (req, res) {
     });
 });
 
-module.exports = router;
+// Dashboard Prueba
+router.get("/prueba", function (req, res) {
+  res.render("pruebadashboard")
+ });
+ 
 
+module.exports = router;
