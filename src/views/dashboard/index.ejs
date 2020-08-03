@@ -1,8 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Include Head -->
-  <%- include('../partials/head', {title: 'Proyecto'}) %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- Fonts Awesome -->
+
+    <!-- Custom Stylesheet -->
+
+    <link rel="stylesheet" href="/css/dashboard.css" />
+
+    <script src="https://use.fontawesome.com/142d130b8e.js"></script>
+  </head>
+
   <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button
+        class="navbar-toggler ml-auto"
+        type="button"
+        data-toggle="collapse"
+        data-target="#myNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 sidebar fixed-top bg-dark">
+              <a
+                href="#"
+                class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4"
+              >
+                Dashboard</a
+              >
+              <div class="bottom-border pb-3"></div>
+              <img
+                src="../uploads/avatar-1595096876570-.png"
+                width="50"
+                class="rounded-circle"
+              />
+              <a href="#" class="text-white">Usuario</a>
+
+              <ul class="nabvar-nav flex-column mb-4">
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 current"
+                    ><i class="fa fa-home text-light fa-lg mr-3"></i
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-user text-light fa-lg mr-3"></i>User</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-envelope text-light fa-lg mr-3"></i
+                    >Inbox</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-shopping-cart text-light fa-lg mr-3"></i
+                    >Ventas</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-home text-light fa-lg mr-3"></i
+                    >Graficos</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-table text-light fa-lg mr-3"></i>Tablas</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-wrench text-light fa-lg mr-3"></i>Configuracion</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-9"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+
     <h1>Listado de usuarios (<%= users.length %>)</h1>
 
     <table border="1">
@@ -35,5 +139,21 @@
         <% }) %>
       </tbody>
     </table>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

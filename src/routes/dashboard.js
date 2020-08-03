@@ -15,6 +15,7 @@ router.get("/", function (req, res) {
     .then((result) => {
       res.render("dashboard/index", {
         users: result,
+        title:"Proyecto"
       });
     })
     .catch((err) => {

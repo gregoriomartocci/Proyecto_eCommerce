@@ -33,7 +33,7 @@ module.exports = {
           console.log("Usuario registrado con exito");
           const userData = {
             email: req.body.email,
-            pasword: bcrypt.hashSync(req.body.password, 10),
+            password: bcrypt.hashSync(req.body.password, 10),
             //avatar: req.files,
           };
           if (req.body.rememberme != undefined) {
