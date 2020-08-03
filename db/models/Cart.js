@@ -4,11 +4,13 @@ module.exports = function (sequelize, dataTypes) {
     {
       idCarrito: {
         type: dataTypes.INTEGER(5),
-        allowNull: false,
         primaryKey: true,
       },
       userEmail: {
-        type: dataTypes.INTEGER(5),
+        type: dataTypes.STRING(100),
+      },
+      productName: {
+        type: dataTypes.STRING(100),
       },
       idProducto: {
         type: dataTypes.INTEGER(5),
@@ -16,8 +18,11 @@ module.exports = function (sequelize, dataTypes) {
       cantidad: {
         type: dataTypes.INTEGER(5),
       },
-      new:{
-        type: dataTypes.BOOLEAN(true),
+      precio: {
+        type: dataTypes.DECIMAL(),
+      },
+      new: {
+        type: dataTypes.BOOLEAN(),
       },
       subtotal: {
         type: dataTypes.DECIMAL,

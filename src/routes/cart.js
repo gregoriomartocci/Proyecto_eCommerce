@@ -11,6 +11,6 @@ const db = require(dbDir);
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
-router.get("/add/:id",usuariosMiddlewares, controllers.cart.add)
+router.get("/add/:id", controllers.cart.add)
 
 module.exports = router;

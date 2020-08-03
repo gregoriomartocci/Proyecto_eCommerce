@@ -14,9 +14,9 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 module.exports = {
   // Root
   root: function (req, res) {
-    db.Product.findAll().then((products) => {
+    db.Product.findAll().then((product) => {
       res.render("index", {
-        products,
+        product,
         user: req.session.usuarioLogueado,
       });
     });
