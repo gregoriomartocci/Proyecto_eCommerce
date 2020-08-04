@@ -24,6 +24,10 @@ router.get("/", function (req, res) {
     });
 });
 
+router.get("/logout", function(req,res){
+  res.render("login")
+})
+
 // GET Trae el formulario para crear un Usuario
 router.get("/form", function (req, res) {
   res.render("dashboard/form", {
