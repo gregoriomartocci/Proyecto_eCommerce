@@ -118,7 +118,7 @@ ol {
   color: #15161d;
   text-align: left;
   list-style: none;
-  background-color: #FFF;
+  background-color: #fff;
   background-clip: unset;
   border: unset;
   border-radius: unset;
@@ -191,31 +191,20 @@ ol {
 }
 
 /*----------------------------*\
-	Dashboard
-\*----------------------------*/
-
-
-
-/*----------------------------*\
 	Avatar
 \*----------------------------*/
 
-.avatar{
-
+.avatar {
   border-radius: 50%;
-  width:60px;
-  height:60px;
+  width: 60px;
+  height: 60px;
   background-image: url("/images/avatar-1594721625432-.jpg");
   background-size: cover;
-  
 }
 
-.account-info{
-
+.account-info {
   margin: 5px;
-
 }
-
 
 /*----------------------------*\
 	Inputs
@@ -493,7 +482,7 @@ textarea.input {
 .cart-dropdown .cart-btns > a {
   padding: 12px;
   background-color: #d10024;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-weight: 700;
   -webkit-transition: 0.2s all;

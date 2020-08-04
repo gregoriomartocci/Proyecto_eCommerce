@@ -1,23 +1,93 @@
+/*
+
+Colores:
+
+Body: #333
+Headers: #2B2D42
+Rojo: #D10024
+Dark: #15161D ##1E1F29
+Gris: #E4E7ED #FBFBFC #8D99AE #B9BABC
+
+*/
 
 body {
-  font-family: "Monserrat", sans-serif;
-  background-color: #eee;
+  font-family: 'Montserrat', sans-serif;
+  background-color:#FBFBFC;
 }
 
 .sidebar {
   height: 100vh;
-  box-shadow: 5px 5px 20px #999;
+  box-shadow: 5px 5px 20px #B9BABC;
+  background-color: #15161D;
 }
 
-.sidebar-link:hover{
-    border-bottom: 1px groove #eee;
+.sidebar-link:hover {
+  border-bottom: 1px groove #FBFBFC;
 }
 
-.bottom-border{
-    border-bottom: 1px groove #eee;
+.bottom-border {
+  border-bottom: 1px groove #FBFBFC;
 }
 
-.current{
-    background-color: #f44336;
-    border-radius: 5px;
+.current {
+  background-color:#D10024;
+  border-radius: 5px;
+}
+
+.current:hover {
+  background-color:#D10024;
+  border-radius: 5px;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #B9BABC;
+}
+
+.search-input {
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 2px solid #D10024;
+}
+
+.search-button {
+  border-radius: 50%;
+  padding: 10px 16px;
+  transition: all 0.4s;
+}
+
+.search-button:hover {
+  background-color: #FBFBFC;
+  transform: translateY(-1px);
+}
+
+.icon-parent {
+  position: relative;
+}
+
+.icon-bullet::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  width: 12px;
+  background-color: #D10024;
+  border-radius: 50%;
+}
+
+.top-navbar{
+  background-color: #15161D;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .top-navbar {
+    position: static;
+  }
 }
