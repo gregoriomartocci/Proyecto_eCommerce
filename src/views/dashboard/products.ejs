@@ -269,29 +269,29 @@
                       </td>
                       <td><%= product.precio %></td>
                       <td>
-                        <form
-                          method="post"
-                          action="/dashboard/products<%= product.idProducto %>?_method=DELETE"
-                        >
-                          <button>
-                            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                        <div class="row justify-content-center align-middle">
+                          <!-- Edit Button -->
+
+                          <button
+                            data-toggle="modal"
+                            data-target="#update<%= product.idProducto%>"
+                          >
+                            <i class="fas fa-edit fa-2x text-success"></i>
                           </button>
-                        </form>
 
-                        <!-- Button trigger modal -->
+                          <!-- Delete Button -->
 
-                        <button
-                          type="button"
-                          class="btn"
-                          data-toggle="modal"
-                          data-target="#update<%= product.idProducto%>"
-                        >
-                          <i class="fas fa-edit fa-lg text-success"></i>
-                        </button>
+                          <form
+                            method="post"
+                            action="/dashboard/products/delete-product/<%= product.idProducto %>"
+                          >
+                            <button>
+                              <i class="fas fa-trash-alt fa-2x text-danger"></i>
+                            </button>
+                          </form>
+                        </div>
 
-                        <!-- Update Product-->
-
-                        <!-- Modal -->
+                        <!-- Edit Product Modal-->
 
                         <div
                           class="modal fade"
@@ -381,10 +381,8 @@
                                     <div class="form-group col-md-4">
                                       <label for="input">Stock</label>
                                       <select>
-                                        id="input"
-                                        class="form-control"
-                                        name="Stock"
-                                      >
+                                        id="input" class="form-control"
+                                        name="Stock" >
                                         <option selected>1</option>
 
                                         <% for (let i = 2; i < 10; i++) { %>
@@ -394,7 +392,7 @@
                                     </div>
                                   </div>
                                   <button type="submit" class="btn btn-primary">
-                                    Agregar
+                                    Guardar Cambios
                                   </button>
                                 </form>
                               </div>

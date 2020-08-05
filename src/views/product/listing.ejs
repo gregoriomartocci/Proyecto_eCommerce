@@ -20,7 +20,7 @@
 
       <!-- /section title -->
 
-      <% for (let i = 0; i < 4; i++) { %>
+      <% products.forEach(product => { %>
 
       <div class="col-xs-12 col-md-6 col-lg-3">
         <!-- product -->
@@ -35,10 +35,10 @@
           <div class="product-body">
             <p class="product-category">Categoria</p>
             <h3 class="product-name">
-              <a href="#"><%= product[i].nombre %></a>
+              <a href="#"><%= product.nombre %></a>
             </h3>
             <h4 class="product-price">
-              $<%= product[i].precio %>
+              $<%= product.precio %>
               <del class="product-old-price">$990.00</del>
             </h4>
             <div class="product-rating">
@@ -69,13 +69,15 @@
           </div>
           <div class="add-to-cart">
             <button class="add-to-cart-btn">
-              <a href="/cart/add/<%= product[i].idProducto %>"><i class="fa fa-shopping-cart"></i> comprar </a>
+              <a href="/cart/add/<%= product.idProducto %>"
+                ><i class="fa fa-shopping-cart"></i> comprar
+              </a>
             </button>
           </div>
         </div>
         <!-- /product -->
       </div>
-      <% } %>
+      <% }) %>
     </div>
   </div>
 </div>

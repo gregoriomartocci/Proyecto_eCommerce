@@ -59,8 +59,9 @@ body {
   float: left;
 }
 
-.account-details ul li a{
+ul li a {
   list-style-type: none;
+  text-decoration: none;
 }
 
 .input:focus {
@@ -75,6 +76,10 @@ button {
   border: unset;
   outline: unset;
   background-color: unset;
+}
+
+button:focus {
+  outline: unset;
 }
 
 .icon-parent {

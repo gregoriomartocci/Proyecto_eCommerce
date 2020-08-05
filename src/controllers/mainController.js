@@ -14,12 +14,16 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 module.exports = {
   // Root
   root: function (req, res) {
-    db.Product.findAll().then((product) => {
-      res.render("index", {
-        product,
-        user: req.session.usuarioActual,
+    db.Product.findAll({
+      include: ["estadoProducto"],
+    })
+      .then((products) => {
+        res.render("index", { products });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ error: true });
       });
-    });
   },
 
   // Check-Out

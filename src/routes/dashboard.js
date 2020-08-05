@@ -11,78 +11,28 @@ const db = require(dbDir);
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
-// Proboando CRUD con usuarios
+// Users
 
-// Listar todos los usuarios
-router.get("/", function (req, res) {
-  db.User.findAll()
-    .then((result) => {
-      res.render("dashboard/index", {
-        users: result,
-        title: "Proyecto",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ error: true });
-    });
-});
+router.get("/", controllers.dashboard.showUsers);
 
-// CREATE
+//Products
+
+// Create
 router.post("/add-product", controllers.dashboard.store);
 
-// READ
-router.get("/products", function (req, res) {
-  db.Product.findAll()
-    .then((products) => {
-      res.render("dashboard/products", {
-        products,
-        title: "Proyecto",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ error: true });
-    });
-});
+// Read
+router.get("/products", controllers.dashboard.show);
 
-// UPDATE
-
-router.post("/add-product", controllers.dashboard.store);
-
+// Update
 router.post("/update-product/:id", controllers.dashboard.update);
 
-/*
-router.put("/update-product/:id", function (req, res) {
-  db.Product.update(req.body, {
-    where: { idUsuario: req.params.id },
-  }).then((result) => {
-    res.redirect("/dashboard");
-  });
-});
-*/
+// Store
+router.post("/add-product", controllers.dashboard.store);
 
-// DELETE
-router.delete("/products/:id", function (req, res) {
-  db.Product.destroy({
-    where: { idProducto: req.params.id, action: `?_method=DELETE` },
-  }).then((result) => {
-    res.redirect("/dashboard/products");
-  });
-});
+// Delete
+router.post("/products/delete-product/:id", controllers.dashboard.delete);
 
 // LOGOUT
 router.get("/logout", controllers.dashboard.logout);
-
-/*
-// DELETE Borrar el usuario con el ID
-router.delete("/:id", function (req, res) {
-  db.User.destroy({
-    where: { idUsuario: req.params.id },
-  }).then((result) => {
-    res.redirect("/dashboard");
-  });
-});
-*/
 
 module.exports = router;
