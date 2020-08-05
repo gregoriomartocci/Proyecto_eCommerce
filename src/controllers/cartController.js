@@ -6,6 +6,16 @@ const db = require(dbDir);
 module.exports = {
   // Create
 
+  show: function (req, res) {
+    db.Cart.findall({
+      where: { userEmail: req.session.usuarioActual },
+    }).then((product) => {
+      res.redirect("index", {
+        product,
+      });
+    });
+  },
+
   add: function (req, res) {
     db.Product.findByPk(req.params.id)
       .then((product) => {
@@ -25,21 +35,7 @@ module.exports = {
       .catch((error) => {
         console.log(error);
       });
+
+    console.log("ok");
   },
 };
-
-/* 
-
-router.get("/movies/detail/:id", function (req, res) {  // Ruta Parametrizada
-  db.Movie.findByPk(req.params.id)
-    .then((singleMovie) => {
-      res.render("detail", { movie: singleMovie });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ error: true });
-    });
-});
-
-
-*/

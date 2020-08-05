@@ -7,6 +7,10 @@ const path = require("path");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
+// ************ Controller Require ************
+const controllers = require("../controllers");
+const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
+
 // Proboando CRUD con usuarios
 
 // Listar todos los usuarios
@@ -15,7 +19,7 @@ router.get("/", function (req, res) {
     .then((result) => {
       res.render("dashboard/index", {
         users: result,
-        title:"Proyecto"
+        title: "Proyecto",
       });
     })
     .catch((err) => {
@@ -24,26 +28,16 @@ router.get("/", function (req, res) {
     });
 });
 
-router.get("/logout", function(req,res){
-  res.render("login")
-})
+// CREATE
+router.post("/add-product", controllers.dashboard.store);
 
-// GET Trae el formulario para crear un Usuario
-router.get("/form", function (req, res) {
-  res.render("dashboard/form", {
-    title: " Crear usuario ",
-    actionUrl: ``,
-    user: {},
-  });
-});
-
-// GET: Trae 1 Usuario
-router.get("/:id", function (req, res) {
-  db.User.findByPk(req.params.id)
-    .then((result) => {
-      res.render("dashboard/show", {
-        title: "Informacion de Usuario",
-        user: result,
+// READ
+router.get("/products", function (req, res) {
+  db.Product.findAll()
+    .then((products) => {
+      res.render("dashboard/products", {
+        products,
+        title: "Proyecto",
       });
     })
     .catch((err) => {
@@ -52,33 +46,35 @@ router.get("/:id", function (req, res) {
     });
 });
 
-// GET Trae el formulario para editar un Usuario
-router.get("/form/:id", function (req, res) {
-  db.User.findByPk(req.params.id).then((result) => {
-    res.render("dashboard/form", {
-      title: " Editar Usuario",
-      actionUrl: `/${req.params.id}?_method=PUT`,
-      user: result,
-    });
-  });
-});
+// UPDATE
 
-// Enviar los datos del formulario de creacion
-router.post("/", function (req, res) {
-  db.User.create(req.body).then((result) => {
-    res.redirect("/dashboard");
-  });
-});
+router.post("/add-product", controllers.dashboard.store);
 
-// PUT Enviar los datos del formulario de Edicion
-router.put("/:id", function (req, res) {
-  db.User.update(req.body, {
+router.post("/update-product/:id", controllers.dashboard.update);
+
+/*
+router.put("/update-product/:id", function (req, res) {
+  db.Product.update(req.body, {
     where: { idUsuario: req.params.id },
   }).then((result) => {
     res.redirect("/dashboard");
   });
 });
+*/
 
+// DELETE
+router.delete("/products/:id", function (req, res) {
+  db.Product.destroy({
+    where: { idProducto: req.params.id, action: `?_method=DELETE` },
+  }).then((result) => {
+    res.redirect("/dashboard/products");
+  });
+});
+
+// LOGOUT
+router.get("/logout", controllers.dashboard.logout);
+
+/*
 // DELETE Borrar el usuario con el ID
 router.delete("/:id", function (req, res) {
   db.User.destroy({
@@ -87,7 +83,6 @@ router.delete("/:id", function (req, res) {
     res.redirect("/dashboard");
   });
 });
+*/
 
 module.exports = router;
-
-// Deberiamos Validar

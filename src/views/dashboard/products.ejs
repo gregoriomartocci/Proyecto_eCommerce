@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <!-- Fonts Awesome -->
+
+    <!-- Custom Stylesheet -->
+
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light">
+      <button
+        class="navbar-toggler ml-auto"
+        type="button"
+        data-toggle="collapse"
+        data-target="#myNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Sidebar -->
+            <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
+              <a
+                href="#"
+                class="navbar-brand text-white d-block mx-auto text-center py-3"
+              >
+                Admin</a
+              >
+
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="account-details justify-content-start">
+                    <ul>
+                      <li>
+                        <a href="#" class="text-white"> Usuario</a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-white"> usuario@gmail.com </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="navbar-nav flex-column mb-4">
+                <li class="nav-item">
+                  <a
+                    href="/dashboard"
+                    class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-user text-light fa-lg mr-3"></i>Usuarios</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="/dashboard/products"
+                    class="nav-link text-white p-3 mb-2 current"
+                    ><i class="fa fa-table text-light fa-lg mr-3"></i
+                    >Productos</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-shopping-cart text-light fa-lg mr-3"></i
+                    >Publicaciones
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-comments text-light fa-lg mr-3"></i
+                    >Comentarios</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-home text-light fa-lg mr-3"></i>Graficos</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-wrench text-light fa-lg mr-3"></i
+                    >Configuracion</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- /Sidebar -->
+
+            <!-- Top Nav -->
+            <div
+              class="col-xl-10 col-lg-9 col-md-8 ml-auto fixed-top py-2 top-navbar"
+            >
+              <div class="row align-items-center justify-space-evenly">
+                <div class="col-md-4 col-sm-2">
+                  <h4 class="text-light text-uppercase mb-0">Dashboard</h4>
+                </div>
+                <div class="col-xl-5 col-md-4 col-sm-2">
+                  <div class="search-bar">
+                    <div class="search-input">
+                      <input
+                        type="text"
+                        class="input p-3"
+                        placeholder="Search"
+                      />
+                    </div>
+                    <div class="search-button">
+                      <button
+                        type="submit"
+                        class="btn btn-light search-button ml-3"
+                      >
+                        <i class="fa fa-search text-dark"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <ul class="navbar-nav">
+                    <li class="nav-item icon-parent">
+                      <a href="#" class="nav-link icon-bullet">
+                        <i class="fa fa-comments text-muted fa-lg"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="fa fa-bell text-muted fa-lg"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link"
+                        data-toggle="modal"
+                        data-target="#sign-out"
+                      >
+                        <i class="fa fa-sign-out text-danger fa-lg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /Top Nav -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- /Navbar -->
+
+    <!--  Cards -->
+
+    <!--  Card -->
+
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row pt-md-5 mt-md-3 mb-5">
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <ii class="fa fa-shopping-cart fa-3x text-warning"></ii>
+                      <div class="text-right text-secondary">
+                        <h5>Cantidad de Productos</h5>
+                        <h3><%= products.length %></h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <i class="fas fa-sync mr-2"></i>
+                    <span>Actualizar</span>
+                  </div>
+                </div>
+              </div>
+
+              <!--  Card -->
+
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <ii class="fas fa-chart-line fa-3x text-danger"></ii>
+                      <div class="text-right text-secondary">
+                        <h5>Ventas</h5>
+                        <h3>$0</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <i class="fas fa-sync mr-2"></i>
+                    <span>Actualizar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  /Cards -->
+
+    <!-- tables -->
+
+    <section>
+      <div class="container-fluid">
+        <div class="row mb-5">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row">
+              <div class="col-12">
+                <div class="container-fluid">
+                  <div class="row align-items-center">
+                    <div>
+                      <h3 class="text muted mb-3">Productos</h3>
+                    </div>
+                    <!-- Add Button modal -->
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btn-primary rounded-circle ml-3 mb-3 btn-sm"
+                        data-toggle="modal"
+                        data-target="#agregarProducto"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <table class="table bg-light text-center">
+                  <thead>
+                    <tr class="text-muted">
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Precio</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% products.forEach(product => { %>
+                    <tr>
+                      <td><%= product.idProducto %></td>
+                      <td>
+                        <a href="/dashboard/products<%= product.idProducto %>"
+                          ><%= product.nombre %></a
+                        >
+                      </td>
+                      <td><%= product.precio %></td>
+                      <td>
+                        <form
+                          method="post"
+                          action="/dashboard/products<%= product.idProducto %>?_method=DELETE"
+                        >
+                          <button>
+                            <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                          </button>
+                        </form>
+
+                        <!-- Button trigger modal -->
+
+                        <button
+                          type="button"
+                          class="btn"
+                          data-toggle="modal"
+                          data-target="#update<%= product.idProducto%>"
+                        >
+                          <i class="fas fa-edit fa-lg text-success"></i>
+                        </button>
+
+                        <!-- Update Product-->
+
+                        <!-- Modal -->
+
+                        <div
+                          class="modal fade"
+                          id="update<%= product.idProducto%>"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="update"
+                        >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4
+                                  class="modal-title"
+                                  id="updateProduct<%= product.idProducto %>"
+                                >
+                                  Editar Producto
+                                </h4>
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form
+                                  action="/dashboard/update-product/<%= product.idProducto %>"
+                                  method="POST"
+                                >
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="input"
+                                        >Nombre del Producto</label
+                                      >
+                                      <input
+                                        type="text"
+                                        name="nombre"
+                                        class="form-control"
+                                        id="input"
+                                        value="<%= product.nombre %>"
+                                      />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="input">Precio</label>
+                                      <input
+                                        type="text"
+                                        name="precio"
+                                        class="form-control"
+                                        id="input"
+                                        value="<%= product.precio %>"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="input">Categoria</label>
+                                    <input
+                                      type="text"
+                                      name="Categoria"
+                                      class="form-control"
+                                      id="input"
+                                      placeholder="Opcional"
+                                    />
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="input">Marca</label>
+                                    <input
+                                      type="text"
+                                      name="marca"
+                                      class="form-control"
+                                      id="input"
+                                      placeholder="Opcional"
+                                    />
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <label for="input">Modelo</label>
+                                      <input
+                                        type="text"
+                                        name="modelo"
+                                        class="form-control"
+                                        id="input"
+                                        placeholder="Opcional"
+                                      />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="input">Stock</label>
+                                      <select>
+                                        id="input"
+                                        class="form-control"
+                                        name="Stock"
+                                      >
+                                        <option selected>1</option>
+
+                                        <% for (let i = 2; i < 10; i++) { %>
+                                        <option><%= i %></option>
+                                        <% } %>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">
+                                    Agregar
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- /Update Product-->
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+
+    <!-- Logout Message -->
+
+    <div class="modal fade" id="sign-out">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Want to Leave!</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            Press logout to leave
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
+              Stay Here
+            </button>
+
+            <a href="/dashboard/logout">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Log out
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /Logout Message -->
+
+    <!-- Modals -->
+
+    <!-- Add Product-->
+    <div class="modal fade" id="agregarProducto" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="agregar">Agregar Producto</h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/dashboard/add-product" method="POST">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input">Nombre del Producto</label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    class="form-control"
+                    id="input"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="input">Precio</label>
+                  <input
+                    type="text"
+                    name="precio"
+                    class="form-control"
+                    id="input"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input">Categoria</label>
+                <input
+                  type="text"
+                  name="Categoria"
+                  class="form-control"
+                  id="input"
+                  placeholder="Opcional"
+                />
+              </div>
+              <div class="form-group">
+                <label for="input">Marca</label>
+                <input
+                  type="text"
+                  name="marca"
+                  class="form-control"
+                  id="input"
+                  placeholder="Opcional"
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input">Modelo</label>
+                  <input
+                    type="text"
+                    name="modelo"
+                    class="form-control"
+                    id="input"
+                    placeholder="Opcional"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="input">Stock</label>
+                  <select id="input" class="form-control" name="Stock">
+                    <option selected>1</option>
+
+                    <% for (let i = 2; i < 10; i++) { %>
+                    <option><%= i %></option>
+                    <% } %>
+                  </select>
+                </div>
+              </div>
+              <a href="/dashboard/products">
+                <button type="submit" class="btn btn-primary">Agregar</button>
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /Add Product-->
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/48872cab90.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -59,6 +59,10 @@ body {
   float: left;
 }
 
+.account-details ul li a{
+  list-style-type: none;
+}
+
 .input:focus {
   outline: 0;
 }

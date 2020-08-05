@@ -43,46 +43,63 @@
             <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
               <a
                 href="#"
-                class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4"
+                class="navbar-brand text-white d-block mx-auto text-center py-3"
               >
                 Dashboard</a
               >
-              <a href="#" class="text-white mx-auto text-center">Usuario</a>
+
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="account-details justify-content-start">
+                    <ul>
+                      <li>
+                        <a href="#" class="text-white"> Usuario</a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-white"> usuario@gmail.com </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
               <ul class="navbar-nav flex-column mb-4">
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white p-3 mb-2 current"
-                    ><i class="fa fa-home text-light fa-lg mr-3"></i
-                    >Dashboard</a
+                  <a
+                    href="/dashboard"
+                    class="nav-link text-white p-3 mb-2 current"
+                    ><i class="fa fa-user text-light fa-lg mr-3"></i>Usuarios</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
-                    ><i class="fa fa-user text-light fa-lg mr-3"></i>User</a
+                  <a
+                    href="/dashboard/products"
+                    class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-table text-light fa-lg mr-3"></i
+                    >Productos</a
                   >
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
-                    ><i class="fa fa-envelope text-light fa-lg mr-3"></i
-                    >Inbox</a
-                  >
-                </li>
+
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
                     ><i class="fa fa-shopping-cart text-light fa-lg mr-3"></i
-                    >Ventas</a
+                    >Publicaciones
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
+                    ><i class="fa fa-comments text-light fa-lg mr-3"></i
+                    >Comentarios</a
                   >
                 </li>
+
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
                     ><i class="fa fa-home text-light fa-lg mr-3"></i>Graficos</a
                   >
                 </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
-                    ><i class="fa fa-table text-light fa-lg mr-3"></i>Tablas</a
-                  >
-                </li>
+
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"
                     ><i class="fa fa-wrench text-light fa-lg mr-3"></i
@@ -106,12 +123,15 @@
                     <div class="search-input">
                       <input
                         type="text"
-                        class="input p-2"
+                        class="input p-3"
                         placeholder="Search"
                       />
                     </div>
                     <div class="search-button">
-                      <button type="submit" class="btn btn-light search-button">
+                      <button
+                        type="submit"
+                        class="btn btn-light search-button ml-3"
+                      >
                         <i class="fa fa-search text-danger"></i>
                       </button>
                     </div>
@@ -136,9 +156,7 @@
                         data-toggle="modal"
                         data-target="#sign-out"
                       >
-                        <i
-                          class="fa fa-sign-out text-muted text-danger fa-lg"
-                        ></i>
+                        <i class="fa fa-sign-out text-danger fa-lg"></i>
                       </a>
                     </li>
                   </ul>
@@ -152,37 +170,6 @@
     </nav>
     <!-- /Navbar -->
 
-    <!-- Logout Message -->
-
-    <div class="modal fade" id="sign-out">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Want to Leave!</h4>
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-          </div>
-          <div class="modal-body">
-            Press logout to leave
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">
-              Stay Here
-            </button>
-            <a href="/users/logout">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
-                Log out
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Logout Message -->
-
-    <!--  Cards -->
-
     <!--  Card -->
 
     <section>
@@ -190,24 +177,6 @@
         <div class="row">
           <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row pt-md-5 mt-md-3 mb-5">
-              <div class="col-xl-3 col-sm-6 p-2">
-                <div class="card-common">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <ii class="fa fa-shopping-cart fa-3x text-warning"></ii>
-                      <div class="text-right text-secondary">
-                        <h5>Sales</h5>
-                        <h3>$135.000</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <i class="fas fa-sync mr-2"></i>
-                    <span>Actualizar</span>
-                  </div>
-                </div>
-              </div>
-
               <!--  Card -->
 
               <div class="col-xl-3 col-sm-6 p-2">
@@ -216,48 +185,8 @@
                     <div class="d-flex justify-content-between">
                       <ii class="fa fa-users fa-3x text-info"></ii>
                       <div class="text-right text-secondary">
-                        <h5>Usuarios</h5>
-                        <h3>12.000</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <i class="fas fa-sync mr-2"></i>
-                    <span>Actualizar</span>
-                  </div>
-                </div>
-              </div>
-
-              <!--  Card -->
-
-              <div class="col-xl-3 col-sm-6 p-2">
-                <div class="card-common">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <ii class="fas fa-chart-line fa-3x text-danger"></ii>
-                      <div class="text-right text-secondary">
-                        <h5>Sales</h5>
-                        <h3>$135.000</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <i class="fas fa-sync mr-2"></i>
-                    <span>Actualizar</span>
-                  </div>
-                </div>
-              </div>
-
-              <!--  Card -->
-
-              <div class="col-xl-3 col-sm-6 p-2">
-                <div class="card-common">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <ii class="fa fa-shopping-cart fa-3x text-warning"></ii>
-                      <div class="text-right text-secondary">
-                        <h5>Sales</h5>
-                        <h3>$135.000</h3>
+                        <h5>Cantidad de Usuarios</h5>
+                        <h3><%= users.length %></h3>
                       </div>
                     </div>
                   </div>
@@ -282,7 +211,24 @@
           <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
             <div class="row">
               <div class="col-12">
-                <h3 class="text muted text-center mb-3">Usuarios</h3>
+                <div class="container-fluid">
+                  <div class="row align-items-center">
+                    <div>
+                      <h3 class="text muted mb-3">Usuarios</h3>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btn-primary rounded-circle ml-3 mb-3 btn-sm"
+                        data-toggle="modal"
+                        data-target="#myModal"
+                      >
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
                 <table class="table bg-light text-center">
                   <thead>
                     <tr class="text-muted">
@@ -311,18 +257,89 @@
                             <i class="fas fa-trash-alt fa-lg text-danger"></i>
                           </button>
                         </form>
+
+                        <form
+                          method="post"
+                          action="/dashboard/<%= user.idUsuario %>?_method=DELETE"
+                        >
+                          <button>
+                            <i class="fas fa-edit fa-lg text-success"></i>
+                          </button>
+                        </form>
                       </td>
                     </tr>
                     <% }) %>
                   </tbody>
                 </table>
               </div>
-              <div class="col-12"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Modal -->
+
+    <!-- Logout Message -->
+
+    <div class="modal fade" id="sign-out">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Want to Leave!</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            Press logout to leave
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
+              Stay Here
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">
+              <a href="/dashboard/logout">Cerrar Sesion</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- /Logout Message -->
+
+    <!-- Modals -->
+
+    <!-- Add -->
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -345,41 +362,3 @@
     ></script>
   </body>
 </html>
-
-<!-- 
-
-<h1>Listado de usuarios (<%= users.length %>)</h1>
-
-<table border="1">
-  <a href="/dashboard/form"> Agregar Pelicula</a>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Titulo</th>
-      <th>Password</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.forEach(user => { %>
-    <tr>
-      <td><%= user.idUsuario %></td>
-      <td>
-        <a href="/dashboard/<%= user.idUsuario %>"><%= user.email %></a>
-      </td>
-      <td><%= user.password %></td>
-      <td>
-        <form
-          method="post"
-          action="/dashboard/<%= user.idUsuario %>?_method=DELETE"
-        >
-          <button>Borrar</button>
-        </form>
-      </td>
-    </tr>
-    <% }) %>
-  </tbody>
-</table>
-
-
--->
