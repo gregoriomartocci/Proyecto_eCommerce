@@ -1,0 +1,35 @@
+{
+    "logueado": [
+        {
+            "href":"#", 
+            "icon":"fa-user-circle", 
+            "label":"Mi Cuenta"
+        },
+        {
+            "href":"/newProduct", 
+            "icon":"fa-user-circle", 
+            "label":"Vender"
+        },
+        {
+            "href":"/checkout", 
+            "icon":"fa-power-off", 
+            "label":"Mi Compras"
+        },
+        {
+            "href":"users/logout", 
+            "icon":"fa-power-off", 
+            "label":"Cerrar Sesión"
+        }
+    ],
+    "huesped": [
+    {
+        "href":"users/login", 
+        "icon":"fa-user-circle", 
+        "label":"Iniciar Sesión"
+    },
+    {
+        "href":"/users/register", 
+        "icon":"fa-power-off", 
+        "label":"Registrarse"
+    } ]
+}

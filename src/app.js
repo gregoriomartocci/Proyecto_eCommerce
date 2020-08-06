@@ -12,9 +12,11 @@ const express = require("express");
 const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
-const logMiddleware = require("./middlewares/user-logs");
-const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
-const session = require("express-session");
+//const logMiddleware = require('./middlewares/user-logs')
+const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware')
+const setDataPerfilMiddleware = require('./middlewares/setDataPerfilMiddlewares')
+const footerDataMiddleware = require('./middlewares/footerDataMiddleware')
+const session = require('express-session')
 // ************ express() - (don't touch) ************
 const app = express();
 
@@ -26,11 +28,12 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
-app.use(logMiddleware);
-app.use(
-  session({ secret: "frase secreta", resave: false, saveUninitialized: true })
-);
-app.use(cookieAuthMiddleware);
+//app.use(logMiddleware) LUCAS - Se comento para no estar borrando siempre que commiteo
+app.use(session({secret: "frase secreta" , resave: false, saveUninitialized: true}))
+app.use(cookieAuthMiddleware)
+app.use(setDataPerfilMiddleware)
+app.use(footerDataMiddleware)
+
 
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");
@@ -44,7 +47,7 @@ app.use("/dashboard", dashboardRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
-app.use((req, res, next) => next(createError(404)));
+//app.use((req, res, next) => next(createError(404)));
 
 // error handler
 app.use(function (err, req, res, next) {

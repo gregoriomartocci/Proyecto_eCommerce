@@ -38,7 +38,7 @@ module.exports = {
             //avatar: req.files,
           };
           if (req.body.rememberme != undefined) {
-            res.cookie("remember-me", userData.email, { maxAge: 5000 });
+            res.cookie("rememberMe", userData.email, { maxAge: 5000 });
           }
 
           db.User.create(userData);

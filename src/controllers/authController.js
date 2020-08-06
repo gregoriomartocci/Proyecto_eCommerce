@@ -29,7 +29,7 @@ module.exports = {
       if (user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           if (req.body.rememberme != undefined) {
-            res.cookie("remember-me", user.email, { maxAge: 9999 });
+            res.cookie("rememberMe", user.email, { maxAge: 9999 });
           }
 
           req.session.usuarioActual = req.body.email;
@@ -49,7 +49,9 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    req.session.destroy();
-    return res.redirect("/user/login");
+    res.clearCookie('rememberMe');
+    req.session.destroy(() => {
+      return res.redirect("/");
+    });
   },
 };

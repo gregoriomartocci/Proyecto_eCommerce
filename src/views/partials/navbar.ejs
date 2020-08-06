@@ -17,51 +17,6 @@
 
           <!-- /LOGO -->
 
-          <!-- Toogle Button -->
-
-          <div class="col-auto d-md-none">
-            <div class="dropdown">
-              <button
-                class="btn btn-dark dropdown-toggle rounded-circle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="fa fa-bars"></i>
-              </button>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-                style="width: 300px;"
-              >
-                <a class="dropdown-item" href="#">
-                  <i class="fa fa-user-circle" style="margin-right: 10px;"></i
-                  ><h7>Mi Cuenta</h7></a
-                >
-                <a class="dropdown-item" href="#">
-                  <i class="fa fa-user-circle" style="margin-right: 10px;"></i>
-                  <h7>Vender</h7></a
-                >
-                <a class="dropdown-item" href="#"
-                  ><i class="fa fa-power-off" style="margin-right: 10px;"></i
-                  ><h7>Mi Compras</h7></a
-                >
-                <a class="dropdown-item" href="/user/logout">
-                  <i class="fa fa-power-off" style="margin-right: 10px;"></i
-                  ><h7>Cerrar Sesión</h7>
-                </a>
-                <a class="dropdown-item" href="/user/register"
-                  ><i class="fa fa-power-off" style="margin-right: 10px;"></i
-                  ><h7>Registrarse</h7></a
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- /Toogle Button -->
-
           <!-- SEARCH BAR -->
 
           <div class="col-sm-12 col-md-5 col-lg-6">
@@ -186,96 +141,43 @@
                     <i class="fa fa-user"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <div class="container">
-                      <div
-                        class="row align-items-center justify-content-between"
-                        style="padding: 15px 0px 15px 0px;"
-                      >
-                        <div class="col-3">
-                          <div class="avatar"></div>
-                        </div>
-                        <div class="col-9">
-                          <div class="accout-info" style="margin-left: 5px;">
-                            <ul>
-                              <% if(session != undefined){ %>
-                              <li>
-                                <a class="font-weight-bold">Bienvenido!</a>
-                              </li>
-                              <li><a><%= session %></a></li>
-                              <% }else{ %>
-                              <li><a>No has iniciado session aun!</a></li>
-                              <% } %>
-                            </ul>
+                    <%if(typeof user != 'undefined') { %>
+                      <div class="container">
+                        <div
+                          class="row align-items-center justify-content-between"
+                          style="padding: 15px 0px 15px 0px;"
+                        >
+                          <div class="col-3">
+                            <div class="avatar"></div>
+                          </div>
+                          <div class="col-9">
+                            <div class="accout-info" style="margin-left: 5px;">
+                              <ul>
+                                <li><a class="font-weight-bold">John Doe</a></li>
+                                <li><a><%= user %></a></li>
+                              </ul>
+                            
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="dropdown-divider"></div>
-
-                    <% if(session = undefined){ %>
-                    <a
-                      class="dropdown-item"
-                      href="users/login"
-                      style="padding: 20px 20px;"
-                    >
-                      <i
-                        class="fa fa-user-circle"
-                        style="margin-right: 10px;"
-                      ></i
-                      ><h7>Iniciar sesión</h7></a
-                    >
-                    <% } %>
-
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      style="padding: 20px 20px;"
-                    >
-                      <i
-                        class="fa fa-user-circle"
-                        style="margin-right: 10px;"
-                      ></i
-                      ><h7>Mi Cuenta</h7></a
-                    >
-                    <a
-                      class="dropdown-item"
-                      href="/product/add-product"
-                      style="padding: 20px 20px;"
-                    >
-                      <i
-                        class="fa fa-user-circle"
-                        style="margin-right: 10px;"
-                      ></i>
-                      <h7>Vender</h7></a
-                    >
-                    <a
-                      class="dropdown-item"
-                      href="/checkout"
-                      style="padding: 20px 20px;"
-                      ><i
-                        class="fa fa-power-off"
-                        style="margin-right: 10px;"
-                      ></i
-                      ><h7>Mi Compras</h7></a
-                    >
-                    <a
-                      class="dropdown-item"
-                      href="users/logout"
-                      style="padding: 20px 20px;"
-                    >
-                      <i class="fa fa-power-off" style="margin-right: 10px;"></i
-                      ><h7>Cerrar Sesión</h7>
-                    </a>
-                    <a
-                      class="dropdown-item"
-                      href="/users/register"
-                      style="padding: 20px 20px;"
-                      ><i
-                        class="fa fa-power-off"
-                        style="margin-right: 10px;"
-                      ></i
-                      ><h7>Registrarse</h7></a
-                    >
+                      <div class="dropdown-divider"></div>
+                    <%}%>
+                   
+                    <% for(let i=0; i < perfil.length; i++) { %>
+                      <a
+                        class="dropdown-item"
+                        href="<%= perfil[i].href%>"
+                        style="padding: 20px 20px"
+                      >
+                        <i
+                          class="fa <%= perfil[i].icon%>"
+                          style="margin-right: 10px;"
+                        >
+                        </i>
+                        <h7><%= perfil[i].label%></h7>
+                      </a>                        
+                    <%}%>
                   </div>
                 </div>
               </div>
@@ -285,10 +187,6 @@
           <!-- /Right Navbar Menu -->
           <!-- /Right Navbar Menu -->
         </div>
-        <%if(typeof user != 'undefined') { %>
-        <h6 style="color: white;">
-          <h6>
-            <%}%>
 
             <!-- /MAIN HEADER -->
 
@@ -299,3 +197,4 @@
     </nav>
   </div>
 </header>
+
