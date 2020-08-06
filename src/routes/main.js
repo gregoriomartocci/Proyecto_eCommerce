@@ -11,7 +11,10 @@ const db = require(dbDir);
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
-router.get("/", controllers.main.root); /* GET - home page */
+router.get(
+  "/",
+  controllers.main.root
+); /* GET - home page */
 
 router.get(
   "/checkout",
@@ -24,6 +27,7 @@ router.get(
 // Trayendo usuarios
 router.get("/usuarioLogueado", function (req, res) {
   res.send(`el usuario logueado es ${req.session.usuarioActual}`);
+  console.log(req.session.usuarioActual)
 });
 
 // Trayendo Producto
@@ -118,8 +122,7 @@ router.get("/traercategorias", function (req, res) {
 
 // Dashboard Prueba
 router.get("/prueba", function (req, res) {
-  res.render("pruebadashboard")
- });
- 
+  res.render("pruebadashboard");
+});
 
 module.exports = router;

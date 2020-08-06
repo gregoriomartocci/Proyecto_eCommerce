@@ -16,9 +16,10 @@ module.exports = {
   root: function (req, res) {
     db.Product.findAll({
       include: ["estadoProducto"],
+      limit: 5,
     })
       .then((products) => {
-        res.render("index", { products });
+        res.render("index", { products, session: `${req.session.usuarioActual}` });
       })
       .catch((err) => {
         console.log(err);

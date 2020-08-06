@@ -32,7 +32,7 @@ module.exports = {
             res.cookie("remember-me", user.email, { maxAge: 9999 });
           }
 
-          req.session.usuarioLogueado = req.body.email;
+          req.session.usuarioActual = req.body.email;
 
           return res.redirect("/");
         } else {

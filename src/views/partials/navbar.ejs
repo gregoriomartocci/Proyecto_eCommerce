@@ -196,17 +196,23 @@
                         </div>
                         <div class="col-9">
                           <div class="accout-info" style="margin-left: 5px;">
-                            <%if(typeof user != 'undefined') { %>
                             <ul>
-                              <li><a class="font-weight-bold">John Doe</a></li>
-                              <li><a><%= user %></a></li>
+                              <% if(session != undefined){ %>
+                              <li>
+                                <a class="font-weight-bold">Bienvenido!</a>
+                              </li>
+                              <li><a><%= session %></a></li>
+                              <% }else{ %>
+                              <li><a>No has iniciado session aun!</a></li>
+                              <% } %>
                             </ul>
-                            <%}%>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="dropdown-divider"></div>
+
+                    <% if(session = undefined){ %>
                     <a
                       class="dropdown-item"
                       href="users/login"
@@ -218,6 +224,8 @@
                       ></i
                       ><h7>Iniciar sesión</h7></a
                     >
+                    <% } %>
+
                     <a
                       class="dropdown-item"
                       href="#"

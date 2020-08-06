@@ -27,6 +27,7 @@ module.exports = {
       where: {
         email: req.body.email,
       },
+      
     }).then((user) => {
       if (!user) {
         if (req.body.password == req.body.confirm_password) {
