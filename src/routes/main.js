@@ -11,10 +11,7 @@ const db = require(dbDir);
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
-router.get(
-  "/",
-  controllers.main.root
-); /* GET - home page */
+router.get("/", controllers.main.root); /* GET - home page */
 
 router.get(
   "/checkout",

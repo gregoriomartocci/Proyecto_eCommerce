@@ -141,7 +141,7 @@
                     <i class="fa fa-user"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <%if(typeof user != 'undefined') { %>
+                    <%if(session != `undefined`) { %>
                       <div class="container">
                         <div
                           class="row align-items-center justify-content-between"
@@ -154,7 +154,7 @@
                             <div class="accout-info" style="margin-left: 5px;">
                               <ul>
                                 <li><a class="font-weight-bold">John Doe</a></li>
-                                <li><a><%= user %></a></li>
+                                <li><a><%= session %></a></li>
                               </ul>
                             
                             </div>

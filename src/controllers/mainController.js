@@ -19,7 +19,10 @@ module.exports = {
       limit: 5,
     })
       .then((products) => {
-        res.render("index", { products, session: `${req.session.usuarioActual}` });
+        res.render("index", {
+          products,
+          session: `${req.session.usuarioActual}`,
+        });
       })
       .catch((err) => {
         console.log(err);

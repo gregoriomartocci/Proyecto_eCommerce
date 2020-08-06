@@ -1,5 +1,5 @@
 let invitadosMiddlewares = function(req,res,next){
-    if(!req.session.usuarioLogueado) {
+    if(!req.session.usuarioActual) {
         next();
     }else {
         res.send('Usted ya esta logueado')

@@ -1,5 +1,5 @@
 function usuariosMiddlewares (req,res,next){
-    if(req.session.usuarioLogueado) {
+    if(req.session.usuarioActual) {
         next();
     }else {
         return res.render("login", { errors: [{ msg: "Inicie sesion para continuar" }] });
