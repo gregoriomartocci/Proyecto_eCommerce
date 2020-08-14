@@ -16,7 +16,7 @@ module.exports = {
   root: function (req, res) {
     db.Product.findAll({
       include: ["estadoProducto"],
-      limit: 5,
+      limit: 4,
     })
       .then((products) => {
         res.render("index", {
