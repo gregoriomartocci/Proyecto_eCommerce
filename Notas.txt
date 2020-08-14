@@ -33,3 +33,7 @@ NPM INSTALL "SEQUELIZE-CLI@5.*"
 
 El navegador solo tiene GET y POST, si queremos
 usar los otros metodos necesitamos el METHOD OVERRIDE
+
+
+Recordemos esto: todo aquello que son ENTIDADES Carrito, producto usuario son tablas en la base de datos.
+Todo lo que son propiedades SON COLUMNAS.
