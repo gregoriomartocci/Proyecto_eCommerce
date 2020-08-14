@@ -24,8 +24,32 @@
             </span>
             <% }) %>
 
-            <!--Email-->
-            <div class="wrap-input100">
+           <!--Nombre-->
+           <div class="wrap-input100">
+            <input
+              class="input100"
+              type="text"
+              name="firstName"
+              placeholder="Nombre"
+            />
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
+          
+          <!--Apellido-->
+          <div class="wrap-input100">
+            <input
+              class="input100"
+              type="text"
+              name="lastName"
+              placeholder="Apellido"
+            />
+            <span class="focus-input100-1"></span>
+            <span class="focus-input100-2"></span>
+          </div>
+
+          <!--Email-->
+            <div class="wrap-input100" data-validate="Valid email is required: ex@abc.xyz">
               <input
                 class="input100"
                 type="email"
@@ -89,6 +113,8 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> 
+    <script  src="/javascript/registerValidator.js" type="text/javascript"></script>
   </body>
+ 
 </html>

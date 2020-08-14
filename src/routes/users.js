@@ -1,7 +1,7 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
-const { check } = require("express-validator");
+const { check, validationResult, body } = require("express-validator");
 const registerValidation = require("../middlewares/registerValidation");
 const controllers = require("../controllers");
 const upload = require("../config/multer");

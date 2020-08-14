@@ -18,7 +18,7 @@
               <h3 class="title">Agregar Producto</h3>
             </div>
 
-            <form action="/product/add-product" method="POST">
+            <form action="/product/add-product" class="product" method="POST">
               <!-- Nombre -->
 
               <div class="form-group">
@@ -41,7 +41,7 @@
                 />
               </div>
 
-              <!-- Precio -->
+              <!-- idCategoria -->
 
               <div class="form-group">
                 <label for="">Categoria</label>
@@ -66,6 +66,7 @@
               <!-- Order notes -->
               <div class="order-notes">
                 <textarea
+                  name="descripcionProducto"
                   class="input"
                   type="text"
                   placeholder="Ingrese una descripcion del Producto"
@@ -121,5 +122,6 @@
     </div>
     <!-- Include Footer -->
     <%- include('../partials/footer') %>
+    <script  src="/javascript/productValidator.js" type="text/javascript"></script>
   </body>
 </html>

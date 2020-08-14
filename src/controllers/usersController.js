@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-let { validationResult } = require("express-validator");
+const { check, validationResult, body } = require("express-validator");
 
 const path = require("path");
 const { users } = require(".");
@@ -33,6 +33,8 @@ module.exports = {
         if (req.body.password == req.body.confirm_password) {
           console.log("Usuario registrado con exito");
           const userData = {
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 10),
             avatar: req.files,
