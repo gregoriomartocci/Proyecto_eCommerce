@@ -13,10 +13,10 @@ const logger = require("morgan");
 const path = require("path");
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
 //const logMiddleware = require('./middlewares/user-logs')
-const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware')
-const setDataPerfilMiddleware = require('./middlewares/setDataPerfilMiddlewares')
-const footerDataMiddleware = require('./middlewares/footerDataMiddleware')
-const session = require('express-session')
+const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
+const setDataPerfilMiddleware = require("./middlewares/setDataPerfilMiddlewares");
+const footerDataMiddleware = require("./middlewares/footerDataMiddleware");
+const session = require("express-session");
 // ************ express() - (don't touch) ************
 const app = express();
 
@@ -29,11 +29,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
 //app.use(logMiddleware) LUCAS - Se comento para no estar borrando siempre que commiteo
-app.use(session({secret: "frase secreta" , resave: false, saveUninitialized: true}))
-app.use(cookieAuthMiddleware)
-app.use(setDataPerfilMiddleware)
-app.use(footerDataMiddleware)
-
+app.use(
+  session({ secret: "some secret", resave: false, saveUninitialized: true })
+);
+app.use(cookieAuthMiddleware);
+app.use(setDataPerfilMiddleware);
+app.use(footerDataMiddleware);
 
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");

@@ -6,42 +6,44 @@ module.exports = function (sequelize, dataTypes) {
         type: dataTypes.INTEGER(5),
         primaryKey: true,
       },
-      userEmail: {
+      idUsuario: {
         type: dataTypes.STRING(100),
       },
-      productName: {
-        type: dataTypes.STRING(100),
-      },
-      idProducto: {
-        type: dataTypes.INTEGER(5),
-      },
-      cantidad: {
-        type: dataTypes.INTEGER(5),
-      },
-      precio: {
-        type: dataTypes.DECIMAL(),
-      },
-      new: {
-        type: dataTypes.BOOLEAN(),
-      },
-      subtotal: {
+      total: {
         type: dataTypes.DECIMAL,
+      },
+      shippingAddress: {
+        type: dataTypes.STRING(100),
+      },
+      billingAddress: {
+        type: dataTypes.STRING(100),
+      },
+      createdAt: {
+        type: dataTypes.DATE(),
+      },
+      updatedAt: {
+        type: dataTypes.DATE(),
       },
     },
     {
       tableName: "carrito",
-      timestamps: false,
+      timestamps: true,
       paranoid: false,
     }
   );
 
   Cart.associate = function (models) {
     Cart.belongsToMany(models.Product, {
-      as: "productos",
-      through: "carritoProducto",
+      as: "Items",
+      through: "carritoProductos",
       foreignKey: "idCarrito",
       otherKey: "idProducto",
       timestamps: false,
+    });
+
+    Cart.belongsTo(models.User, {
+      foreignKey: "idUsuario",
+      as: "User",
     });
   };
 

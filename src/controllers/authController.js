@@ -33,6 +33,7 @@ module.exports = {
           }
 
           req.session.usuarioActual = req.body.email;
+          req.session.idUsuario = user.idUsuario;
 
           return res.redirect("/");
         } else {
@@ -49,7 +50,7 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    res.clearCookie('rememberMe');
+    res.clearCookie("rememberMe");
     req.session.destroy(() => {
       return res.redirect("/");
     });
