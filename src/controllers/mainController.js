@@ -21,7 +21,7 @@ module.exports = {
       .then((products) => {
         res.render("index", {
           products,
-          session: `${req.session.usuarioActual}`,
+          session: req.session.user,
         });
       })
       .catch((err) => {

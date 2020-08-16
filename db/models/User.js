@@ -26,7 +26,7 @@ module.exports = function (sequelize, dataTypes) {
         allowNull: true,
       },
       avatar: {
-        type: dataTypes.STRING(45),
+        type: dataTypes.STRING(100),
         allowNull: true,
       },
       nivel: {

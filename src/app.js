@@ -36,6 +36,15 @@ app.use(cookieAuthMiddleware);
 app.use(setDataPerfilMiddleware);
 app.use(footerDataMiddleware);
 
+app.use(function (req, res, next) {
+  if (req.path.startsWith("/avatars")) {
+    let filename = req.path.split("/").pop();
+    return res.sendFile(path.resolve("uploads","avatars", filename));
+  }
+
+  next();
+});
+
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views")); // Define la ubicación de la carpeta de las Vistas

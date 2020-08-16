@@ -8,7 +8,7 @@ const config = multer.diskStorage({
   },
 
   destination: function (req, file, cb) {
-    cb(null, path.resolve('src','uploads','avatar'));
+    cb(null, path.resolve('src','uploads','avatars'));
   },
 });
 
