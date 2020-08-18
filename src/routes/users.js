@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult, body } = require("express-validator");
 const registerValidation = require("../middlewares/registerValidation");
+const loginValidation = require("../middlewares/loginValidation");
 const controllers = require("../controllers");
 const upload = require("../config/multer");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
@@ -13,7 +14,7 @@ const invitadosMiddlewares = require("../middlewares/invitadosMiddlewares");
 //router.get("/", controllers.auth.home);
 
 router.get("/login", invitadosMiddlewares, controllers.auth.show);
-router.post("/login", registerValidation, controllers.auth.form);
+router.post("/login", loginValidation, controllers.auth.form);
 router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
 
 // Register
