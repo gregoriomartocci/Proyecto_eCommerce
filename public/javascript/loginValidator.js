@@ -1,35 +1,54 @@
-
 window.addEventListener("load", function(){
+    let data = {
+        email: "",
+        password: "",
+        recordarUser: false,
+      };
 
+      function save(k,v){
+        data[k] = v
+      }
+    let form = document.querySelector("form.login100-form");
 
-    let formulario = document.querySelector("form.login100-form");
-
-    formulario.addEventListener("submit", function(e){
-        e.preventDefault();
-
-        let errores = [ ]
-
-    //El HTML ya valida que sea un email
-    //    let campoEmail = document.querySelector("div.wrap-input100 input[name='email']")
-    //    if (campoEmail.value != "email") {
-    //        alert("Email invalido")   
-    //    }
-        
-        let campoPassword = document.querySelector("div.wrap-input100-rs1 input[name='password']")
-        if (campoPassword.value.length < 8) {
-            alert("El password debe tener entre 8 y 15 caracteres")
+    let showError = (el, bool = true) => {
+        if (bool) {
+          el.classList.remove("error");
+          el.classList.add("success");
+          el.nextElementSibling.classList.replace("show", "hide");
+        } else {
+          el.classList.remove("success");
+          el.classList.add("error");
+          el.nextElementSibling.classList.replace("hide", "show");
         }
+      };
+
+      form.email.addEventListener("keydown", function (e) {
+        save(e.target.name, e.target.value)
       
-        if (errores.length > 0) {
-            e.preventDefault();
-            let ulErrores = document.querySelector("div.errores ul")
-            for (let i = 0; i < errores.length; i++) {
-                ulErrores.innerHTML += "<li>" + errores[i] + "</li>"
-            }
-        }
+        showError(e.target, validator.isEmail(data.email));
+      });
+       
+      form.email.addEventListener("submit", function (e) {
+        save(e.target.name, e.target.value)
+      
+        showError(e.target, validator.isEmpty(data.email));
+      });
+       
 
-    })
 
+      form.password.addEventListener("keyup", function (e) {
+        save(e.target.name, e.target.value)
 
+        showError(e.target, !validator.isEmpty(data.password))
+      });
+
+      form.recordarUser.addEventListener("change", function (e) {
+        save(e.target.name, e.target.checked)
+      });
+      
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("enviamos la info", data);
+      });
 
 })

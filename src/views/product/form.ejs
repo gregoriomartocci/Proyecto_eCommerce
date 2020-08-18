@@ -28,6 +28,7 @@
                   name="nombre"
                   placeholder="Ingrese el nombre del producto del producto"
                 />
+                <span class="hide">El nombre debe tener al menos 5 caracteres</span>
               </div>
 
               <!-- Precio -->
@@ -39,6 +40,7 @@
                   name="precio"
                   placeholder="Ingrese el precio del producto"
                 />
+                <span class="hide">Debe ingresar un numero</span>
               </div>
 
               <!-- idCategoria -->
@@ -71,6 +73,7 @@
                   type="text"
                   placeholder="Ingrese una descripcion del Producto"
                 ></textarea>
+                <span class="hide">La descripcion debe tener al menos 20 caracteres</span>
               </div>
               <!-- /Order notes -->
 
@@ -79,7 +82,9 @@
                   <input
                     type="file"
                     class="custom-file-input"
+                    name="customFile"
                     id="customFile"
+                    accept="image/png,image/jpg,image/jpeg,image/gif"
                   />
                   <label class="custom-file-label" for="customFile"
                     >Choose file</label
@@ -123,5 +128,21 @@
     <!-- Include Footer -->
     <%- include('../partials/footer') %>
     <script  src="/javascript/productValidator.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.1.1/validator.min.js" integrity="sha512-rVYlbsnsxljzvf4sgKzI6ncbNKKxupFhoQ/9ptW7R5fhKE9wQevsfUAZEbJ6xl+VyaiGm3lAKChPLoV/VuaZJA==" crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+  ></script>
   </body>
 </html>

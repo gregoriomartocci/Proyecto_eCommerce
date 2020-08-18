@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const logger = require("morgan");
 const path = require("path");
+var Validator = require( 'validator.js' );
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
 //const logMiddleware = require('./middlewares/user-logs')
 const cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware')

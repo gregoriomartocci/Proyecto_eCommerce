@@ -1,35 +1,62 @@
 window.addEventListener("load", function(){
-    let formulario = document.querySelector("form.product");
+    let data = {
+        nombre:"",
+        precio: "",
+        descripcionProducto: "",
+        customFile: "",
+      };
 
-formulario.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    let errores = [ ]
-
-    let campoNombre= document.querySelector("div.form-group input[name='nombre']")
-    if (campoNombre.value.length < 5) {
-        alert("Debe completar el nombre del producto correctamente")
-    }
-
-    let campoPrecio = document.querySelector("div.form-group input[name='precio']")
-    if (isNaN(campoPrecio.value == true)) {
-        alert("Debe completar el precio correctamente")
-    }
+      function save(k,v){
+        data[k] = v
+      }
     
-    let campoDescripcionProducto = document.querySelector("div.order-notes input[name='descripcionProducto]")
-    if (campoDescripcionProducto.value.length < 20) {
-        alert("La descripcion del producto debe tener al menos 20 caracteres")
-    }
-    
+    let form = document.querySelector("form.product");
 
-    if (errores.length > 0) {
-        e.preventDefault();
-        let ulErrores = document.querySelector("div.errores ul")
-        for (let i = 0; i < errores.length; i++) {
-            ulErrores.innerHTML += "<li>" + errores[i] + "</li>"
+    let showError = (el, bool = true) => {
+        if (bool) {
+          el.classList.remove("error");
+          el.classList.add("success");
+          el.nextElementSibling.classList.replace("show", "hide");
+        } else {
+          el.classList.remove("success");
+          el.classList.add("error");
+          el.nextElementSibling.classList.replace("hide", "show");
         }
-    }
+      };
+
+      form.nombre.addEventListener("keyup", function (e) {
+        save(e.target.name, e.target.value)
+    
+       showError(e.target, validator.isLength(e.target.value, {min: 2, max: 20}));
+    });
+
+    form.precio.addEventListener("keyup", function (e) {
+        save(e.target.name, e.target.value)
+    
+       showError(e.target, validator.isNumeric(e.target.value));
+    });
+
+    form.descripcionProducto.addEventListener("keyup", function (e) {
+        save(e.target.name, e.target.value)
+    
+       showError(e.target, validator.isLength(e.target.value, {min: 20, max: 300}));
+    });
+
+      
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("enviamos la info", data);
+      });
+      
+      console.log(form.password);
 
 })
 
-})
+
+
+
+
+
+
+
+

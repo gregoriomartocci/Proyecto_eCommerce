@@ -2,8 +2,8 @@ const { check, validationResult, body }  = require("express-validator");
 
 module.exports = [
     check('nombre')
-    .isLength({min:5, max:15})
-    .withMessage('El producto debe tener un nombre correcto'),
+    .isLength({min:5})
+    .withMessage('El nombre del producto debe ser al menos de 5 caracteres'),
 
     check('precio')
     .isInt({min:0, max:1000000})
