@@ -47,8 +47,23 @@ window.addEventListener("load", function(){
       });
       
       form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        console.log("enviamos la info", data);
+        let errors = 0;
+        if (!validator.isEmail(data.email)){
+          errors++
+          } else {
+        };
+        if (validator.isEmpty(data.password)){
+          errors++
+        } else {
+
+        };
+
+        if (errors > 0) {
+        e.preventDefault()}
+        else {
+        console.log("enviamos la info", data)}
+       console.log(errors) ;
       });
 
+      
 })

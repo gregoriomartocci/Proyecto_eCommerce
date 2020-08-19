@@ -27,7 +27,7 @@ window.addEventListener("load", function(){
       form.nombre.addEventListener("keyup", function (e) {
         save(e.target.name, e.target.value)
     
-       showError(e.target, validator.isLength(e.target.value, {min: 2, max: 20}));
+       showError(e.target, validator.isLength(e.target.value, {min: 5, max: 20}));
     });
 
     form.precio.addEventListener("keyup", function (e) {
@@ -42,13 +42,25 @@ window.addEventListener("load", function(){
        showError(e.target, validator.isLength(e.target.value, {min: 20, max: 300}));
     });
 
-      
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        console.log("enviamos la info", data);
-      });
-      
-      console.log(form.password);
+    form.addEventListener("submit", function (e) {
+      let errors = 0;
+      if(!validator.isLength(data.nombre, {min: 5, max: 20})){
+        errors++
+      } else {
+      };
+    
+      if(!validator.isLength(data.descripcionProducto, {min: 20, max: 300})){
+        errors++
+      } else {
+      };
+
+      if (errors > 0) {
+      e.preventDefault()}
+      else {
+      console.log("enviamos la info", data)}
+     console.log(errors) ;
+    });
+     
 
 })
 

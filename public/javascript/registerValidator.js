@@ -64,10 +64,43 @@ window.addEventListener("load", function(){
       });
       
       form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        console.log("enviamos la info", data);
+        let errors = 0;
+        if(!validator.isLength(data.nombre, {min: 2, max: 20})){
+          errors++
+        } else {
+        };
+        
+        if(!validator.isLength(data.apellido, {min: 2, max: 20})){
+          errors++
+        } else {
+        };
+
+        if(!validator.isLength(data.password, {min: 8, max: 20})){
+          errors++
+        } else {
+        };
+
+        if(!validator.equals(data.password, data.confirm_password)){
+          errors++
+        } else {
+        };
+
+        if (!validator.isEmail(data.email)){
+          errors++
+          } else {
+        };
+        if (validator.isEmpty(data.password)){
+          errors++
+        } else {
+
+        };
+
+        if (errors > 0) {
+        e.preventDefault()}
+        else {
+        console.log("enviamos la info", data)}
+       console.log(errors) ;
       });
-      
-      console.log(form.password);
+
 
 })
