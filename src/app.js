@@ -4,13 +4,17 @@ const productsRouter = require("./routes/products"); // Rutas main
 const usersRouter = require("./routes/users"); // Rutas Users
 const dashboardRouter = require("./routes/dashboard"); // Dashboard
 const cartRouter = require("./routes/cart");
+const multer = require("multer");
+const path = require("path")
+multerDir = path.resolve("src","config","multer")
+uploadDir = path.resolve("src","uploads")
+const upload = require(multerDir);
 
 // ************ Require's ************
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const logger = require("morgan");
-const path = require("path");
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
 //const logMiddleware = require('./middlewares/user-logs')
 const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
@@ -32,16 +36,17 @@ app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el 
 app.use(
   session({ secret: "some secret", resave: false, saveUninitialized: true })
 );
+
 app.use(cookieAuthMiddleware);
 app.use(setDataPerfilMiddleware);
 app.use(footerDataMiddleware);
 
 app.use(function (req, res, next) {
-  if (req.path.startsWith("/avatars")) {
+  if (req.path.startsWith("uploads")) {
     let filename = req.path.split("/").pop();
-    return res.sendFile(path.resolve("uploads","avatars", filename));
+    `filename es esto ${filename}` 
+    return res.sendFile(path.resolve("src","uploads","avatars", filename));
   }
-
   next();
 });
 

@@ -13,7 +13,7 @@ module.exports = {
   form: function (req, res) {
     db.Category.findAll()
       .then((result) => {
-        res.render("product/form", { categorias: result });
+        res.render("product/form", { categorias: result , session:req.session});
       })
       .catch((err) => {
         console.log(err);

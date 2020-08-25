@@ -35,7 +35,7 @@ module.exports = {
           const userData = {
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 10),
-            avatar: path.join("uploads",req.file.filename)
+            //avatar: path.join("src","uploads","avatars",req.file.filename)
           };
           if (req.body.rememberme != undefined) {
             res.cookie("rememberMe", userData.email, { maxAge: 50000 });
