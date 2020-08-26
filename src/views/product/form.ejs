@@ -38,10 +38,10 @@
       <!-- General -->
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
-            <h4>Nueva Publicacion</h4>
-            <legend class="mt-4 mb-2">Producto</legend>
-            <form class="shadow p-5 mb-5 bg-white rounded">
+          <div class="col-md-12">
+            <h4 class="ml-2"> Nueva Publicacion</h4>
+            <legend class="my-4 ml-2">Producto</legend>
+            <form class="shadow-sm p-5">
               <fieldset>
                 <!-- Carrousell -->
 
@@ -107,32 +107,32 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <legend class="mt-4 mb-2">Ficha Tecnica</legend>
-            <form class="shadow p-5 mb-5 bg-white rounded">
+            <legend class="mt-4 mb-4 ml-2">Ficha Tecnica</legend>
+            <form class="shadow-sm p-5">
               <fieldset>
                 <label for="bio">Descripcion</label>
                 <textarea class="border" id="bio" name="user_bio"></textarea>
               </fieldset>
 
-              <label>Garantia de Fabrica:</label>
+              <label>Garantia</label>
               <input
                 type="radio"
                 id="under_13"
                 value="under_13"
                 name="user_age"
-              /><label for="under_13" class="light">3 meses</label><br />
+              /><label for="under_13" class="light">del vendedor</label><br />
               <input
                 type="radio"
                 id="over_13"
                 value="over_13"
                 name="user_age"
-              /><label for="over_13" class="light">1 año</label><br />
+              /><label for="over_13" class="light">de fabrica</label><br />
               <input
                 type="radio"
                 id="over_13"
                 value="over_13"
                 name="user_age"
-              /><label for="over_13" class="light">3 años</label><br />
+              /><label for="over_13" class="light">sin garantia</label><br />
             </form>
           </div>
         </div>
@@ -143,8 +143,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <legend class="mt-4 mb-2">Publicacion</legend>
-            <form class="shadow p-5 mb-5 bg-white rounded">
+            <legend class="mt-4 mb-4 ml-2">Publicacion</legend>
+            <form class="shadow-sm p-5">
               <fieldset>
                 <label for="job">Tipo de Publicacion:</label>
                 <select id="job" class="border" name="user_job">
@@ -180,7 +180,7 @@
 
       <div class="container">
         <div class="row">
-          <div class="mx-auto">
+          <div class="mx-auto my-5">
             <button type="submit">
               <a class="primary-btn order-submit text-white"
                 >Crear Publicacion</a
