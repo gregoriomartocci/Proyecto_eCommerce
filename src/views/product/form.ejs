@@ -2,7 +2,32 @@
 <html lang="en">
   <!-- Include Head -->
 
-  <%- include('../partials/head', {title: 'Proyecto'}) %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/publication.css" />
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <!-- Login - Register -->
+    <link rel="stylesheet" href="/css/loginp.css" />
+    <!-- Publication Stylesheet -->
+    <link rel="stylesheet" href="/css/publication.css" />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="/css/app.css" />
+    <!-- Fonts Awesome -->
+    <script src="https://use.fontawesome.com/142d130b8e.js"></script>
+  </head>
 
   <body>
     <!-- Include Header -->
@@ -10,139 +35,167 @@
 
     <!-- SECTION -->
     <div class="section">
-      <!-- container -->
+      <!-- General -->
       <div class="container">
         <div class="row">
-          <h4 class="title">Publicar Producto</h4>
-          <legend>General</legend>
-          <form action="index.html" method="post">
-            <fieldset>
-              <!-- Carrousell -->
+          <div class="col-md-6">
+            <h4>Nueva Publicacion</h4>
+            <legend class="mt-4 mb-2">Producto</legend>
+            <form class="shadow p-5 mb-5 bg-white rounded">
+              <fieldset>
+                <!-- Carrousell -->
 
-              <!-- probando Sliders -->
+                <!-- probando Sliders de Image Upload -->
 
-              <!-- /probando Sliders -->
+                
 
-              <!-- /Carrousell -->
+                <!-- /probando Sliders -->
 
-              <label for="name">Nombre del Producto:</label>
-              <input type="text" id="name" name="user_name" />
+                <!-- /Carrousell -->
 
-              <label for="mail">Modelo:</label>
-              <input type="text" id="name" name="modelo" />
+                <label for="name">Nombre del Producto</label>
+                <input class="border" type="text" id="name" name="nombre" />
 
-              <label for="price">Precio:</label>
-              <input type="text" id="name" name="precio" />
+                <label for="mail">Modelo</label>
+                <input class="border" type="text" id="name" name="modelo" />
 
-              <label for="">Categoria</label>
+                <label for="price">Precio</label>
+                <input class="border" type="number" id="name" name="precio" />
 
-              <select name="idCategoria">
-                <% categorias.forEach(categoria =>{ %>
+                <label for="stock">Stock</label>
+                <input class="border" type="number" id="name" name="stock" />
 
-                <option value="<%= categoria.id %>">
-                  <%= categoria.nombre %>
-                </option>
+                <label for="">Categoria</label>
 
-                <% }) %>
-              </select>
+                <select class="border" name="idCategoria">
+                  <% categorias.forEach(categoria =>{ %>
 
-              <label>Estado:</label>
+                  <option value="<%= categoria.id %>">
+                    <%= categoria.nombre %>
+                  </option>
+
+                  <% }) %>
+                </select>
+
+                <label>Estado</label>
+                <input
+                  type="radio"
+                  id="under_13"
+                  value="under_13"
+                  name="user_age"
+                /><label for="under_13" class="light">Nuevo</label><br />
+                <input
+                  type="radio"
+                  id="over_13"
+                  value="over_13"
+                  name="user_age"
+                /><label for="over_13" class="light">Usado</label><br />
+                <input
+                  type="radio"
+                  id="over_13"
+                  value="over_13"
+                  name="user_age"
+                /><label for="over_13" class="light">Re acondicionado</label
+                ><br />
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ficha Tecnica -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <legend class="mt-4 mb-2">Ficha Tecnica</legend>
+            <form class="shadow p-5 mb-5 bg-white rounded">
+              <fieldset>
+                <label for="bio">Descripcion</label>
+                <textarea class="border" id="bio" name="user_bio"></textarea>
+              </fieldset>
+
+              <label>Garantia de Fabrica:</label>
               <input
                 type="radio"
                 id="under_13"
                 value="under_13"
                 name="user_age"
-              /><label for="under_13" class="light">Nuevo</label><br />
+              /><label for="under_13" class="light">3 meses</label><br />
               <input
                 type="radio"
                 id="over_13"
                 value="over_13"
                 name="user_age"
-              /><label for="over_13" class="light">Usado</label><br />
+              /><label for="over_13" class="light">1 año</label><br />
               <input
                 type="radio"
                 id="over_13"
                 value="over_13"
                 name="user_age"
-              /><label for="over_13" class="light">Re acondicionado</label
-              ><br />
-            </fieldset>
-          </form>
-
-          <legend>Ficha Tecnica</legend>
-          <form>
-            <fieldset>
-              <label for="bio">Descripcion:</label>
-              <textarea id="bio" name="user_bio"></textarea>
-            </fieldset>
-
-            <fieldset>
-              <label for="job">Job Role:</label>
-              <select id="job" name="user_job">
-                <optgroup label="Web">
-                  <option value="frontend_developer"
-                    >Front-End Developer</option
-                  >
-                  <option value="php_developor">PHP Developer</option>
-                  <option value="python_developer">Python Developer</option>
-                  <option value="rails_developer"> Rails Developer</option>
-                  <option value="web_designer">Web Designer</option>
-                  <option value="WordPress_developer"
-                    >WordPress Developer</option
-                  >
-                </optgroup>
-                <optgroup label="Mobile">
-                  <option value="Android_developer">Androild Developer</option>
-                  <option value="iOS_developer">iOS Developer</option>
-                  <option value="mobile_designer">Mobile Designer</option>
-                </optgroup>
-                <optgroup label="Business">
-                  <option value="business_owner">Business Owner</option>
-                  <option value="freelancer">Freelancer</option>
-                </optgroup>
-                <optgroup label="Other">
-                  <option value="secretary">Secretary</option>
-                  <option value="maintenance">Maintenance</option>
-                </optgroup>
-              </select>
-            </fieldset>
-
-            <label>Interests:</label>
-            <input
-              type="checkbox"
-              id="development"
-              value="interest_development"
-              name="user_interest"
-            /><label class="light" for="development">Development</label><br />
-            <input
-              type="checkbox"
-              id="design"
-              value="interest_design"
-              name="user_interest"
-            /><label class="light" for="design">Design</label><br />
-            <input
-              type="checkbox"
-              id="business"
-              value="interest_business"
-              name="user_interest"
-            /><label class="light" for="business">Business</label>
-
-            <div>
-              <button type="submit">
-                <a class="primary-btn order-submit text-white"
-                  >Crear Publicacion</a
-                >
-              </button>
-            </div>
-          </form>
+              /><label for="over_13" class="light">3 años</label><br />
+            </form>
+          </div>
         </div>
       </div>
+
+      <!-- Publicacion -->
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <legend class="mt-4 mb-2">Publicacion</legend>
+            <form class="shadow p-5 mb-5 bg-white rounded">
+              <fieldset>
+                <label for="job">Tipo de Publicacion:</label>
+                <select id="job" class="border" name="user_job">
+                  <option value="php_developor">Clasica</option>
+                  <option value="python_developer">Premium</option>
+                </select>
+              </fieldset>
+
+              <label>Envio:</label>
+              <input
+                type="radio"
+                id="under_13"
+                value="under_13"
+                name="user_age"
+              /><label for="under_13" class="light">Capital Federal</label
+              ><br />
+              <input
+                type="radio"
+                id="over_13"
+                value="over_13"
+                name="user_age"
+              /><label for="over_13" class="light">GBA</label><br />
+              <input
+                type="radio"
+                id="over_13"
+                value="over_13"
+                name="user_age"
+              /><label for="over_13" class="light">Todo el pais</label><br />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+            <button type="submit">
+              <a class="primary-btn order-submit text-white"
+                >Crear Publicacion</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- /section -->
     </div>
+
     <!-- Include Footer -->
     <%- include('../partials/footer') %>
 
-    <script src="jquery.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
     <script src="/javascript/publicacion.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
