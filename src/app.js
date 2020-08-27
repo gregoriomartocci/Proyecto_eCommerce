@@ -42,9 +42,11 @@ app.use(setDataPerfilMiddleware);
 app.use(footerDataMiddleware);
 
 app.use(function (req, res, next) {
-  if (req.path.startsWith("uploads")) {
+  console.log(req.path)
+  if (req.path.startsWith("/avatars")) {
     let filename = req.path.split("/").pop();
     `filename es esto ${filename}` 
+    console.log(filename)
     return res.sendFile(path.resolve("src","uploads","avatars", filename));
   }
   next();
