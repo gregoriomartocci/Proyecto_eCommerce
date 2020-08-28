@@ -5,7 +5,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/publication.css" />
     <!-- Google font -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700"
@@ -30,6 +29,206 @@
   </head>
 
   <body>
+    <style>
+      *,
+      *:before,
+      *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      @import url(https://fonts.googleapis.com/icon?family=Material);
+      @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+      /* Carrousell */
+
+      /* Hola */
+
+      .wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        font-family: inherit;
+        margin: 0 0 0.75em 0;
+        color: desaturate(cadetblue, 15%);
+        text-align: center;
+      }
+
+      .box {
+        display: block;
+        min-width: 300px;
+        height: 300px;
+        margin: 10px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        overflow: hidden;
+      }
+
+      .upload-options {
+        position: relative;
+        height: 75px;
+        background-color: cadetblue;
+        cursor: pointer;
+        overflow: hidden;
+        text-align: center;
+        transition: background-color ease-in-out 150ms;
+      }
+
+      .upload-options input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      .upload-options label {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .upload-options label ::after {
+        content: "add";
+        font-family: "Material Icons";
+        position: absolute;
+        font-size: 2.5rem;
+        color: rgba(230, 230, 230, 1);
+        top: calc(50% - 2.5rem);
+        left: calc(50% - 1.25rem);
+        z-index: 0;
+      }
+
+      .upload-options label ::after span {
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      .upload-options label ::after span hover i.material-icons {
+        color: lightgray;
+      }
+
+      .image-preview {
+        height: 225px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background-image: url("");
+        background-color: white;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .drop {
+        display: block;
+        position: absolute;
+        background: transparentize(cadetblue, 0.8);
+        border-radius: 100%;
+        transform: scale(0);
+      }
+
+      /* /Hola */
+
+      /* /Carrousell */
+
+      /* Gris: #E4E7ED #FBFBFC #8D99AE #B9BABC */
+
+      /* Form */
+
+      .form {
+        width: 100%;
+        margin: 10px auto;
+        background: #fafafa;
+        border-radius: 10px;
+      }
+
+      h1 {
+        margin: 0 0 30px 0;
+        text-align: center;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="date"],
+      input[type="datetime"],
+      input[type="email"],
+      input[type="number"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="time"],
+      input[type="url"],
+      textarea,
+      select {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        font-size: 16px;
+        height: auto;
+        margin: 0;
+        outline: 0;
+        padding: 15px;
+        width: 100%;
+        background-color: #fff;
+        color: #8a97a0;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        margin-bottom: 30px;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin: 0 4px 8px 0;
+      }
+
+      select {
+        padding: 6px;
+        font-size: 16px;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      fieldset {
+        margin-bottom: 30px;
+        border: none;
+      }
+
+      legend {
+        font-size: 1.4em;
+        color: #616161;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #616161;
+      }
+
+      label.light {
+        font-weight: 300;
+        display: inline;
+      }
+    </style>
+
     <!-- Include Header -->
     <%- include('../partials/navbar') %>
 
@@ -37,157 +236,166 @@
     <div class="section">
       <!-- General -->
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h4 class="ml-2"> Nueva Publicacion</h4>
-            <legend class="my-4 ml-2">Producto</legend>
-            <form class="shadow-sm p-5">
-              <fieldset>
-                <!-- Carrousell -->
+        <form
+          action="/product/add"
+          method="POST"
+          class="login100-form"
+          enctype="multipart/form-data"
+        >
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="ml-2">Nueva Publicacion</h5>
+              <legend class="my-4 ml-2">Producto</legend>
+              <div class="form shadow-sm p-5">
+                <fieldset>
+                  <!-- Carrousell -->
 
-                <!-- probando Sliders de Image Upload -->
+                  <!-- probando Sliders de Image Upload -->
 
-                
+                  <!-- /probando Sliders -->
 
-                <!-- /probando Sliders -->
+                  <!-- /Carrousell -->
 
-                <!-- /Carrousell -->
+                  <!-- Include Header -->
 
-                <label for="name">Nombre del Producto</label>
-                <input class="border" type="text" id="name" name="nombre" />
+                  <div class="row">
+                    <% for (let i = 1; i < 2; i++) { %> <%-
+                    include('card-upload', {i}) %> <% } %>
+                  </div>
 
-                <label for="mail">Modelo</label>
-                <input class="border" type="text" id="name" name="modelo" />
+                  <label for="name">Nombre del Producto</label>
+                  <input class="border" type="text" id="name" name="nombre" />
 
-                <label for="price">Precio</label>
-                <input class="border" type="number" id="name" name="precio" />
+                  <label for="mail">Modelo</label>
+                  <input class="border" type="text" id="name" name="modelo" />
 
-                <label for="stock">Stock</label>
-                <input class="border" type="number" id="name" name="stock" />
+                  <label for="price">Precio</label>
+                  <input class="border" type="number" id="name" name="precio" />
 
-                <label for="">Categoria</label>
+                  <label for="stock">Stock</label>
+                  <input class="border" type="number" id="name" name="stock" />
 
-                <select class="border" name="idCategoria">
-                  <% categorias.forEach(categoria =>{ %>
+                  <label for="">Categoria</label>
 
-                  <option value="<%= categoria.id %>">
-                    <%= categoria.nombre %>
-                  </option>
+                  <select class="border" name="idCategoria">
+                    <% categorias.forEach(categoria =>{ %>
 
-                  <% }) %>
-                </select>
+                    <option value="<%= categoria.id %>">
+                      <%= categoria.nombre %>
+                    </option>
 
-                <label>Estado</label>
+                    <% }) %>
+                  </select>
+
+                  <label>Estado</label>
+                  <input
+                    type="radio"
+                    id="under_13"
+                    value="under_13"
+                    name="user_age"
+                  /><label for="under_13" class="light">Nuevo</label><br />
+                  <input
+                    type="radio"
+                    id="over_13"
+                    value="over_13"
+                    name="user_age"
+                  /><label for="over_13" class="light">Usado</label><br />
+                  <input
+                    type="radio"
+                    id="over_13"
+                    value="over_13"
+                    name="user_age"
+                  /><label for="over_13" class="light">Re acondicionado</label
+                  ><br />
+                </fieldset>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ficha Tecnica -->
+
+          <div class="row">
+            <div class="col-md-12">
+              <legend class="mt-4 mb-4 ml-2">Ficha Tecnica</legend>
+              <div class="form shadow-sm p-5">
+                <fieldset>
+                  <label for="bio">Descripcion</label>
+                  <textarea class="border" id="bio" name="user_bio"></textarea>
+                </fieldset>
+
+                <label>Garantia</label>
                 <input
                   type="radio"
                   id="under_13"
                   value="under_13"
                   name="user_age"
-                /><label for="under_13" class="light">Nuevo</label><br />
+                /><label for="under_13" class="light">del vendedor</label><br />
                 <input
                   type="radio"
                   id="over_13"
                   value="over_13"
                   name="user_age"
-                /><label for="over_13" class="light">Usado</label><br />
+                /><label for="over_13" class="light">de fabrica</label><br />
                 <input
                   type="radio"
                   id="over_13"
                   value="over_13"
                   name="user_age"
-                /><label for="over_13" class="light">Re acondicionado</label
+                /><label for="over_13" class="light">sin garantia</label><br />
+              </div>
+            </div>
+          </div>
+
+          <!-- Publicacion -->
+
+          <div class="row">
+            <div class="col-md-12">
+              <legend class="mt-4 mb-4 ml-2">Publicacion</legend>
+              <div class="form shadow-sm p-5">
+                <fieldset>
+                  <label for="job">Tipo de Publicacion:</label>
+                  <select id="job" class="border" name="user_job">
+                    <option value="php_developor">Clasica</option>
+                    <option value="python_developer">Premium</option>
+                  </select>
+                </fieldset>
+
+                <label>Envio:</label>
+                <input
+                  type="radio"
+                  id="under_13"
+                  value="under_13"
+                  name="user_age"
+                /><label for="under_13" class="light">Capital Federal</label
                 ><br />
-              </fieldset>
-            </form>
+                <input
+                  type="radio"
+                  id="over_13"
+                  value="over_13"
+                  name="user_age"
+                /><label for="over_13" class="light">GBA</label><br />
+                <input
+                  type="radio"
+                  id="over_13"
+                  value="over_13"
+                  name="user_age"
+                /><label for="over_13" class="light">Todo el pais</label><br />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Ficha Tecnica -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <legend class="mt-4 mb-4 ml-2">Ficha Tecnica</legend>
-            <form class="shadow-sm p-5">
-              <fieldset>
-                <label for="bio">Descripcion</label>
-                <textarea class="border" id="bio" name="user_bio"></textarea>
-              </fieldset>
-
-              <label>Garantia</label>
-              <input
-                type="radio"
-                id="under_13"
-                value="under_13"
-                name="user_age"
-              /><label for="under_13" class="light">del vendedor</label><br />
-              <input
-                type="radio"
-                id="over_13"
-                value="over_13"
-                name="user_age"
-              /><label for="over_13" class="light">de fabrica</label><br />
-              <input
-                type="radio"
-                id="over_13"
-                value="over_13"
-                name="user_age"
-              /><label for="over_13" class="light">sin garantia</label><br />
-            </form>
+          <div class="row">
+            <div class="mx-auto my-5">
+              <button type="submit">
+                <a class="primary-btn order-submit text-white"
+                  >Crear Publicacion</a
+                >
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+        </form>
 
-      <!-- Publicacion -->
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <legend class="mt-4 mb-4 ml-2">Publicacion</legend>
-            <form class="shadow-sm p-5">
-              <fieldset>
-                <label for="job">Tipo de Publicacion:</label>
-                <select id="job" class="border" name="user_job">
-                  <option value="php_developor">Clasica</option>
-                  <option value="python_developer">Premium</option>
-                </select>
-              </fieldset>
-
-              <label>Envio:</label>
-              <input
-                type="radio"
-                id="under_13"
-                value="under_13"
-                name="user_age"
-              /><label for="under_13" class="light">Capital Federal</label
-              ><br />
-              <input
-                type="radio"
-                id="over_13"
-                value="over_13"
-                name="user_age"
-              /><label for="over_13" class="light">GBA</label><br />
-              <input
-                type="radio"
-                id="over_13"
-                value="over_13"
-                name="user_age"
-              /><label for="over_13" class="light">Todo el pais</label><br />
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="mx-auto my-5">
-            <button type="submit">
-              <a class="primary-btn order-submit text-white"
-                >Crear Publicacion</a
-              >
-            </button>
-          </div>
-        </div>
+        <!-- /Container -->
       </div>
 
       <!-- /section -->

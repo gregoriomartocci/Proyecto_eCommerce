@@ -22,6 +22,8 @@ module.exports = {
   },
 
   store: function (req, res) {
+
+    console.log(req.files)
     db.Product.create({
       nombre: req.body.nombre,
       precio: req.body.precio,

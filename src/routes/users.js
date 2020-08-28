@@ -23,6 +23,5 @@ router.post(
   [upload.single("avatar"), registerValidation],
   controllers.users.store
 );
-router.post("/avatar", upload.any(), controllers.avatars.store);
 
 module.exports = router;
