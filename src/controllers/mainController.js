@@ -14,13 +14,13 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 module.exports = {
   // Root
   root: function (req, res) {
-    db.Product.findAll({
-      include: ["estadoProducto"],
+    db.Publication.findAll({
+      include: ["product"],
       limit: 4,
     })
-      .then((products) => {
+      .then((publications) => {
         res.render("index", {
-          products,
+          publications,
           session: req.session.user,
         });
       })

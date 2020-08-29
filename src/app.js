@@ -51,7 +51,7 @@ app.use(function (req, res, next) {
     return res.sendFile(path.resolve("src", "uploads", "avatars", filename));
   }
 
-  if (req.path.startsWith("/product-img")) {
+  if (req.path.startsWith("/img")) {
     let filename = req.path.split("/").pop();
     `filename es esto ${filename}`;
     console.log(filename);

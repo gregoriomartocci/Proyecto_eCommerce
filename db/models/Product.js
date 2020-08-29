@@ -11,6 +11,12 @@ module.exports = function (sequelize, dataTypes) {
       nombre: {
         type: dataTypes.STRING(45),
       },
+      modelo: {
+        type: dataTypes.STRING(45),
+      },
+      marca: {
+        type: dataTypes.STRING(45),
+      },
       precio: {
         type: dataTypes.DECIMAL,
       },
@@ -21,6 +27,15 @@ module.exports = function (sequelize, dataTypes) {
       rating: {
         type: dataTypes.DECIMAL,
         allowNull: true,
+      },
+      newArribal: {
+        type: dataTypes.BOOLEAN,
+      },
+      stock: {
+        type: dataTypes.INTEGER,
+      },
+      img: {
+        type: dataTypes.STRING(100),
       },
     },
     {

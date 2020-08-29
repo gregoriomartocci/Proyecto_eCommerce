@@ -10,7 +10,7 @@ module.exports = {
     // Trayendo Estados
 
     db.Publication.findAll({
-      include: ["Producto"],
+      include: ["product"],
       raw: true,
       nest: true,
     })

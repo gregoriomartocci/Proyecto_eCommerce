@@ -65,10 +65,10 @@
     <div class="product-body">
       <p class="product-category">Categoria</p>
       <h3 class="product-name">
-        <a href="#"><%= product.nombre %></a>
+        <a href="#"><%= publication.nombre %></a>
       </h3>
       <h4 class="product-price">
-        $<%= product.precio %>
+        $<%= publication.precio %>
         <del class="product-old-price">$990.00</del>
       </h4>
       <div class="product-rating">
@@ -99,7 +99,7 @@
     </div>
     <div class="add-to-cart">
       <button class="add-to-cart-btn">
-        <a href="/cart/add/<%= product.idProducto %>"
+        <a href="/cart/add/<%= publication.idProducto %>"
           ><i class="fa fa-shopping-cart"></i> comprar
         </a>
       </button>
@@ -109,11 +109,11 @@
   <!-- /product -->
 
   <div class="card shadow-sm p-2 mb-2">
-    <img src="/images/products/product02.png" class="card-img-top" alt="..." />
+    <img src="<%= publication.product.img %>" class="card-img-top" alt="..." />
     <div class="card-body">
       <div class="brandig">
-        <h5><%= product.nombre %></h5>
-        <span> <%= product.nombre %> </span>
+        <h5><%= publication.product.nombre %></h5>
+        <span> <%= publication.product.modelo %> </span>
       </div>
 
       <div class="product-rating">
@@ -131,12 +131,12 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="price">
           <span>$</span>
-          <span><%= product.precio %></span>
+          <span><%= publication.precio %></span>
         </div>
 
         <div class="cart">
           <a
-            href="/cart/add/<%= product.idProducto %>"
+            href="/cart/add/<%= publication.idProducto %>"
             class="btn btn-primary rounded-circle"
             ><i class="fa fa-shopping-cart"></i
           ></a>
