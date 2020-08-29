@@ -22,6 +22,7 @@ module.exports = {
         res.render("index", {
           publications,
           session: req.session.user,
+          cart: req.session.cart
         });
       })
       .catch((err) => {

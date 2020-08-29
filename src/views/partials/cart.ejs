@@ -1,0 +1,35 @@
+<div class="cart-dropdown">
+  <% if(cart){ %>
+  <div class="cart-list">
+    <% for (let i = 0; i < cart.items.length; i++) { %>
+
+    <div class="product-widget">
+      <div class="product-img">
+        <img src="<%= cart.items[i].img %>" alt="" />
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">
+          <a href="#"><%= cart.items[i].nombre %></a>
+        </h3>
+        <h4 class="product-price">
+          <span class="qty">x<%= cart.items[i].cantidad %></span>$<%=
+          cart.items[i].precio%>
+        </h4>
+      </div>
+      <button class="delete">
+        <i class="fa fa-close"></i>
+      </button>
+    </div>
+
+    <% } %>
+  </div>
+  <div class="cart-summary">
+    <small> <%= cart.totalItems %> items seleccionados</small>
+    <h5>TOTAL: $<%= cart.total %></h5>
+  </div>
+  <div class="cart-btns">
+    <a href="#">Carrito</a>
+    <a href="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+  </div>
+  <% } %>
+</div>

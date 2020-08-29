@@ -29,17 +29,19 @@ module.exports = {
             const existingItem = updateCart.items[existingItemIndex];
             const existingQty = existingItem.cantidad;
             existingItem.cantidad = existingQty + 1;
-            updateCart.total += new Number(existingItem.precio)
+            updateCart.totalItems++;
+            updateCart.total += new Number(existingItem.precio);
             req.session.cart = updateCart;
-            res.json(req.session.cart)
-            
+            res.json(req.session.cart);
           } else {
             item = {
               idProducto: product.idProducto,
+              nombre: product.nombre,
               cantidad: 1,
               precio: product.precio,
             };
             updateCart.items.push(item);
+            updateCart.totalItems++;
             updateCart.total += new Number(product.precio);
           }
 
@@ -57,15 +59,20 @@ module.exports = {
             shippingAddress: "",
             billingAddress: "",
             items: [],
+            totalItems: 0,
             total: 0,
           };
 
           item = {
             idProducto: product.idProducto,
+            img:product.img,
+            nombre: product.nombre,
             cantidad: 1,
             precio: product.precio,
           };
+
           newCart.items.push(item);
+          newCart.totalItems++;
           newCart.total = new Number(product.precio);
           req.session.cart = newCart;
           res.json(req.session.cart);
