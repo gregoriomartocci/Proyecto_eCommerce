@@ -32,7 +32,7 @@ module.exports = {
             updateCart.totalItems++;
             updateCart.total += new Number(existingItem.precio);
             req.session.cart = updateCart;
-            res.json(req.session.cart);
+            res.redirect("/")
           } else {
             item = {
               idProducto: product.idProducto,
@@ -46,7 +46,7 @@ module.exports = {
           }
 
           req.session.cart = updateCart;
-          res.json(req.session.cart);
+          res.redirect("/")
         })
         .catch((error) => {
           console.log(error);
@@ -75,7 +75,7 @@ module.exports = {
           newCart.totalItems++;
           newCart.total = new Number(product.precio);
           req.session.cart = newCart;
-          res.json(req.session.cart);
+          res.redirect("/")
         })
         .catch((error) => {
           console.log(error);
