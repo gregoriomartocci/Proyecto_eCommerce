@@ -4,6 +4,14 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 
+// ************ Controller Require ************
+const controllers = require("../controllers");
+const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
+
+// DB
+dbDir = path.resolve("db", "models");
+const db = require(dbDir);
+
 const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     let ext = path.extname(file.originalname);
@@ -17,16 +25,8 @@ const storage = multer.diskStorage({
 
 let upload = multer({ storage: storage });
 
-// DB
-dbDir = path.resolve("db", "models");
-const db = require(dbDir);
-
-// ************ Controller Require ************
-const controllers = require("../controllers");
-const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
-
-router.get("/view", controllers.products.show);
-router.get("/add", controllers.products.form);
-router.post("/add", upload.any("img"), controllers.products.store);
+router.get("/view", controllers.publication.show);
+router.get("/add", controllers.publication.form);
+router.post("/add", upload.single("img"), controllers.publication.store);
 
 module.exports = router;

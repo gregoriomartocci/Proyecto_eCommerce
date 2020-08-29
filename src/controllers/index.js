@@ -5,5 +5,6 @@ module.exports = {
   main: require('./mainController'),
   products: require("./productsController"),
   cart:require("./cartController"),
-  dashboard:require("./dashboardControlller")
+  dashboard:require("./dashboardControlller"),
+  publication:require("./publicationController")
 };

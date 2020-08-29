@@ -30,11 +30,9 @@
 
   <body>
     <style>
-      *,
-      *:before,
-      *:after {
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
+      * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
       }
 
@@ -237,14 +235,14 @@
       <!-- General -->
       <div class="container">
         <form
-          action="/product/add"
+          action="/publication/add"
           method="POST"
           class="login100-form"
           enctype="multipart/form-data"
         >
           <div class="row">
-            <div class="col-md-12">
-              <h5 class="ml-2">Nueva Publicacion</h5>
+            <div class="col">
+              <h3 class="ml-2">Nueva Publicacion</h3>
               <legend class="my-4 ml-2">Producto</legend>
               <div class="form shadow-sm p-5">
                 <fieldset>
@@ -259,23 +257,31 @@
                   <!-- Include Header -->
 
                   <div class="row">
-                    <% for (let i = 1; i < 2; i++) { %> <%-
+                    <% for (let i = 1; i < 4; i++) { %> <%-
                     include('card-upload', {i}) %> <% } %>
                   </div>
 
                   <label for="name">Nombre del Producto</label>
                   <input class="border" type="text" id="name" name="nombre" />
 
-                  <label for="mail">Modelo</label>
-                  <input class="border" type="text" id="name" name="modelo" />
+                  <label for="marca">Marca</label>
+                  <input class="border" type="text" id="marca" name="marca" />
 
-                  <label for="price">Precio</label>
-                  <input class="border" type="number" id="name" name="precio" />
+                  <label for="modelo">Modelo</label>
+                  <input class="border" type="text" id="modelo" name="modelo" />
+
+                  <label for="precio">Precio</label>
+                  <input
+                    class="border"
+                    type="number"
+                    id="precio"
+                    name="precio"
+                  />
 
                   <label for="stock">Stock</label>
-                  <input class="border" type="number" id="name" name="stock" />
+                  <input class="border" type="number" id="stock" name="stock" />
 
-                  <label for="">Categoria</label>
+                  <label for="categoria">Categoria</label>
 
                   <select class="border" name="idCategoria">
                     <% categorias.forEach(categoria =>{ %>
@@ -320,7 +326,11 @@
               <div class="form shadow-sm p-5">
                 <fieldset>
                   <label for="bio">Descripcion</label>
-                  <textarea class="border" id="bio" name="user_bio"></textarea>
+                  <textarea
+                    class="border"
+                    id="bio"
+                    name="description"
+                  ></textarea>
                 </fieldset>
 
                 <label>Garantia</label>
@@ -328,7 +338,7 @@
                   type="radio"
                   id="under_13"
                   value="under_13"
-                  name="user_age"
+                  name="warranty"
                 /><label for="under_13" class="light">del vendedor</label><br />
                 <input
                   type="radio"
@@ -354,9 +364,9 @@
               <div class="form shadow-sm p-5">
                 <fieldset>
                   <label for="job">Tipo de Publicacion:</label>
-                  <select id="job" class="border" name="user_job">
-                    <option value="php_developor">Clasica</option>
-                    <option value="python_developer">Premium</option>
+                  <select id="job" class="border" name="shipping">
+                    <option value="classic">Clasica</option>
+                    <option value="premium">Premium</option>
                   </select>
                 </fieldset>
 
