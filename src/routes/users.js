@@ -24,6 +24,29 @@ router.post(
   [upload.any(), registerValidation],
   controllers.users.store
 );
-router.post("/avatar", upload.any(), controllers.avatars.store);
+//Avatar
+let fileValidation = function (req, res, next) {
+  let allowed = [image/png, image/jpg, image/gif, image/jpeg]
+
+  if(allowed.includes(req.file.mimetype)){
+      next()
+  } else {
+      return res.status(422).end('Format not allowed')
+  }
+}
+
+router.post("/avatar", [upload.any(avatar), fileValidation], controllers.avatars.store);
+
+let fileValidation = function (req, res, next) {
+    let allowed = [image/png, image/jpg, image/gif, image/jpeg]
+
+    if(allowed.includes(req.file.mimetype)){
+        next()
+    } else {
+        return res.status(422).end('Format not allowed')
+    }
+}
+
+
 
 module.exports = router;
