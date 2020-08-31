@@ -51,8 +51,7 @@ module.exports = {
       db.Publication.create({
         idProducto: product.idProducto,
       });
+      res.redirect("/");
     });
-
-    res.redirect("/");
   },
 };
