@@ -1,5 +1,6 @@
 <div class="cart-dropdown">
   <% if(cart){ %>
+    <pre><%= JSON.stringify(cart) %></pre>
   <div class="cart-list">
     <% for (let i = 0; i < cart.items.length; i++) { %>
 
@@ -10,6 +11,7 @@
       <div class="product-body">
         <h3 class="product-name">
           <a href="#"><%= cart.items[i].nombre %></a>
+          <a href="#"><%= cart.items[i].img %></a>
         </h3>
         <h4 class="product-price">
           <span class="qty">x<%= cart.items[i].cantidad %></span>$<%=

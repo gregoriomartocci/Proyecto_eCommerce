@@ -36,6 +36,7 @@ module.exports = {
           } else {
             item = {
               idProducto: product.idProducto,
+              img:product.img,
               nombre: product.nombre,
               cantidad: 1,
               precio: product.precio,

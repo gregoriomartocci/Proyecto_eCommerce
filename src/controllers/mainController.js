@@ -19,6 +19,7 @@ module.exports = {
       limit: 4,
     })
       .then((publications) => {
+        console.log(publications,req.session.cart)
         res.render("index", {
           publications,
           session: req.session.user,
