@@ -46,7 +46,7 @@ h4,
 h5,
 h6 {
   color: #2b2d42;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 10px;
 }
 
@@ -195,11 +195,8 @@ ol {
 \*----------------------------*/
 
 .avatar {
+  vertical-align: middle;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  background-image: url("/images/avatar-1594721625432-.jpg");
-  background-size: cover;
 }
 
 .account-info {

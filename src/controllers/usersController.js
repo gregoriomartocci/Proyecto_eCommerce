@@ -2,9 +2,9 @@ const bcrypt = require("bcrypt");
 const { check, validationResult, body } = require("express-validator");
 
 const path = require("path");
-const { users } = require(".");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
+
 
 module.exports = {
   // Create
@@ -37,14 +37,14 @@ module.exports = {
             apellido: req.body.apellido,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 10),
-            avatar: req.files,
+            avatar: path.join("avatars",req.file.filename)
           };
           if (req.body.rememberme != undefined) {
-            res.cookie("rememberMe", userData.email, { maxAge: 5000 });
+            res.cookie("rememberMe", userData.email, { maxAge: 50000 });
           }
-
+          
           db.User.create(userData);
-          req.session.usuarioActual = userData.email;
+          req.session.user = userData;
           return res.redirect("/");
         } else {
           return res.render("register", {

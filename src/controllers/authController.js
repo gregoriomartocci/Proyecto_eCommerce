@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 let { validationResult } = require("express-validator");
-let users = require("../data/users.json");
 
 // DB
 const path = require("path");
@@ -32,7 +31,8 @@ module.exports = {
             res.cookie("rememberMe", user.email, { maxAge: 9999 });
           }
 
-          req.session.usuarioActual = req.body.email;
+          userData = user;
+          req.session.user = userData;
 
           return res.redirect("/");
         } else {
@@ -49,7 +49,7 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    res.clearCookie('rememberMe');
+    res.clearCookie("rememberMe");
     req.session.destroy(() => {
       return res.redirect("/");
     });

@@ -1,5 +1,5 @@
 const path = require("path");
-const { users } = require(".");
+const { users, cart } = require(".");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
@@ -17,25 +17,70 @@ module.exports = {
   },
 
   add: function (req, res) {
-    db.Product.findByPk(req.params.id)
-      .then((product) => {
-        let newCart = {
-          userEmail: `${req.session.usuarioAlLoguearse}`,
-          productName: product.nombre,
-          idProducto: product.idProducto,
-          cantidad: 0,
-          precio: product.precio,
-          new: false,
-          subtotal: 0,
-        };
+    if (req.session.cart) {
+      db.Product.findByPk(req.params.id)
+        .then((product) => {
+          updateCart = req.session.cart;
+          const existingItemIndex = updateCart.items.findIndex(
+            (i) => i.idProducto == product.idProducto
+          ); // checkeo que existe
 
-        db.Cart.create(newCart);
-        console.log(newCart);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          if (existingItemIndex >= 0) {
+            const existingItem = updateCart.items[existingItemIndex];
+            const existingQty = existingItem.cantidad;
+            existingItem.cantidad = existingQty + 1;
+            updateCart.totalItems++;
+            updateCart.total += new Number(existingItem.precio);
+            req.session.cart = updateCart;
+            res.redirect("/")
+          } else {
+            item = {
+              idProducto: product.idProducto,
+              img:product.img,
+              nombre: product.nombre,
+              cantidad: 1,
+              precio: product.precio,
+            };
+            updateCart.items.push(item);
+            updateCart.totalItems++;
+            updateCart.total += new Number(product.precio);
+          }
 
-    console.log("ok");
+          req.session.cart = updateCart;
+          res.redirect("/")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      db.Product.findByPk(req.params.id)
+        .then((product) => {
+          newCart = {
+            idUsuario: req.session.idUsuario,
+            shippingAddress: "",
+            billingAddress: "",
+            items: [],
+            totalItems: 0,
+            total: 0,
+          };
+
+          item = {
+            idProducto: product.idProducto,
+            img:product.img,
+            nombre: product.nombre,
+            cantidad: 1,
+            precio: product.precio,
+          };
+
+          newCart.items.push(item);
+          newCart.totalItems++;
+          newCart.total = new Number(product.precio);
+          req.session.cart = newCart;
+          res.redirect("/")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 };

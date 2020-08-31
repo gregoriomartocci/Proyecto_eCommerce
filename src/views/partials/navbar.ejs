@@ -42,7 +42,7 @@
           <div class="col-3 d-none d-md-block">
             <div
               class="row"
-              style="justify-content: space-evenly; align-items: center;"
+              style="justify-content: space-evenly; align-items: center"
             >
               <!-- Wishlist -->
 
@@ -67,61 +67,16 @@
 
                     <div
                       class="qty"
-                      style="position: absolute; right: -5px; top: -12px;"
+                      style="position: absolute; right: -5px; top: -12px"
                     >
-                      <span class="badge badge-danger">2</span>
+                      <% if(cart){ %>
+                      <span class="badge badge-danger"
+                        ><%= cart.totalItems%></span
+                      >
+                      <% } %>
                     </div>
                   </button>
-                  <div class="dropdown-menu">
-                    <!-- Cart -->
-                    <div class="cart-dropdown">
-                      <div class="cart-list">
-                        <div class="product-widget">
-                          <div class="product-img">
-                            <img src="/images/products/product01.png" alt="" />
-                          </div>
-                          <div class="product-body">
-                            <h3 class="product-name">
-                              <a href="#">Nombre del Producto</a>
-                            </h3>
-                            <h4 class="product-price">
-                              <span class="qty">1x</span>$980.00
-                            </h4>
-                          </div>
-                          <button class="delete">
-                            <i class="fa fa-close"></i>
-                          </button>
-                        </div>
-                        <div class="product-widget">
-                          <div class="product-img">
-                            <img src="/images/products/product02.png" alt="" />
-                          </div>
-                          <div class="product-body">
-                            <h3 class="product-name">
-                              <a href="#">Nombre del Producto</a>
-                            </h3>
-                            <h4 class="product-price">
-                              <span class="qty">3x</span>$980.00
-                            </h4>
-                          </div>
-                          <button class="delete">
-                            <i class="fa fa-close"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="cart-summary">
-                        <small>3 Item(s) selecteccionados</small>
-                        <h5>SUBTOTAL: $2940.00</h5>
-                      </div>
-                      <div class="cart-btns">
-                        <a href="#">Carrito</a>
-                        <a href="/checkout"
-                          >Checkout <i class="fa fa-arrow-circle-right"></i
-                        ></a>
-                      </div>
-                    </div>
-                    <!-- /Cart -->
-                  </div>
+                  <div class="dropdown-menu"><%- include('cart') %></div>
                 </div>
               </div>
 
@@ -141,42 +96,50 @@
                     <i class="fa fa-user"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <%if(session != `undefined`) { %>
-                      <div class="container">
-                        <div
-                          class="row align-items-center justify-content-between"
-                          style="padding: 15px 0px 15px 0px;"
-                        >
-                          <div class="col-3">
-                            <div class="avatar"></div>
-                          </div>
-                          <div class="col-9">
-                            <div class="accout-info" style="margin-left: 5px;">
-                              <ul>
-                                <li><a class="font-weight-bold">John Doe</a></li>
-                                <li><a><%= session %></a></li>
-                              </ul>
-                            
-                            </div>
-                          </div>
+                    <%if(session) { %>
+
+                    <div class="row p-3">
+                      <div class="col-3 p-0">
+                        <div>
+                          <% if(session.avatar){ %>
+
+                            <img
+                            src="<%= session.avatar %>"
+                            alt="Profile Picture"
+                            class="img-thumbnail rounded-circle"
+                            style="vertical-align: middle"
+                          />
+
+                          <% } %>
+                         
                         </div>
                       </div>
-                      <div class="dropdown-divider"></div>
+                      <div class="col-9">
+                        <div class="accout-info" style="margin-left: 5px">
+                          <ul>
+                            <li><a class="font-weight-bold">John Doe</a></li>
+                            <li><a><%= session.email %></a></li>
+                            <li><a><%= session.avatar %></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
                     <%}%>
-                   
+                    <div class="dropdown-divider"></div>
                     <% for(let i=0; i < perfil.length; i++) { %>
-                      <a
-                        class="dropdown-item"
-                        href="<%= perfil[i].href%>"
-                        style="padding: 20px 20px"
+                    <a
+                      class="dropdown-item"
+                      href="<%= perfil[i].href%>"
+                      style="padding: 20px 20px"
+                    >
+                      <i
+                        class="fa <%= perfil[i].icon%>"
+                        style="margin-right: 10px"
                       >
-                        <i
-                          class="fa <%= perfil[i].icon%>"
-                          style="margin-right: 10px;"
-                        >
-                        </i>
-                        <h7><%= perfil[i].label%></h7>
-                      </a>                        
+                      </i>
+                      <h7><%= perfil[i].label%></h7>
+                    </a>
                     <%}%>
                   </div>
                 </div>
@@ -188,13 +151,10 @@
           <!-- /Right Navbar Menu -->
         </div>
 
-            <!-- /MAIN HEADER -->
+        <!-- /MAIN HEADER -->
 
-            <!-- /HEADER -->
-          </h6>
-        </h6>
+        <!-- /HEADER -->
       </div>
     </nav>
   </div>
 </header>
-

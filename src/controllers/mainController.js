@@ -14,14 +14,16 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
 module.exports = {
   // Root
   root: function (req, res) {
-    db.Product.findAll({
-      include: ["estadoProducto"],
-      limit: 5,
+    db.Publication.findAll({
+      include: ["product"],
+      limit: 4,
     })
-      .then((products) => {
+      .then((publications) => {
+        console.log(publications,req.session.cart)
         res.render("index", {
-          products,
-          session: `${req.session.usuarioActual}`,
+          publications,
+          session: req.session.user,
+          cart: req.session.cart,
         });
       })
       .catch((err) => {
@@ -32,6 +34,9 @@ module.exports = {
 
   // Check-Out
   checkout: function (req, res) {
-    res.render("checkout");
+    res.render("checkout", {
+      session: req.session.user,
+      cart: req.session.cart,
+    });
   },
 };

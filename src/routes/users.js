@@ -21,7 +21,7 @@ router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
 router.get("/register", invitadosMiddlewares, controllers.users.create);
 router.post(
   "/register",
-  [upload.any(), registerValidation],
+  [upload.single("avatar"), registerValidation],
   controllers.users.store
 );
 //Avatar

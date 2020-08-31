@@ -1,6 +1,6 @@
 function cookieAuthMiddleware(req,res,next){
-    if(req.cookies.rememberMe != undefined && req.session.usuarioActual == undefined) {
-        req.session.usuarioActual = req.cookies.rememberMe; 
+    if(req.cookies.rememberMe != undefined && req.session.user == undefined) {
+        req.session.user = req.cookies.rememberMe; 
     }
     next()
 }

@@ -13,7 +13,7 @@ module.exports = {
   form: function (req, res) {
     db.Category.findAll()
       .then((result) => {
-        res.render("product/form", { categorias: result });
+        res.render("product/form", { categorias: result , session:req.session});
       })
       .catch((err) => {
         console.log(err);
@@ -22,6 +22,8 @@ module.exports = {
   },
 
   store: function (req, res) {
+
+    console.log(req.files)
     db.Product.create({
       nombre: req.body.nombre,
       precio: req.body.precio,

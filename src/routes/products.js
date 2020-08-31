@@ -4,7 +4,6 @@ const router = express.Router();
 const productValidation = require("../middlewares/productValidation");
 
 // DB
-const path = require("path");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
