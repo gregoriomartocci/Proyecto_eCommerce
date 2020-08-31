@@ -29,6 +29,7 @@ module.exports = {
         res.render("publication/form", {
           categorias: result,
           session: req.session,
+          cart: req.session.cart,
         });
       })
       .catch((err) => {

@@ -22,7 +22,7 @@ module.exports = {
         res.render("index", {
           publications,
           session: req.session.user,
-          cart: req.session.cart
+          cart: req.session.cart,
         });
       })
       .catch((err) => {
@@ -33,6 +33,9 @@ module.exports = {
 
   // Check-Out
   checkout: function (req, res) {
-    res.render("checkout");
+    res.render("checkout", {
+      session: req.session.user,
+      cart: req.session.cart,
+    });
   },
 };
