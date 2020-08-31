@@ -101,12 +101,17 @@
                     <div class="row p-3">
                       <div class="col-3 p-0">
                         <div>
-                          <img
+                          <% if(session.avatar){ %>
+
+                            <img
                             src="<%= session.avatar %>"
                             alt="Profile Picture"
                             class="img-thumbnail rounded-circle"
                             style="vertical-align: middle"
                           />
+
+                          <% } %>
+                         
                         </div>
                       </div>
                       <div class="col-9">
