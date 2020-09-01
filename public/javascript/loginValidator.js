@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
     }
 
     if (errors > 0) {
-      //e.preventDefault();
+      e.preventDefault();
     } else {
       console.log("enviamos la info", data);
     }
