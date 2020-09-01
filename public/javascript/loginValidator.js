@@ -22,9 +22,9 @@ window.addEventListener("load", function () {
     }
   };
 
-  form.email.addEventListener("change", function (e) {
+  form.email.addEventListener("blur", function (e) {
     save(e.target.name, e.target.value);
-
+    console.log(data.email)
     showError(e.target, validator.isEmail(data.email));
   });
 
