@@ -26,7 +26,7 @@ module.exports = {
   form: function (req, res) {
     db.Category.findAll()
       .then((result) => {
-        res.render("product/form", {
+        res.render("publication/form", {
           categorias: result,
           session: req.session,
           cart: req.session.cart,

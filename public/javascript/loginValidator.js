@@ -22,7 +22,7 @@ window.addEventListener("load", function () {
     }
   };
 
-  form.email.addEventListener("keydown", function (e) {
+  form.email.addEventListener("change", function (e) {
     save(e.target.name, e.target.value);
 
     showError(e.target, validator.isEmail(data.email));

@@ -18,11 +18,16 @@
 
             <!-- Validation Result -->
 
+            <% if(errors) { %>
+              
             <% errors.forEach(error => { %>
               <span class="login20-title-err p-b-33">
                 <%= error.msg %>
               </span>
             <% }) %>
+
+            <% } %>
+
 
             <div
               class="wrap-input100"
