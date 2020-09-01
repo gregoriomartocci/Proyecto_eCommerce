@@ -225,6 +225,25 @@
         font-weight: 300;
         display: inline;
       }
+
+/* Agregado para mostrar errores en campos mandatorios*/
+
+.error {
+      color: red;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
     </style>
 
     <!-- Include Navbar -->
@@ -263,6 +282,7 @@
 
                   <label for="name">Nombre del Producto</label>
                   <input class="border" type="text" id="name" name="nombre" />
+                  <span class="hide">El nombre debe tener al menos 5 caracteres</span>
 
                   <label for="marca">Marca</label>
                   <input class="border" type="text" id="marca" name="marca" />
@@ -277,6 +297,7 @@
                     id="precio"
                     name="precio"
                   />
+                  <span class="hide">Debe ingresar un numero</span>
 
                   <label for="stock">Stock</label>
                   <input class="border" type="number" id="stock" name="stock" />
@@ -331,6 +352,7 @@
                     id="bio"
                     name="description"
                   ></textarea>
+                  <span class="hide">La descripcion debe tener al menos 20 caracteres</span>
                 </fieldset>
 
                 <label>Garantia</label>

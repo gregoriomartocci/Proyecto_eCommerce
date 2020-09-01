@@ -14,9 +14,6 @@ window.addEventListener("load", function(){
         data[k] = v
       }
 
-      console.log("La validacion esta funcionando")
-      alert("Holi")
-
     let form = document.querySelector("form.login100-form");
 
     let showError = (el, bool = true) => {
@@ -44,7 +41,7 @@ window.addEventListener("load", function(){
           ;
             });                       
 
-      form.email.addEventListener("keyup", function (e) {
+      form.email.addEventListener("blur", function (e) {
         save(e.target.name, e.target.value)
       
         showError(e.target, validator.isEmail(data.email));

@@ -9,7 +9,7 @@ module.exports = [
     .isInt({min:0, max:1000000})
     .withMessage('Debe indicar el precio'),
 
-    check('descripcionProducto')
+    check('description')
         .isLength({min:20, max:300}).withMessage('La descripcion del producto debe tener al menos 20 caracteres'),
 
 ]
