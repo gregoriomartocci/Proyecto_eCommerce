@@ -14,6 +14,9 @@ window.addEventListener("load", function(){
         data[k] = v
       }
 
+      console.log("La validacion esta funcionando")
+      alert("Holi")
+
     let form = document.querySelector("form.login100-form");
 
     let showError = (el, bool = true) => {

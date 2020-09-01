@@ -16,8 +16,7 @@ const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const logger = require("morgan");
-const path = require("path");
-var Validator = require( 'validator.js' );
+var Validator = require("express-validator");
 const methodOverride = require("method-override"); // Para poder usar los métodos PUT y DELETE
 //const logMiddleware = require('./middlewares/user-logs')
 const cookieAuthMiddleware = require("./middlewares/cookieAuthMiddleware");
@@ -57,7 +56,9 @@ app.use(function (req, res, next) {
     let filename = req.path.split("/").pop();
     `filename es esto ${filename}`;
     console.log(filename);
-    return res.sendFile(path.resolve("src", "uploads", "product-img", filename));
+    return res.sendFile(
+      path.resolve("src", "uploads", "product-img", filename)
+    );
   }
 
   next();

@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const productValidation = require("../middlewares/productValidation");
+const path = require("path")
 
 // DB
 dbDir = path.resolve("db", "models");

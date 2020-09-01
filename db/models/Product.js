@@ -22,7 +22,6 @@ module.exports = function (sequelize, dataTypes) {
       },
       descripcion: {
         type: dataTypes.TEXT,
-        allowNull: true,
       },
       rating: {
         type: dataTypes.DECIMAL,
