@@ -1,57 +1,57 @@
+<style>
+  .card {
+    position: relative;
+    border-radius: 15px;
+    border: none;
+  }
+
+  .card-body {
+    padding: 5px 20px 10px;
+  }
+
+  .branding span:nth-child(1) {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .branding h4 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #464444;
+  }
+
+  .product-rating span {
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: #fcba26;
+  }
+
+  .product-rating span:nth-child(5) {
+    color: #a7a7a3;
+  }
+
+  .card-text {
+    font-size: 11.5px;
+    color: #000;
+    font-weight: 500;
+  }
+
+  .card-text span {
+    color: #0b67df;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .price span {
+    font-weight: 300;
+  }
+</style>
+
 <div class="col-xs-12 col-md-3 col-lg-3">
-  <style>
-    .card {
-      position: relative;
-      border-radius: 15px;
-      border: none;
-    }
-
-    .card-body {
-      padding: 5px 20px 10px;
-    }
-
-    .branding span:nth-child(1) {
-      font-size: 18px;
-      font-weight: 400;
-    }
-
-    .branding h4 {
-      font-size: 12px;
-      font-weight: 500;
-      color: #464444;
-    }
-
-    .product-rating span {
-      display: inline-block;
-      text-align: center;
-      line-height: 26px;
-      font-size: 10px;
-      cursor: pointer;
-      transition: all 0.5s;
-      color: #fcba26;
-    }
-
-    .product-rating span:nth-child(5) {
-      color: #a7a7a3;
-    }
-
-    .card-text {
-      font-size: 11.5px;
-      color: #000;
-      font-weight: 500;
-    }
-
-    .card-text span {
-      color: #0b67df;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .price span {
-      font-weight: 300;
-    }
-  </style>
-
   <!-- product -->
   <!--
   <div class="product">
@@ -109,39 +109,45 @@
   <!-- /product -->
 
   <div class="card shadow-sm p-2 mb-2">
-    <img src="<%= publication.product.img %>" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <div class="brandig">
-        <h5><%= publication.product.nombre %></h5>
-        <span> <%= publication.product.modelo %> </span>
-      </div>
-
-      <div class="product-rating">
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-      </div>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="price">
-          <span>$</span>
-          <span><%= publication.product.precio %></span>
+    <a href="/publication/view/<%= publication.idPublicacion %>">
+      <img
+        src="<%= publication.product.img %>"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <div class="brandig">
+          <h5><%= publication.product.nombre %></h5>
+          <span> <%= publication.product.modelo %> </span>
         </div>
 
-        <div class="cart">
-          <a
-            href="/cart/add/<%= publication.idProducto %>"
-            class="btn btn-primary rounded-circle"
-            ><i class="fa fa-shopping-cart"></i
-          ></a>
+        <div class="product-rating">
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+        </div>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="price">
+            <span>$</span>
+            <span><%= publication.product.precio %></span>
+          </div>
+
+          <div class="cart">
+            <a
+              href="/cart/add/<%= publication.idProducto %>"
+              class="btn btn-primary rounded-circle"
+              ><i class="fa fa-shopping-cart"></i
+            ></a>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>

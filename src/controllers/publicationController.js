@@ -6,7 +6,7 @@ const db = require(dbDir);
 
 module.exports = {
   // PublicationView
-  show: function (req, res) {
+  showAll: function (req, res) {
     // Trayendo Estados
 
     db.Publication.findAll({
@@ -21,6 +21,18 @@ module.exports = {
         console.log(err);
         res.json({ error: true });
       });
+  },
+
+  showOne: function (req, res) {
+    db.Publication.findByPk(req.params.id, { include: ["product"] }).then(
+      (publication) => {
+        res.render("product/view", {
+          product: publication.product,
+          session: req.session,
+          cart: req.session.cart,
+        });
+      }
+    );
   },
 
   form: function (req, res) {
@@ -48,10 +60,7 @@ module.exports = {
       idCategoria: req.body.idCategoria,
       img: path.join("img", req.file.filename),
 
-
       //API que puashea el producto
-
-      
     }).then((product) => {
       db.Publication.create({
         idProducto: product.idProducto,
