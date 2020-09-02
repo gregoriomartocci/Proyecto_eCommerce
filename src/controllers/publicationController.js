@@ -6,7 +6,7 @@ const db = require(dbDir);
 
 module.exports = {
   // PublicationView
-  show: function (req, res) {
+  showAll: function (req, res) {
     // Trayendo Estados
 
     db.Publication.findAll({
@@ -21,6 +21,17 @@ module.exports = {
         console.log(err);
         res.json({ error: true });
       });
+  },
+
+  showById: function(req,res){
+    db.Publication.findByPk(req.params.id,{
+      include:["product"]
+    }).then(publication => {
+      res.json(publication)
+    }).catch((error) => {
+      console.log(err)
+      res.json({error:true})
+    })
   },
 
   form: function (req, res) {

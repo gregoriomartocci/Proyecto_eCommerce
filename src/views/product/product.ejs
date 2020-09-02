@@ -50,6 +50,12 @@
     .price span {
       font-weight: 300;
     }
+
+    .fav {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
   </style>
 
   <!-- product -->
@@ -108,40 +114,58 @@
   -->
   <!-- /product -->
 
+  <% if(publication){ %>
+
   <div class="card shadow-sm p-2 mb-2">
-    <img src="<%= publication.product.img %>" class="card-img-top" alt="..." />
-    <div class="card-body">
-      <div class="brandig">
-        <h5><%= publication.product.nombre %></h5>
-        <span> <%= publication.product.modelo %> </span>
-      </div>
-
-      <div class="product-rating">
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-        <span><i class="fa fa-star"></i></span>
-      </div>
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="price">
-          <span>$</span>
-          <span><%= publication.product.precio %></span>
+    <a href="/publication/view/<%= publication.idPublicacion %>">
+      <img
+        src="<%= publication.product.img %>"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <div class="brandig">
+          <h5><%= publication.product.nombre %></h5>
+          <span> <%= publication.product.modelo %> </span>
         </div>
 
-        <div class="cart">
-          <a
-            href="/cart/add/<%= publication.idProducto %>"
-            class="btn btn-primary rounded-circle"
-            ><i class="fa fa-shopping-cart"></i
-          ></a>
+        <div class="product-rating">
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+          <span><i class="fa fa-star"></i></span>
+        </div>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="price">
+            <span>$</span>
+            <span><%= publication.product.precio %></span>
+          </div>
+
+          <div class="nav">
+            <div class="fav">
+              <a
+                href="/cart/add/<%= publication.idProducto %>"
+                class="btn btn-danger rounded-circle"
+                ><i class="fa fa-heart"></i></a>
+            </div>
+
+            <div class="cart">
+              <a
+                href="/cart/add/<%= publication.idProducto %>"
+                class="btn btn-primary rounded-circle"
+                ><i class="fa fa-shopping-cart"></i
+              ></a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
+  <% } %>
 </div>
