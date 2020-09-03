@@ -22,7 +22,11 @@
 
       <% publications.forEach(publication => { %>
 
-      <%- include('product', {publication}) %>
+        <div class="col-xs-12 col-md-3 col-lg-3">
+
+          <%- include('product', {publication}) %>
+
+        </div>
 
       <% }) %>
      

@@ -46,6 +46,24 @@ router.get("/traerProducto", function (req, res) {
     });
 });
 
+// Trayendo Producto
+router.get("/store", function (req, res) {
+  db.Publication.findAll({
+    include: ["product"],
+  })
+    .then((publications) => {
+      res.render("store",{
+        session:req.session,
+        publications,
+        cart:req.session.cart,
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
 // Trayendo Estados
 router.get("/traer", function (req, res) {
   db.Condition.findAll()

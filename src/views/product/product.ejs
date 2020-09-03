@@ -16,7 +16,7 @@
 
   .branding h4 {
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 800;
     color: #464444;
   }
 
@@ -51,64 +51,8 @@
   }
 </style>
 
-<div class="col-xs-12 col-md-3 col-lg-3">
-  <!-- product -->
-  <!--
-  <div class="product">
-    <div class="product-img">
-      <img src="/images/products/product01.png" alt="" />
-      <div class="product-label">
-        <span class="sale">-30%</span>
-        <span class="new">Nuevo</span>
-      </div>
-    </div>
-    <div class="product-body">
-      <p class="product-category">Categoria</p>
-      <h3 class="product-name">
-        <a href="#"><%= publication.nombre %></a>
-      </h3>
-      <h4 class="product-price">
-        $<%= publication.precio %>
-        <del class="product-old-price">$990.00</del>
-      </h4>
-      <div class="product-rating">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <div class="product-btns">
-        <button class="add-to-wishlist">
-          <i class="fa fa-heart-o"></i
-          ><span class="tooltipp"
-            ><a class="text-white" href="/product/product-view"
-              >Me gusta!</a
-            ></span
-          >
-        </button>
-        <button class="quick-view">
-          <i class="fa fa-eye"></i
-          ><span class="tooltipp"
-            ><a class="text-white" href="/product/product-view"
-              >Ver Producto</a
-            ></span
-          >
-        </button>
-      </div>
-    </div>
-    <div class="add-to-cart">
-      <button class="add-to-cart-btn">
-        <a href="/cart/add/<%= publication.idProducto %>"
-          ><i class="fa fa-shopping-cart"></i> comprar
-        </a>
-      </button>
-    </div>
-  </div>
-  -->
-  <!-- /product -->
 
-  <div class="card shadow-sm p-2 mb-2">
+  <div class="card shadow-sm p-2 mb-2 card-img-top">
     <a href="/publication/view/<%= publication.idPublicacion %>">
       <img
         src="<%= publication.product.img %>"
@@ -149,5 +93,4 @@
         </div>
       </div>
     </a>
-  </div>
 </div>
