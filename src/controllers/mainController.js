@@ -32,6 +32,14 @@ module.exports = {
       });
   },
 
+  viewCart: function(req,res){ 
+    res.render("view-cart",{
+      session:req.session,
+      cart:req.session.cart
+    })
+
+  },
+
   // Check-Out
   checkout: function (req, res) {
     res.render("checkout", {

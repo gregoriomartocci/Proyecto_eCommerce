@@ -13,6 +13,8 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
 router.get("/", controllers.main.root); /* GET - home page */
 
+router.get("/view-cart", controllers.main.viewCart); /* GET - home page */
+
 router.get(
   "/checkout",
   usuariosMiddlewares,
@@ -24,13 +26,12 @@ router.get(
 // Trayendo usuarios
 router.get("/usuarioLogueado", function (req, res) {
   res.send(`el usuario logueado es ${req.session.usuarioActual}`);
-  console.log(req.session.usuarioActual)
+  console.log(req.session.usuarioActual);
 });
 
 router.get("/idUsuario", function (req, res) {
   res.send(`el id del usuario logueado es ${req.session.idUsuario}`);
 });
-
 
 // Trayendo Producto
 router.get("/traerProducto", function (req, res) {
@@ -52,11 +53,11 @@ router.get("/store", function (req, res) {
     include: ["product"],
   })
     .then((publications) => {
-      res.render("store",{
-        session:req.session,
+      res.render("store", {
+        session: req.session,
         publications,
-        cart:req.session.cart,
-      })
+        cart: req.session.cart,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -95,7 +96,7 @@ router.get("/traerUsuarios", function (req, res) {
 // Trayendo Carrito
 router.get("/traerCart", function (req, res) {
   db.Cart.findAll({
-    include: ["User","Items"],
+    include: ["User", "Items"],
   })
     .then((result) => {
       res.json(result);
