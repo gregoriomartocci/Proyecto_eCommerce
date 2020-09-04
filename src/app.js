@@ -67,6 +67,7 @@ app.use(function (req, res, next) {
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views")); // Define la ubicación de la carpeta de las Vistas
+app.use('/static',express.static(path.join(__dirname, '../react/build/static')));
 
 app.use("/", mainRouter);
 app.use("/users", usersRouter);

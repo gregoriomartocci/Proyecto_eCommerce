@@ -1,0 +1,113 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #eee;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  height: 100vh;
+  box-shadow: 5px 5px 20px #b9babc;
+  background-color: #15161d;
+}
+
+.sidebar-link:hover {
+  border-bottom: 1px groove #fbfbfc;
+}
+
+.bottom-border {
+  border-bottom: 1px groove #fbfbfc;
+}
+
+.current {
+  background-color: #d10024;
+  border-radius: 5px;
+}
+
+.current:hover {
+  background-color: #d10024;
+  border-radius: 5px;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.input {
+  height: 38px;
+  width: auto;
+  background: #fbfbfc;
+  border: 0;
+  border-radius: 500px;
+  float: left;
+}
+
+ul li a {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.search-button {
+  border-radius: 50%;
+}
+
+button {
+  border: unset;
+  outline: unset;
+  background-color: unset;
+}
+
+button:focus {
+  outline: unset;
+}
+
+.icon-parent {
+  position: relative;
+}
+
+.icon-bullet::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  width: 12px;
+  background-color: #d10024;
+  border-radius: 50%;
+}
+
+.top-navbar {
+  background-color: #15161d;
+}
+
+.card-common {
+  box-shadow: 1px 2px 15px #999;
+  transition: all 0.4s;
+}
+
+.card-common:hover {
+  box-shadow: 2px 3px 13px #999;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .top-navbar {
+    position: static;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+

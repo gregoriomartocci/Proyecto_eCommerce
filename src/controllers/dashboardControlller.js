@@ -7,17 +7,18 @@ module.exports = {
   //Users
 
   showUsers: function (req, res) {
+       res.sendFile(path.join(__dirname,'../../react/build/index.html'))
+  },
+
+  getAllUser: function(req,res) {
     db.User.findAll()
-      .then((result) => {
-        res.render("dashboard/index", {
-          users: result,
-          title: "Proyecto",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.json({ error: true });
-      });
+    .then((result) => {
+      res.json(result)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
   },
 
   storeUser: function (req, res) {

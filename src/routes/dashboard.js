@@ -13,15 +13,12 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
 // Users
 
-router.get("/", controllers.dashboard.showUsers);
 
 //Products
 
 // Create
 router.post("/add-product", controllers.dashboard.store);
 
-// Read
-router.get("/products", controllers.dashboard.show);
 
 // Update
 router.post("/update-product/:id", controllers.dashboard.update);
@@ -34,5 +31,9 @@ router.post("/products/delete-product/:id", controllers.dashboard.delete);
 
 // LOGOUT
 router.get("/logout", controllers.dashboard.logout);
+
+router.get("/getalluser", controllers.dashboard.getAllUser);
+
+router.get("*", controllers.dashboard.showUsers);
 
 module.exports = router;
