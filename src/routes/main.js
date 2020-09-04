@@ -13,8 +13,6 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 
 router.get("/", controllers.main.root); /* GET - home page */
 
-router.get("/view-cart", controllers.main.viewCart); /* GET - home page */
-
 router.get(
   "/checkout",
   usuariosMiddlewares,

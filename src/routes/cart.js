@@ -12,6 +12,8 @@ const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 const { RequestHeaderFieldsTooLarge } = require("http-errors");
 
+router.get("/show", controllers.cart.show)
+router.get("/view", controllers.cart.view)
 router.get("/add/:id", controllers.cart.add)
 
 

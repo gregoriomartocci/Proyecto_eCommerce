@@ -6,14 +6,12 @@ const db = require(dbDir);
 module.exports = {
   // Create
 
-  show: function (req, res) {
-    db.Cart.findall({
-      where: { userEmail: req.session.usuarioActual },
-    }).then((product) => {
-      res.redirect("index", {
-        product,
-      });
-    });
+  show: function(req,res){
+    res.json(req.session.cart)
+  },
+
+  view: function (req, res) {
+    res.render("cart-view", { cart: req.session.cart, session: req.session });
   },
 
   add: function (req, res) {
@@ -32,11 +30,11 @@ module.exports = {
             updateCart.totalItems++;
             updateCart.total += new Number(existingItem.precio);
             req.session.cart = updateCart;
-            res.redirect("/")
+            res.redirect("/");
           } else {
             item = {
               idProducto: product.idProducto,
-              img:product.img,
+              img: product.img,
               nombre: product.nombre,
               cantidad: 1,
               precio: product.precio,
@@ -47,7 +45,7 @@ module.exports = {
           }
 
           req.session.cart = updateCart;
-          res.redirect("/")
+          res.redirect("/");
         })
         .catch((error) => {
           console.log(error);
@@ -66,7 +64,7 @@ module.exports = {
 
           item = {
             idProducto: product.idProducto,
-            img:product.img,
+            img: product.img,
             nombre: product.nombre,
             cantidad: 1,
             precio: product.precio,
@@ -76,7 +74,7 @@ module.exports = {
           newCart.totalItems++;
           newCart.total = new Number(product.precio);
           req.session.cart = newCart;
-          res.redirect("/")
+          res.redirect("/");
         })
         .catch((error) => {
           console.log(error);

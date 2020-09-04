@@ -256,10 +256,7 @@
 
                   <!-- Include Header -->
 
-                  <div class="row">
-                    <% for (let i = 1; i < 4; i++) { %> <%-
-                    include('card-upload', {i}) %> <% } %>
-                  </div>
+                  <div class="row"><%-include('card-upload') %></div>
 
                   <label for="name">Nombre del Producto</label>
                   <input class="border" type="text" id="name" name="nombre" />
