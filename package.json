@@ -24,7 +24,8 @@
     "nodemon": "^2.0.1",
     "override": "0.0.1",
     "sequelize": "^5.22.3",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {},
   "scripts": {
