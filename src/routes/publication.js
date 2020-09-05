@@ -7,6 +7,8 @@ const path = require("path");
 // ************ Controller Require ************
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
+const publicationController = require("../controllers/publicationController");
+const productValidation = require("../middlewares/productValidation");
 
 // DB
 dbDir = path.resolve("db", "models");
@@ -27,6 +29,6 @@ let upload = multer({ storage: storage });
 
 router.get("/view/:id", controllers.publication.showById);
 router.get("/add", controllers.publication.form);
-router.post("/add", upload.single("img"), controllers.publication.store);
+router.post("/add", [upload.single("img"), productValidation], controllers.publication.store);
 
 module.exports = router;

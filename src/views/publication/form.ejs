@@ -17,11 +17,12 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    
 
     <!-- Login - Register -->
     <link rel="stylesheet" href="/css/loginp.css" />
     <!-- Publication Stylesheet -->
-    <link rel="stylesheet" href="/css/publication.css" />
+
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="/css/app.css" />
     <!-- Fonts Awesome -->
@@ -225,10 +226,8 @@
         font-weight: 300;
         display: inline;
       }
-
-/* Agregado para mostrar errores en campos mandatorios*/
-
-.error {
+      
+      .error {
       color: red;
     }
 
@@ -259,7 +258,12 @@
           class="login100-form"
           enctype="multipart/form-data"
         >
-          <div class="row">
+
+<!-- Validation Result -->
+    <span class="login20-title-err p-b-33">
+    </span>
+
+              <div class="row">
             <div class="col">
               <h3 class="ml-2">Nueva Publicacion</h3>
               <legend class="my-4 ml-2">Producto</legend>
@@ -282,13 +286,15 @@
 
                   <label for="name">Nombre del Producto</label>
                   <input class="border" type="text" id="name" name="nombre" />
-                  <span class="hide">El nombre debe tener al menos 5 caracteres</span>
+                  <span class="hide">El nombre del producto debe tener al menos 2 caracteres</span>
 
                   <label for="marca">Marca</label>
                   <input class="border" type="text" id="marca" name="marca" />
+                  <span class="hide">Debe completar la Marca</span>
 
                   <label for="modelo">Modelo</label>
                   <input class="border" type="text" id="modelo" name="modelo" />
+                  <span class="hide">Debe completar el Modelo</span>
 
                   <label for="precio">Precio</label>
                   <input
@@ -435,8 +441,10 @@
 
     <!-- Include Footer -->
     <%- include('../partials/footer') %>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.1.1/validator.min.js" integrity="sha512-rVYlbsnsxljzvf4sgKzI6ncbNKKxupFhoQ/9ptW7R5fhKE9wQevsfUAZEbJ6xl+VyaiGm3lAKChPLoV/VuaZJA==" crossorigin="anonymous"></script>
+    
     <script src="/javascript/publicacion.js"></script>
+    
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
