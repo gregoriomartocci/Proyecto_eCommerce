@@ -10,20 +10,20 @@ const db = require(dbDir);
 // ************ Controller Require ************
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
-const apiUser = require('../../api/users')
+const apiUsers = require('../../api/users')
 const apiProducts = require('../../api/products')
 
 // Users
 
-router.get("/getalluser", apiUser.getAllUser);
+router.get("/getalluser", apiUsers.getAllUser);
+
+router.put("/edituser/:idUser", apiUsers.editUser);
+
+router.delete("/deleteuser/:idUser", apiUsers.deleteUser);
+
+router.post("/adduser", apiUsers.addUser);
 
 //Products
-
-// Update
-router.post("/update-product/:id", controllers.dashboard.update);
-
-// LOGOUT
-
 
 router.get("/getallproducts", apiProducts.getAllProducts);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import IconNav from './IconNav'
+//import IconNav from './IconNav'
 import Navbar from './Navbar'
 
 function Nav(props) {
@@ -18,27 +18,13 @@ function Nav(props) {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
-                        <a
+                        <h1
                             href="#"
                             className="navbar-brand text-white d-block mx-auto text-center py-3"
                         >
-                            {props.title}</a
-                        >
+                            Admin
+                        </h1>
 
-                        <div className="container-fluid">
-                            <div className="row">
-                            <div className="account-details justify-content-start">
-                                <ul>
-                                <li>
-                                    <a href="#" className="text-white"> Usuario</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="text-white"> usuario@gmail.com </a>
-                                </li>
-                                </ul>
-                            </div>
-                            </div>
-                        </div>
 
                         <ul className="navbar-nav flex-column mb-4">
                             <Navbar href = '/dashboard' class = 'current' icon = 'fa-user' text = 'Usuarios'/>

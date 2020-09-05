@@ -79,22 +79,6 @@ module.exports = {
       });
   },
 
-  update: function (req, res) {
-    db.Product.update(
-      {
-        nombre: req.body.nombre,
-        precio: req.body.precio,
-      },
-      {
-        where: {
-          idProducto: req.params.id,
-        },
-      }
-    ).then(() => {
-      return res.redirect("/dashboard/products");
-    });
-  },
-
   logout: function (req, res) {
     req.session.destroy();
     return res.redirect("login");

@@ -1,23 +1,9 @@
-import React , {useState,useEffect} from 'react';
-import PopUp from './PopUp'
+import React , {useState} from 'react';
+import PopUpProduct from './PopUpProduct'
 
-function TableProduct () {
-  const [data,setData] = useState([]);
+function TableProduct (props) {
+ 
   const [propsPopUp,setPopUp] = useState({});
-
-  useEffect(() => {
-      const getAllData = async () => {    
-      try {
-          const response = await fetch('/dashboard/getallproducts');
-          const dataAPI = await response.json()
-
-          setData(dataAPI)
-      } catch (error) {
-          console.log(error)
-      }
-      }
-      getAllData()
-  },[])
 
    let editPopUp = (text,button,action) =>  {
      console.log(action)
@@ -60,7 +46,7 @@ function TableProduct () {
                       </tr>
                     </thead>
                     <tbody>
-                        {data.map((item) => {
+                        {props.dataTable.map((item) => {
                             return <tr> 
                               <td> {item.idProducto} </td>
                               <td> {item.nombre} </td>
@@ -73,14 +59,14 @@ function TableProduct () {
                                     data-target="#agregarProducto"
                                     onClick= {() => editPopUp('Modificar producto','Modificar',`/dashboard/editproduct/${item.idProducto}?_method=PUT`)}
                                   >
-                                    <i className="fas fa-edit fa-2x text-success"></i>
+                                    <i className="fas fa-edit fa-1x text-success"></i>
                                   </button>
                                   <form
                                     method="post"
                                     action= {`/dashboard/deleteproduct/${item.idProducto}?_method=DELETE`} 
                                   >
                                     <button name="foo" value="send">
-                                      <i className="fas fa-trash-alt fa-2x text-danger"></i>
+                                      <i className="fas fa-trash-alt fa-1x text-danger"></i>
                                     </button>
                                   </form>
                                 </div>
@@ -94,7 +80,7 @@ function TableProduct () {
             </div>
           </div>
         </div>
-        <PopUp props= {propsPopUp}/>     
+        <PopUpProduct props= {propsPopUp}/>     
       </section>
     );
 }
