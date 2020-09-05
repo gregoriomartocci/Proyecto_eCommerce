@@ -21,14 +21,6 @@ router.get(
 
 // Probando las consultas
 
-// Trayendo usuarios
-router.get("/wishlist", function (req, res) {
-  res.render("wishlist", {
-    session: req.session,
-    cart: req.session.cart,
-  });
-});
-
 router.get("/idUsuario", function (req, res) {
   res.send(`el id del usuario logueado es ${req.session.idUsuario}`);
 });

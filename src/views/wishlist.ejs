@@ -17,76 +17,63 @@
 
   <!-- Cart -->
   <div class="section">
-   <!-- Cart Page Start -->
-   <div class="wishlist_area pt--120 pb--80 pt_md--80 pt_sm--80 bg-color" data-bg-color="#ffffff">
-    <div class="container">
+    <!-- Cart Page Start -->
+    <div class="wishlist_area" data-bg-color="#ffffff">
+      <div class="container">
         <div class="row">
-            <div class="col-12">
-                <form action="#">
-                    <div class="cart-table table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="pro-thumbnail">Image</th>
-                                    <th class="pro-title">Product</th>
-                                    <th class="pro-price">Price</th>
-                                    <th class="pro-quantity">Quantity</th>
-                                    <th class="pro-subtotal">Total</th>
-                                    <th class="pro-remove">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="assets/images/product/product-01.jpg" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Sample Bundle Product</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </td>
-                                    <td class="pro-addtocart"><button>add to cart</button></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="assets/images/product/product-02.jpg" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Matchbox’ Fit Jeans</a></td>
-                                    <td class="pro-price"><span>$275.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="2"></div>
-                                    </td>
-                                    <td class="pro-addtocart"><button>add to cart</button></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="assets/images/product/product-03.jpg" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Variable product</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </td>
-                                    <td class="pro-addtocart"><button>add to cart</button></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="assets/images/product/product-04.jpg" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Open Front Cardigan</a></td>
-                                    <td class="pro-price"><span>$110.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </td>
-                                    <td class="pro-addtocart"><button>add to cart</button></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+          <div class="col-12">
+            <form action="#">
+              <div class="cart-table table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Product</th>
+                      <th>Precio</th>
+                      <th>Cantidad</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
 
-                </form>
-
-            </div>
+                  <% wishlist.items.forEach(item=> { %>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <a href="#"
+                          ><img
+                            src="<%=item.img%>"
+                            alt="Product"
+                            style="width: 150px"
+                        /></a>
+                      </td>
+                      <td class="pro-title">
+                        <a href="#"><%=item.nombre%></a>
+                      </td>
+                      <td class="pro-price"><span>$<%=item.precio%></span></td>
+                      <td class="pro-quantity">
+                        <div class="pro-qty">
+                          <input type="text" value="<%=item.cantidad%>" />
+                        </div>
+                      </td>
+                      <td class="pro-addtocart">
+                        <a href="#" class="btn btn-primary "
+                          ><i class="fa fa-shopping-cart"></i
+                        ></a>
+                        <a class="btn btn-danger" href="#"
+                          ><i class="fa fa-trash-o"></i
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <% }) %>
+                </table>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<!-- Cart Page End -->
+    <!-- Cart Page End -->
   </div>
   <!-- /Cart -->
 
