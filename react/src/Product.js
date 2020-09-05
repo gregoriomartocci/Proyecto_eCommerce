@@ -2,7 +2,6 @@ import React from 'react'
 import Nav from './Nav'
 import Card from './Card'
 import Logout from './Logout'
-import AgregateProduct from './AgregateProduct'
 import TableProduct from './TableProduct'
 
 export const Product = () => {
@@ -22,8 +21,7 @@ export const Product = () => {
                 </div>
             </section>           
             <TableProduct />
-            <Logout />
-            <AgregateProduct/>                    
+            <Logout />               
         </body>
     )
 } 

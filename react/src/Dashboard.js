@@ -5,7 +5,6 @@ import Nav from './Nav'
 import Card from './Card'
 import Logout from './Logout'
 import TableDashboard from './TableDashboard'
-import  {Link} from 'react-router-dom'
 
 
 function Dashboard() {

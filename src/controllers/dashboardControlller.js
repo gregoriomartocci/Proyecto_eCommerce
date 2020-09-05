@@ -10,17 +10,6 @@ module.exports = {
        res.sendFile(path.join(__dirname,'../../react/build/index.html'))
   },
 
-  getAllUser: function(req,res) {
-    db.User.findAll()
-    .then((result) => {
-      res.json(result)
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ error: true });
-    });
-  },
-
   storeUser: function (req, res) {
     db.Product.create({
       nombre: req.body.nombre,
@@ -72,28 +61,6 @@ module.exports = {
   },
 
   // Products
-  show: function (req, res) {
-    db.Product.findAll()
-      .then((products) => {
-        res.render("dashboard/products", {
-          products,
-          title: "Proyecto",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.json({ error: true });
-      });
-  },
-
-  store: function (req, res) {
-    db.Product.create({
-      nombre: req.body.nombre,
-      precio: req.body.precio,
-    }).then(() => {
-      return res.redirect("/dashboard/products");
-    });
-  },
 
   edit: function (req, res) {
     let productReq = db.Product.findAll();
@@ -125,14 +92,6 @@ module.exports = {
       }
     ).then(() => {
       return res.redirect("/dashboard/products");
-    });
-  },
-
-  delete: function (req, res) {
-    db.Product.destroy({
-      where: { idProducto: req.params.id },
-    }).then(() => {
-      res.redirect("/dashboard/products");
     });
   },
 
