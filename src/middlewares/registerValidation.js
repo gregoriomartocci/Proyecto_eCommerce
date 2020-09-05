@@ -3,11 +3,11 @@ let { check } = require("express-validator");
 module.exports = [
     check('nombre')
     .isLength({min:2})
-    .withMessage('Debe completar el Nombre'),
+    .withMessage('Debe completar el Nombre correctamente'),
 
     check('apellido')
     .isLength({min:2})
-    .withMessage('Debe completar el Apellido'),
+    .withMessage('Debe completar el Apellido correctamente'),
 
     check('email')
         .isEmail()

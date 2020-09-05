@@ -5,6 +5,14 @@ module.exports = [
     .isLength({min:5})
     .withMessage('El nombre del producto debe ser al menos de 5 caracteres'),
 
+    check('marca')
+    .isLength({min:1})
+    .withMessage('Debe completar la marca'),
+
+    check('modelo')
+    .isLength({min:5})
+    .withMessage('Debe completar el modelo'),
+
     check('precio')
     .isInt({min:0, max:1000000})
     .withMessage('Debe indicar el precio'),
