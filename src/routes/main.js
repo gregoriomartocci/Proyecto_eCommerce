@@ -22,9 +22,11 @@ router.get(
 // Probando las consultas
 
 // Trayendo usuarios
-router.get("/usuarioLogueado", function (req, res) {
-  res.send(`el usuario logueado es ${req.session.usuarioActual}`);
-  console.log(req.session.usuarioActual);
+router.get("/wishlist", function (req, res) {
+  res.render("wishlist", {
+    session: req.session,
+    cart: req.session.cart,
+  });
 });
 
 router.get("/idUsuario", function (req, res) {

@@ -54,6 +54,14 @@ module.exports = function (sequelize, dataTypes) {
       otherKey: "idFactura",
       timestamps: false,
     });
+
+    User.belongsToMany(models.Wishlist, {
+      as: "Wishlist",
+      through: "usuariofactura",
+      foreignKey: "idUsuario",
+      otherKey: "idWishlist",
+      timestamps: false,
+    });
   };
 
   return User;

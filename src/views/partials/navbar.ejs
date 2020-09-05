@@ -47,9 +47,9 @@
               <!-- Wishlist -->
 
               <div>
-                <button type="button" class="btn btn-dark rounded-circle">
-                  <i class="fa fa-heart"></i>
-                </button>
+                <a href="/wishlist" class="btn btn-dark rounded-circle"
+                  ><i class="fa fa-heart"></i
+                ></a>
               </div>
 
               <!-- /Wishlist -->
@@ -103,7 +103,7 @@
                         <div>
                           <% if(session.avatar){ %>
 
-                            <img
+                          <img
                             src="<%= session.avatar %>"
                             alt="Profile Picture"
                             class="img-thumbnail rounded-circle"
@@ -111,7 +111,6 @@
                           />
 
                           <% } %>
-                         
                         </div>
                       </div>
                       <div class="col-9">

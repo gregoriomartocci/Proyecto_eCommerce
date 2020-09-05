@@ -9,6 +9,17 @@
     padding: 5px 20px 10px;
   }
 
+  .wishlist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .heart {
+    font-size: 15px;
+    color: #fff;
+  }
+
   .branding span:nth-child(1) {
     font-size: 18px;
     font-weight: 400;
@@ -51,9 +62,17 @@
   }
 </style>
 
-
-  <div class="card shadow-sm p-2 mb-2 card-img-top">
+<div class="card shadow-sm p-2 mb-2 card-img-top">
+  <button>
     <a href="/publication/view/<%= publication.idPublicacion %>">
+      <div class="wishlist">
+        <a
+          href="/wishlist/add/<%= publication.idProducto %>"
+          class="btn btn-danger rounded-circle"
+          ><i class="heart fa fa-heart"></i
+        ></a>
+      </div>
+
       <img
         src="<%= publication.product.img %>"
         class="card-img-top"
@@ -79,8 +98,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
           <div class="price">
-            <span>$</span>
-            <span><%= publication.product.precio %></span>
+            <span>$<%= publication.product.precio %></span>
           </div>
 
           <div class="cart">
@@ -93,4 +111,5 @@
         </div>
       </div>
     </a>
+  </button>
 </div>
