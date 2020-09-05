@@ -49,6 +49,7 @@ router.get("/store", function (req, res) {
         session: req.session,
         publications,
         cart: req.session.cart,
+        wishlist:req.session.wishlist
       });
     })
     .catch((err) => {

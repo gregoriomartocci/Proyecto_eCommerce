@@ -11,7 +11,7 @@ module.exports = {
   },
 
   view: function (req, res) {
-    res.render("cart-view", { cart: req.session.cart, session: req.session });
+    res.render("cart-view", { cart: req.session.cart, session: req.session , wishlist:req.session.wishlist});
   },
 
   add: function (req, res) {

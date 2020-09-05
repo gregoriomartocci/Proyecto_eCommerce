@@ -25,6 +25,7 @@ module.exports = {
           publications,
           session: req.session.user,
           cart: req.session.cart,
+          wishlist:req.session.wishlist,
         });
       })
       .catch((err) => {
@@ -38,6 +39,7 @@ module.exports = {
     res.render("checkout", {
       session: req.session.user,
       cart: req.session.cart,
+      wishlist:req.session.wishlist
     });
   },
 };
