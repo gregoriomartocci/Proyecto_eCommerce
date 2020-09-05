@@ -1,17 +1,16 @@
 import React from 'react';
 import {Switch,BrowserRouter,Route} from 'react-router-dom'
-import Dashboard from './Dashboard'
+import User from './User'
 import {Product} from './Product'
-
 
 function App() {
     return(
         <BrowserRouter>
             <Switch>
                 <Route exact path='/dashboard'>
-                    <Dashboard/>
+                    <User/>
                 </Route>
-                <Route exact path='/dashboard/product'>
+                <Route exact path='/dashboard/products'>
                     <Product/>
                 </Route>
             </Switch>
