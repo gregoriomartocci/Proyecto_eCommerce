@@ -5,6 +5,7 @@ const usersRouter = require("./routes/users"); // Rutas Users
 const dashboardRouter = require("./routes/dashboard"); // Dashboard
 const cartRouter = require("./routes/cart");
 const publicationRouter = require("./routes/publication");
+const wishlistRouter = require("./routes/wishlist")
 const multer = require("multer");
 const path = require("path");
 multerDir = path.resolve("src", "config", "multer");
@@ -75,6 +76,7 @@ app.use("/publication", publicationRouter);
 app.use("/product", productsRouter);
 app.use("/cart", cartRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/wishlist", wishlistRouter)
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

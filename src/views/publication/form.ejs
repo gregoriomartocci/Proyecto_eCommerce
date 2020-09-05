@@ -267,7 +267,7 @@
             <div class="col">
               <h3 class="ml-2">Nueva Publicacion</h3>
               <legend class="my-4 ml-2">Producto</legend>
-              <div class="form shadow-sm p-5">
+              <div class="form shadow p-5">
                 <fieldset>
                   <!-- Carrousell -->
 
@@ -279,10 +279,7 @@
 
                   <!-- Include Header -->
 
-                  <div class="row">
-                    <% for (let i = 1; i < 4; i++) { %> <%-
-                    include('card-upload', {i}) %> <% } %>
-                  </div>
+                  <div class="row"><%-include('card-upload') %></div>
 
                   <label for="name">Nombre del Producto</label>
                   <input class="border" type="text" id="name" name="nombre" />
@@ -350,7 +347,7 @@
           <div class="row">
             <div class="col-md-12">
               <legend class="mt-4 mb-4 ml-2">Ficha Tecnica</legend>
-              <div class="form shadow-sm p-5">
+              <div class="form shadow p-5">
                 <fieldset>
                   <label for="bio">Descripcion</label>
                   <textarea
@@ -389,7 +386,7 @@
           <div class="row">
             <div class="col-md-12">
               <legend class="mt-4 mb-4 ml-2">Publicacion</legend>
-              <div class="form shadow-sm p-5">
+              <div class="form shadow p-5">
                 <fieldset>
                   <label for="job">Tipo de Publicacion:</label>
                   <select id="job" class="border" name="shipping">

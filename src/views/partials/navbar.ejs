@@ -42,13 +42,30 @@
           <div class="col-3 d-none d-md-block">
             <div
               class="row"
-              style="justify-content: space-evenly; align-items: center"
+              style="
+                justify-content: space-evenly;
+                align-items: center;
+                position: relative;
+              "
             >
               <!-- Wishlist -->
 
-              <div>
-                <button type="button" class="btn btn-dark rounded-circle">
-                  <i class="fa fa-heart"></i>
+              <div style="position: relative">
+                <a href="/wishlist" class="btn btn-dark rounded-circle"
+                  ><i class="fa fa-heart"></i
+                ></a>
+
+                <button>
+                  <div
+                    class="qty"
+                    style="position: absolute; right: -5px; top: -12px"
+                  >
+                    <% if(wishlist){ %>
+                    <span class="badge badge-danger"
+                      ><%= wishlist.totalItems%></span
+                    >
+                    <% } %>
+                  </div>
                 </button>
               </div>
 
@@ -103,7 +120,7 @@
                         <div>
                           <% if(session.avatar){ %>
 
-                            <img
+                          <img
                             src="<%= session.avatar %>"
                             alt="Profile Picture"
                             class="img-thumbnail rounded-circle"
@@ -111,7 +128,6 @@
                           />
 
                           <% } %>
-                         
                         </div>
                       </div>
                       <div class="col-9">

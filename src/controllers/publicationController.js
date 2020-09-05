@@ -41,6 +41,7 @@ module.exports = {
           categorias: result,
           session: req.session,
           cart: req.session.cart,
+          wishlist:req.session.wishlist
         });
       })
       .catch((err) => {
@@ -59,10 +60,7 @@ module.exports = {
       idCategoria: req.body.idCategoria,
       img: path.join("img", req.file.filename),
 
-
       //API que puashea el producto
-
-      
     }).then((product) => {
       db.Publication.create({
         idProducto: product.idProducto,

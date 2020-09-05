@@ -6,5 +6,6 @@ module.exports = {
   products: require("./productsController"),
   cart:require("./cartController"),
   dashboard:require("./dashboardControlller"),
-  publication:require("./publicationController")
+  publication:require("./publicationController"),
+  wishlist:require("./wishlistController")
 };

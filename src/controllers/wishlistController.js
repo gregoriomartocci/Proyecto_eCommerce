@@ -7,29 +7,29 @@ module.exports = {
   // Create
 
   show: function(req,res){
-    res.json(req.session.cart)
+    res.json(req.session.wishlist)
   },
 
   view: function (req, res) {
-    res.render("cart-view", { cart: req.session.cart, session: req.session , wishlist:req.session.wishlist});
+    res.render("wishlist", { wishlist: req.session.wishlist, session: req.session, cart:req.session.cart });
   },
 
   add: function (req, res) {
-    if (req.session.cart) {
+    if (req.session.wishlist) {
       db.Product.findByPk(req.params.id)
         .then((product) => {
-          updateCart = req.session.cart;
-          const existingItemIndex = updateCart.items.findIndex(
+          updateWishlist = req.session.wishlist;
+          const existingItemIndex = updateWishlist.items.findIndex(
             (i) => i.idProducto == product.idProducto
           ); // checkeo que existe
 
           if (existingItemIndex >= 0) {
-            const existingItem = updateCart.items[existingItemIndex];
+            const existingItem = updateWishlist.items[existingItemIndex];
             const existingQty = existingItem.cantidad;
             existingItem.cantidad = existingQty + 1;
-            updateCart.totalItems++;
-            updateCart.total += new Number(existingItem.precio);
-            req.session.cart = updateCart;
+            updateWishlist.totalItems++;
+            updateWishlist.total += new Number(existingItem.precio);
+            req.session.wishlist = updateWishlist;
             res.redirect("/");
           } else {
             item = {
@@ -39,12 +39,12 @@ module.exports = {
               cantidad: 1,
               precio: product.precio,
             };
-            updateCart.items.push(item);
-            updateCart.totalItems++;
-            updateCart.total += new Number(product.precio);
+            updateWishlist.items.push(item);
+            updateWishlist.totalItems++;
+            updateWishlist.total += new Number(product.precio);
           }
 
-          req.session.cart = updateCart;
+          req.session.wishlist = updateWishlist;
           res.redirect("/");
         })
         .catch((error) => {
@@ -53,7 +53,7 @@ module.exports = {
     } else {
       db.Product.findByPk(req.params.id)
         .then((product) => {
-          newCart = {
+          newWishlist = {
             idUsuario: req.session.idUsuario,
             shippingAddress: "",
             billingAddress: "",
@@ -70,10 +70,10 @@ module.exports = {
             precio: product.precio,
           };
 
-          newCart.items.push(item);
-          newCart.totalItems++;
-          newCart.total = new Number(product.precio);
-          req.session.cart = newCart;
+          newWishlist.items.push(item);
+          newWishlist.totalItems++;
+          newWishlist.total = new Number(product.precio);
+          req.session.wishlist = newWishlist;
           res.redirect("/");
         })
         .catch((error) => {

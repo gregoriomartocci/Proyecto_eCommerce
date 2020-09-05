@@ -23,7 +23,7 @@
     ],
     "huesped": [
     {
-        "href":"users/login", 
+        "href":"/users/login", 
         "icon":"fa-user-circle", 
         "label":"Iniciar Sesión"
     },

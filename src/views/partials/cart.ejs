@@ -1,12 +1,11 @@
 <div class="cart-dropdown">
   <% if(cart){ %>
-  <pre><%= JSON.stringify(cart) %></pre>
   <div class="cart-list">
     <% for (let i = 0; i < cart.items.length; i++) { %>
 
     <div class="product-widget">
       <div class="product-img">
-        <img src="<%= cart.items[i].img %>" alt="" />
+        <img src="/<%= cart.items[i].img %>" alt="" />
       </div>
       <div class="product-body">
         <h3 class="product-name">
@@ -31,7 +30,7 @@
     <h5>TOTAL: $<%= cart.total %></h5>
   </div>
   <div class="cart-btns">
-    <a href="#">Carrito</a>
+    <a href="/cart/view">Carrito</a>
     <a href="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
   </div>
   <% } %>

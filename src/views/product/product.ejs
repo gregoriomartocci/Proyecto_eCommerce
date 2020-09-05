@@ -1,123 +1,68 @@
-<div class="col-xs-12 col-md-3 col-lg-3">
-  <style>
-    .card {
-      position: relative;
-      border-radius: 15px;
-      border: none;
-    }
+<style>
+  .card {
+    position: relative;
+    border-radius: 15px;
+    border: none;
+  }
+  .card-body {
+    padding: 5px 20px 10px;
+  }
+  .wishlist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .heart {
+    font-size: 15px;
+    color: #fff;
+  }
+  .branding span:nth-child(1) {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .branding h4 {
+    font-size: 12px;
+    font-weight: 800;
+    color: #464444;
+  }
+  .product-rating span {
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: #fcba26;
+  }
+  .product-rating span:nth-child(5) {
+    color: #a7a7a3;
+  }
+  .card-text {
+    font-size: 11.5px;
+    color: #000;
+    font-weight: 500;
+  }
+  .card-text span {
+    color: #0b67df;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .price span {
+    font-weight: 300;
+  }
+</style>
 
-    .card-body {
-      padding: 5px 20px 10px;
-    }
-
-    .branding span:nth-child(1) {
-      font-size: 18px;
-      font-weight: 400;
-    }
-
-    .branding h4 {
-      font-size: 12px;
-      font-weight: 500;
-      color: #464444;
-    }
-
-    .product-rating span {
-      display: inline-block;
-      text-align: center;
-      line-height: 26px;
-      font-size: 10px;
-      cursor: pointer;
-      transition: all 0.5s;
-      color: #fcba26;
-    }
-
-    .product-rating span:nth-child(5) {
-      color: #a7a7a3;
-    }
-
-    .card-text {
-      font-size: 11.5px;
-      color: #000;
-      font-weight: 500;
-    }
-
-    .card-text span {
-      color: #0b67df;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .price span {
-      font-weight: 300;
-    }
-
-    .fav {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-    }
-  </style>
-
-  <!-- product -->
-  <!--
-  <div class="product">
-    <div class="product-img">
-      <img src="/images/products/product01.png" alt="" />
-      <div class="product-label">
-        <span class="sale">-30%</span>
-        <span class="new">Nuevo</span>
-      </div>
-    </div>
-    <div class="product-body">
-      <p class="product-category">Categoria</p>
-      <h3 class="product-name">
-        <a href="#"><%= publication.nombre %></a>
-      </h3>
-      <h4 class="product-price">
-        $<%= publication.precio %>
-        <del class="product-old-price">$990.00</del>
-      </h4>
-      <div class="product-rating">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
-      <div class="product-btns">
-        <button class="add-to-wishlist">
-          <i class="fa fa-heart-o"></i
-          ><span class="tooltipp"
-            ><a class="text-white" href="/product/product-view"
-              >Me gusta!</a
-            ></span
-          >
-        </button>
-        <button class="quick-view">
-          <i class="fa fa-eye"></i
-          ><span class="tooltipp"
-            ><a class="text-white" href="/product/product-view"
-              >Ver Producto</a
-            ></span
-          >
-        </button>
-      </div>
-    </div>
-    <div class="add-to-cart">
-      <button class="add-to-cart-btn">
-        <a href="/cart/add/<%= publication.idProducto %>"
-          ><i class="fa fa-shopping-cart"></i> comprar
-        </a>
-      </button>
-    </div>
-  </div>
-  -->
-  <!-- /product -->
-
-  <% if(publication){ %>
-
-  <div class="card shadow-sm p-2 mb-2">
+<div class="card shadow-sm p-2 mb-2 card-img-top">
+  <button>
     <a href="/publication/view/<%= publication.idPublicacion %>">
+      <div class="wishlist">
+        <a
+          href="/wishlist/add/<%= publication.idProducto %>"
+          class="btn btn-danger rounded-circle"
+          ><i class="heart fa fa-heart"></i
+        ></a>
+      </div>
+
       <img
         src="<%= publication.product.img %>"
         class="card-img-top"
@@ -143,29 +88,18 @@
 
         <div class="d-flex align-items-center justify-content-between">
           <div class="price">
-            <span>$</span>
-            <span><%= publication.product.precio %></span>
+            <span>$<%= publication.product.precio %></span>
           </div>
 
-          <div class="nav">
-            <div class="fav">
-              <a
-                href="/cart/add/<%= publication.idProducto %>"
-                class="btn btn-danger rounded-circle"
-                ><i class="fa fa-heart"></i></a>
-            </div>
-
-            <div class="cart">
-              <a
-                href="/cart/add/<%= publication.idProducto %>"
-                class="btn btn-primary rounded-circle"
-                ><i class="fa fa-shopping-cart"></i
-              ></a>
-            </div>
+          <div class="cart">
+            <a
+              href="/cart/add/<%= publication.idProducto %>"
+              class="btn btn-primary rounded-circle"
+              ><i class="fa fa-shopping-cart"></i
+            ></a>
           </div>
         </div>
       </div>
     </a>
-  </div>
-  <% } %>
+  </button>
 </div>

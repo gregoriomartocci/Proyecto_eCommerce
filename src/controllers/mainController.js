@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const swal = require("sweetalert");
 
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
@@ -19,11 +20,12 @@ module.exports = {
       limit: 4,
     })
       .then((publications) => {
-        console.log(publications,req.session.cart)
+        console.log(publications, req.session.cart);
         res.render("index", {
           publications,
           session: req.session.user,
           cart: req.session.cart,
+          wishlist:req.session.wishlist,
         });
       })
       .catch((err) => {
@@ -37,6 +39,7 @@ module.exports = {
     res.render("checkout", {
       session: req.session.user,
       cart: req.session.cart,
+      wishlist:req.session.wishlist
     });
   },
 };

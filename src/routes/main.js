@@ -21,16 +21,9 @@ router.get(
 
 // Probando las consultas
 
-// Trayendo usuarios
-router.get("/usuarioLogueado", function (req, res) {
-  res.send(`el usuario logueado es ${req.session.usuarioActual}`);
-  console.log(req.session.usuarioActual)
-});
-
 router.get("/idUsuario", function (req, res) {
   res.send(`el id del usuario logueado es ${req.session.idUsuario}`);
 });
-
 
 // Trayendo Producto
 router.get("/traerProducto", function (req, res) {
@@ -39,6 +32,25 @@ router.get("/traerProducto", function (req, res) {
   })
     .then((result) => {
       res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: true });
+    });
+});
+
+// Trayendo Producto
+router.get("/store", function (req, res) {
+  db.Publication.findAll({
+    include: ["product"],
+  })
+    .then((publications) => {
+      res.render("store", {
+        session: req.session,
+        publications,
+        cart: req.session.cart,
+        wishlist:req.session.wishlist
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -77,7 +89,7 @@ router.get("/traerUsuarios", function (req, res) {
 // Trayendo Carrito
 router.get("/traerCart", function (req, res) {
   db.Cart.findAll({
-    include: ["User","Items"],
+    include: ["User", "Items"],
   })
     .then((result) => {
       res.json(result);

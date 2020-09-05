@@ -10,11 +10,11 @@ const db = require(dbDir);
 // ************ Controller Require ************
 const controllers = require("../controllers");
 const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
-const { RequestHeaderFieldsTooLarge } = require("http-errors");
+const errors = require("http-errors");
 
-router.get("/show", controllers.cart.show)
-router.get("/view", controllers.cart.view)
-router.get("/add/:id", controllers.cart.add)
+router.get("/", controllers.wishlist.view)
+router.get("/show", controllers.wishlist.show)
+router.get("/add/:id", controllers.wishlist.add)
 
 
 module.exports = router;
