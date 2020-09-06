@@ -28,6 +28,7 @@ const storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 router.get("/view/:id", controllers.publication.showById);
+router.get("/view/:id", controllers.comment.add);
 router.get("/add", controllers.publication.form);
 router.post("/add", [upload.single("img"), productValidation], controllers.publication.store);
 
