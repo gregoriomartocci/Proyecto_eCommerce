@@ -49,7 +49,7 @@ module.exports = function (sequelize, dataTypes) {
 
     User.belongsToMany(models.Comments, {
       through: "usercomments",
-      as: "Comments",
+      as: "posts",
       foreignKey: "idUsuario",
       otherKey: "idComentario",
       timestamps: false,

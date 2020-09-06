@@ -22,18 +22,18 @@ module.exports = function (sequelize, dataTypes) {
   Comments.associate = function (models) {
     Comments.belongsToMany(models.User, {
       through: "usercomments",
-      as: "Comentarios",
+      as: "posts",
       foreignKey: "idComentario",
       otherKey: "idUsuario",
-      timestamps: true,
+      timestamps: false,
     });
 
     Comments.belongsToMany(models.Publication, {
       through: "publicationcomments",
-      as: "Review",
+      as: "comentarios",
       foreignKey: "idComentario",
       otherKey: "idPublicacion",
-      timestamps: true,
+      timestamps: false,
     });
   };
 

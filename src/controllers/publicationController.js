@@ -25,11 +25,17 @@ module.exports = {
 
   showById: function (req, res) {
     db.Publication.findByPk(req.params.id, {
-      include: ["product","posteos"],
+      include: ["product","comentarios"],
     })
       .then((publication) => {
-        res.json(publication)
-       
+        //res.json(publication)
+        res.render("product/view", {
+          publication,
+          cart: req.session.cart,
+          session: req.session.user,
+          wishlist: req.session.wishlist,
+          posteos:publication.posteos
+        });
       })
       .catch((error) => {
         console.log(error);

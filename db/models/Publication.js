@@ -36,15 +36,18 @@ module.exports = function (sequelize, dataTypes) {
   Publication.associate = function (models) {
     Publication.belongsToMany(models.Comments, {
       through: "publicationcomments",
-      as: "posteos",
+      as: "comentarios",
       foreignKey: "idPublicacion",
       otherKey: "idComentario",
       timestamps: true,
     });
 
-    Publication.belongsTo(models.User, {
-      foreignKey: "idUsuario",
-      as: "Publicaciones",
+    Publication.belongsToMany(models.User, {
+      through: "usercomments",
+      as: "posts",
+      foreignKey: "idPublicacion",
+      otherKey: "idUsuario",
+      timestamps: true,
     });
 
     Publication.belongsTo(models.Product, {
