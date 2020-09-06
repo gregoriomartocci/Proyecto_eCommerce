@@ -23,15 +23,18 @@ module.exports = {
       });
   },
 
-  showById: function(req,res){
-    db.Publication.findByPk(req.params.id,{
-      include:["product"]
-    }).then(publication => {
-      res.json(publication)
-    }).catch((error) => {
-      console.log(err)
-      res.json({error:true})
+  showById: function (req, res) {
+    db.Publication.findByPk(req.params.id, {
+      include: ["product","posteos"],
     })
+      .then((publication) => {
+        res.json(publication)
+       
+      })
+      .catch((error) => {
+        console.log(error);
+        res.json({ error: true });
+      });
   },
 
   form: function (req, res) {
@@ -41,7 +44,7 @@ module.exports = {
           categorias: result,
           session: req.session,
           cart: req.session.cart,
-          wishlist:req.session.wishlist
+          wishlist: req.session.wishlist,
         });
       })
       .catch((err) => {

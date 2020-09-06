@@ -28,9 +28,12 @@ module.exports = function (sequelize, dataTypes) {
       timestamps: true,
     });
 
-    Comments.belongsTo(models.Publication, {
-      foreignKey: "idPublicacion",
-      as: "Posts",
+    Comments.belongsToMany(models.Publication, {
+      through: "publicationcomments",
+      as: "Review",
+      foreignKey: "idComentario",
+      otherKey: "idPublicacion",
+      timestamps: true,
     });
   };
 
