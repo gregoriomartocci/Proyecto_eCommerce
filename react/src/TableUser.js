@@ -6,7 +6,6 @@ function TableUser(props) {
     const [propsPopUp,setPopUp] = useState({});
 
    let editPopUp = (text,button,action) =>  {
-     console.log(action)
      let propsPopUp = {text:text,button:button,action:action}
      setPopUp(propsPopUp)
   }
@@ -40,16 +39,18 @@ function TableUser(props) {
                         <thead>
                         <tr className="text-muted">
                             <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
                             <th>email</th>
-                            <th>Password</th>
                         </tr>
                         </thead>
                         <tbody>
                         {props.dataTable.map((item) => {
                             return <tr> 
                             <td> {item.idUsuario} </td>
+                            <td> {item.nombre} </td>
+                            <td> {item.apellido} </td>
                             <td> {item.email} </td>
-                            <td> {item.password} </td>
                             <td>
                                 <div className="row justify-content-center align-middle">        
                                   <button
