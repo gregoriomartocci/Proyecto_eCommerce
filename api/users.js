@@ -21,10 +21,11 @@ module.exports = {
 
 
     addUser: function (req, res) {
-      console.log(req.body)
       db.User.create({
         nombre: req.body.nombre,
+        apellido: req.body.apellido,
         email: req.body.email,
+        nivel: req.body.nivel,
         password: req.body.password,
       }).then(() => {
         return res.redirect("/dashboard");
@@ -32,13 +33,13 @@ module.exports = {
     },
 
     editUser: function (req, res) {
-      console.log('TEST')
-      console.log(req.params)
       db.User.update(
         {
           nombre: req.body.nombre,
+          apellido: req.body.apellido,
           email: req.body.email,
-          password: req.body.password
+          nivel: req.body.nivel,
+          password: req.body.password,
         },
         {
           where: {

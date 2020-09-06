@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PopUpUser({props}) {
+function PopUpComment({props}) {
   
   return (           
     <div className="modal fade" id="agregarProducto" tabindex="-1" role="dialog">
@@ -21,7 +21,7 @@ function PopUpUser({props}) {
                 <form action= {props.action} method="POST">
                   <div className="form-row">
                     <div className="form-group col-md-6">
-                      <label for="input">Nombre del Usuario</label>
+                      <label for="input">Id Publicación</label>
                       <input
                         type="text"
                         name="nombre"
@@ -29,46 +29,17 @@ function PopUpUser({props}) {
                         id="input"
                       />
                     </div>
-                    <div className="form-group col-md-6">
-                      <label for="input">Apellido del Usuario</label>
-                      <input
-                        type="text"
-                        name="apellido"
-                        className="form-control"
-                        id="input"
-                      />
-                    </div>
                   </div>
                   <div className="form-group">
-                    <label for="input">Email</label>
+                    <label for="input">Comentario</label>
                     <input
                       type="text"
-                      name="email"
+                      name="Categoria"
                       className="form-control"
                       id="input"
                     />
                   </div>
-                  <div className="form-row">
-                    <div className="form-group col-md-6">
-                      <label for="input">Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        className="form-control"
-                        id="input"
-                      />
-                    </div>
-                    <div className="form-group col-md-6">
-                      <label for="input">Nivel</label>
-                      <input
-                        type="text"
-                        name="nivel"
-                        className="form-control"
-                        id="input"
-                      />
-                    </div>
-                  </div>
-                  <a href="/dashboard/products">
+                  <a href="/dashboard/comments">
                     <button type="submit" className="btn btn-primary">{props.button}</button>
                   </a>
                 </form>
@@ -79,5 +50,5 @@ function PopUpUser({props}) {
   );
 }
 
-export default PopUpUser
+export default PopUpComment
 ;

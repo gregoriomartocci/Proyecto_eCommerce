@@ -1,21 +1,22 @@
 import React , {useState,useEffect} from 'react';
 import Card from './Card'
-import TableProduct from './TableProduct'
+import TablePublication from './TablePublication'
 
-export const Product = () => {
-
+export const Publication = () => {
+    
     const [dataTable,setDataTable] = useState([]);
-    const [sell,setSellData] = useState(null);
-    const [qProduct,setQProduct] = useState(null);
+    const [qPublication,setQPublication] = useState(null);
+    const [qUser,setQUser] = useState(null);
   
     useEffect(() => {
         const getData = async () => {    
         try {
-              const response = await fetch('/dashboard/getallproducts');
+              const response = await fetch('/dashboard/getallpublication');
               const dataAPI = await response.json()
-              setQProduct(dataAPI.length)
-              let totSell = dataAPI.map(item => {return parseInt(item.precio)}).reduce((a,b) => {return a+b})
-              setSellData(totSell)
+              setQPublication(dataAPI.length)
+              let totUser = dataAPI.map(item => {return item.idUsuario})
+              let arrUser = [...new Set(totUser)]
+              setQUser(arrUser.length)
               setDataTable(dataAPI)
        
         } catch (error) {
@@ -32,14 +33,14 @@ export const Product = () => {
                     <div className="row">
                         <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
                             <div className="row pt-md-5 mt-md-3 mb-5">
-                                <Card text = 'Q Productos' icon = 'fa-shopping-cart' color = 'text-warning' value = {qProduct}/>
-                                <Card text = 'Ventas' icon = 'fa-chart-line' color = 'text-danger' value = {sell}/>    
+                                <Card text = 'Q Publicaciones' icon = 'fa-cart-plus' color = 'text-success' value = {qPublication}/>
+                                <Card text = 'Q Usuarios' icon = 'fa-users' color = 'text-primary' value = {qUser}/>                      
                             </div>
                         </div>
                     </div>
                 </div>
             </section>           
-            <TableProduct dataTable = {dataTable} />            
+            <TablePublication dataTable = {dataTable} />            
         </>
     )
 } 
