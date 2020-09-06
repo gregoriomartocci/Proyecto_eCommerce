@@ -47,7 +47,7 @@ module.exports = function (sequelize, dataTypes) {
       as: "posts",
       foreignKey: "idPublicacion",
       otherKey: "idUsuario",
-      timestamps: true,
+      timestamps: false,
     });
 
     Publication.belongsTo(models.Product, {

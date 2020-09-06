@@ -79,11 +79,9 @@ module.exports = {
 
           
           db.User.findByPk(req.session.user.idUsuario).then((user)=>{
-
             db.Wishlist.create({idPublicacion:product.idProducto}).then(wish => {
               user.addWishlist(wish)
             })
-            
           })
 
           res.redirect("/");
