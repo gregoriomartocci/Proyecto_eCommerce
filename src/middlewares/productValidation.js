@@ -1,4 +1,4 @@
-const { check, validationResult, body }  = require("express-validator");
+const { check }  = require("express-validator");
 
 module.exports = [
     check('nombre')
@@ -10,7 +10,7 @@ module.exports = [
     .withMessage('Debe completar la marca'),
 
     check('modelo')
-    .isLength({min:5})
+    .isLength({min:2})
     .withMessage('Debe completar el modelo'),
 
     check('precio')

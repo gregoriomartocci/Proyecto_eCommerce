@@ -1,5 +1,6 @@
 <div class="col-lg-4 col-sm-12 px-1">
   <label for="img">Imagen</label>
+  <span class="show" color="red">Debe subir una imagen</span>
   <div class="card mb-4">
     <div class="card-body">
       <div class="form-group mb-0">
@@ -9,7 +10,9 @@
               type="file"
               class="custom-file-input"
               id="inputGroupFile02"
+              required
               name="img"
+              accept="image/png,image/jpg,image/jpeg,image/gif"
             />
             <label
               class="custom-file-label"
@@ -19,9 +22,8 @@
             >
           </div>
 
-          <button type="submit" class="btn btn-primary rounded-circle mx-2">
-            <span><i class="fa fa-upload"></i></span>
-          </button>
+
+
         </div>
       </div>
     </div>

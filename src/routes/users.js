@@ -18,22 +18,24 @@ router.post("/login", loginValidation, controllers.auth.form);
 router.get("/logout", usuariosMiddlewares, controllers.auth.logout);
 
 // Register
+let fileValidation = function (req, res, next) {
+  let allowed = ["image/png", "image/gif", "image/jpg", "image/jpeg"]
+  if(req.file) {
+  if (!allowed.includes(req.file.mimetype)) {
+    res.status(422).end("Format not allowed");
+  } 
+  }
+  next()
+};
+
 router.get("/register", invitadosMiddlewares, controllers.users.create);
 router.post(
   "/register",
-  [upload.single("avatar"), registerValidation],
+  [upload.single("avatar"), registerValidation, fileValidation],
   controllers.users.store
 );
 //Avatar
-let fileValidation = function (req, res, next) {
-  let allowed = [image / png, image / jpg, image / gif, image / jpeg];
 
-  if (allowed.includes(req.file.mimetype)) {
-    next();
-  } else {
-    return res.status(422).end("Format not allowed");
-  }
-};
 
 router.post(
   "/avatar",

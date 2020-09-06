@@ -32,6 +32,12 @@ module.exports = {
       if (!user) {
         if (req.body.password == req.body.confirm_password) {
           console.log("Usuario registrado con exito");
+          
+          if(!req.file) {
+            req.file= {
+              filename: "AvatarDefault.png"
+            }
+          }
           const userData = {
             nombre: req.body.nombre,
             apellido: req.body.apellido,

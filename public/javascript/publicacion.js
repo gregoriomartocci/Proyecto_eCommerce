@@ -15,7 +15,6 @@ window.addEventListener("load", function(){
       }
     
     let errorsSpan = document.querySelector(".login20-title-err");
-    console.log(errorsSpan)
 
     let form = document.querySelector(".login100-form");
     
@@ -62,7 +61,7 @@ window.addEventListener("load", function(){
      showError(e.target, validator.isLength(e.target.value, {min: 20, max: 300}));
   });
 
-  
+    
 
     form.addEventListener("submit", function (e) {
       let errors = 0;
@@ -70,8 +69,6 @@ window.addEventListener("load", function(){
       if(!validator.isLength(data.nombre, {min: 2, max: 20})){
         errors++
         erroresTexto.push("El nombre del producto debe tener al menos 2 caracteres")
-        
-
       } else {
       };
 
@@ -101,14 +98,16 @@ window.addEventListener("load", function(){
 
       if (errors > 0) {
       e.preventDefault();
-      console.log("prueba")
+      console.log(data)
       for(let i = 0; i < erroresTexto.length; i++) {
-        errorsSpan.innerHTML= errorsSpan.innerHTML + "." + " " + erroresTexto[i]
+        errorsSpan.innerHTML= errorsSpan.innerHTML + "" + " " + erroresTexto[i]
       console.log(erroresTexto[i])
       }
     
     
     }
+
+    
       else {
       console.log("enviamos la info", data)}
       ;
