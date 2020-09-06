@@ -1,7 +1,6 @@
 import React , {useState,useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import Nav from './Nav'
 import Card from './Card'
 import TableUser from './TableUser'
 
@@ -27,13 +26,12 @@ function User() {
 
   return (
     <body>
-      <Nav/>
       <section>
             <div className="container-fluid">
               <div className="row">
                 <div className="col-xl-10 col-lg-9 col-md-8 ml-auto">
                   <div className="row pt-md-5 mt-md-3 mb-5">
-                      <Card text = 'Q Usuarios' icon = 'fa-users' color = 'text-secondary' value = {qUser}/> 
+                      <Card text = 'Q Usuarios' icon = 'fa-users' color = 'text-primary' value = {qUser}/> 
                   </div>
                 </div>
               </div>

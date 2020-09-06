@@ -40,16 +40,6 @@ function PopUpProduct({props}) {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label for="input">Categoria</label>
-                    <input
-                      type="text"
-                      name="Categoria"
-                      className="form-control"
-                      id="input"
-                      placeholder="Opcional"
-                    />
-                  </div>
-                  <div className="form-group">
                     <label for="input">Marca</label>
                     <input
                       type="text"
@@ -72,7 +62,7 @@ function PopUpProduct({props}) {
                     </div>
                     <div className="form-group col-md-4">
                       <label for="input">Stock</label>
-                      <select id="input" className="form-control" name="Stock">
+                      <select id="input" className="form-control" name="stock">
                         <option selected>1</option>
                         <option selected>2</option>
                         <option selected>3</option>

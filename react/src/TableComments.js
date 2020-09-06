@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
-import PopUpProduct from './PopUpProduct'
+import PopUpComment from './PopUpComment'
 
-function TableProduct (props) {
+function TableComments (props) {
  
   const [propsPopUp,setPopUp] = useState({});
 
@@ -20,18 +20,7 @@ function TableProduct (props) {
                   <div className="container-fluid">
                     <div className="row align-items-center">
                       <div>
-                        <h3 className="text muted mb-3">Productos</h3>
-                      </div>
-                      <div>
-                        <button
-                          type="button"
-                          className="btn btn-primary rounded-circle ml-3 mb-3 btn-sm"
-                          onClick= {() => editPopUp('Agregar producto','Agregar','/dashboard/addproduct')}
-                          data-toggle="modal"
-                          data-target="#agregarProducto"
-                        >
-                          <i className="fas fa-plus"></i>
-                        </button>
+                        <h3 className="text muted mb-3">Comentarios</h3>
                       </div>
                     </div>
                   </div>
@@ -39,30 +28,28 @@ function TableProduct (props) {
                     <thead>
                       <tr className="text-muted">
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Precio</th>
+                        <th>Comentario</th>
+                        <th>Últ. modifcación</th>
                       </tr>
                     </thead>
                     <tbody>
                         {props.dataTable.map((item) => {
                             return <tr> 
-                              <td> {item.idProducto} </td>
-                              <td> {item.nombre} </td>
-                              <td> {item.marca} </td>
-                              <td> {item.precio}</td>
+                              <td> {item.idComentarios} </td>
+                              <td> {item.comentario} </td>
+                              <td> {item.updatedAt} </td>
                               <td>
                                 <div className="row justify-content-center align-middle">        
                                   <button
                                     data-toggle="modal"
                                     data-target="#agregarProducto"
-                                    onClick= {() => editPopUp('Modificar producto','Modificar',`/dashboard/editproduct/${item.idProducto}?_method=PUT`)}
+                                    onClick= {() => editPopUp('Modificar comentario','Modificar',`/dashboard/editcomment/${item.idComentarios}?_method=PUT`)}
                                   >
                                     <i className="fas fa-edit fa-1x text-success"></i>
                                   </button>
                                   <form
                                     method="post"
-                                    action= {`/dashboard/deleteproduct/${item.idProducto}?_method=DELETE`} 
+                                    action= {`/dashboard/deletecomment/${item.idComentarios}?_method=DELETE`} 
                                   >
                                     <button name="foo" value="send">
                                       <i className="fas fa-trash-alt fa-1x text-danger"></i>
@@ -79,9 +66,9 @@ function TableProduct (props) {
             </div>
           </div>
         </div>
-        <PopUpProduct props= {propsPopUp}/>     
+        <PopUpComment props= {propsPopUp}/>     
       </section>
     );
 }
 
-export default TableProduct;
+export default TableComments;

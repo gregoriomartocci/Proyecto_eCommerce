@@ -30,6 +30,18 @@ let upload = multer({ storage: storage });
 router.get("/view/:id", controllers.publication.showById);
 router.post("/view/:id", controllers.comments.add);
 router.get("/add", controllers.publication.form);
-router.post("/add", [upload.single("img"), productValidation], controllers.publication.store);
+
+let filePublicacionValidation = function (req, res, next) {
+  let extPermtidas = ["image/png", "image/gif", "image/jpg", "image/jpeg"]
+  if(req.file) {
+  if (!extPermtidas.includes(req.file.mimetype)) {
+    res.status(422).end("Format not allowed");
+  } 
+  }
+  next()
+};
+
+
+router.post("/add", [upload.single("img"), productValidation, filePublicacionValidation], controllers.publication.store);
 
 module.exports = router;

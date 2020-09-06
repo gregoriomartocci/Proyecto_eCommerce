@@ -1,8 +1,8 @@
-import React from 'react';
-//import IconNav from './IconNav'
+import React  from 'react';
 import Navbar from './Navbar'
 
-function Nav(props) {
+function Nav() {
+    
     return (  
         <nav className="navbar navbar-expand-md navbar-light">
             <button
@@ -27,10 +27,10 @@ function Nav(props) {
 
 
                         <ul className="navbar-nav flex-column mb-4">
-                            <Navbar href = '/dashboard' class = 'current' icon = 'fa-user' text = 'Usuarios'/>
-                            <Navbar href = '/dashboard/products' class = 'sidebar-link' icon = 'fa-table' text = 'Productos'/>
-                            <Navbar href = '#' class = 'sidebar-link' icon = 'fa-shopping-cart' text = 'Publicaciones'/>
-                            <Navbar href = '#' class = 'sidebar-link' icon = 'fa-comments' text = 'Comentarios'/>
+                            <Navbar href = '/dashboard' icon = 'fa-user' text = 'Usuarios' />
+                            <Navbar href = '/dashboard/products' icon = 'fa-table' text = 'Productos'/>
+                            <Navbar href = '/dashboard/publication' icon = 'fa-shopping-cart' text = 'Publicaciones'/>
+                            <Navbar href = '/dashboard/comments' icon = 'fa-comments' text = 'Comentarios'/>
                         </ul>
                         </div>
             
