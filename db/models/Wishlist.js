@@ -5,7 +5,9 @@ module.exports = function (sequelize, dataTypes) {
       idItem: {
         type: dataTypes.INTEGER(5),
         primaryKey: true,
-      }
+        autoIncrement: true,
+        allowNull: false,
+      },
     },
     {
       tableName: "wishlist",
@@ -15,12 +17,12 @@ module.exports = function (sequelize, dataTypes) {
   );
 
   Wishlist.associate = function (models) {
-    Wishlist.belongsToMany(models.User, {
+    Wishlist.belongsTo(models.User, {
+      through: "userwishlist",
       as: "Wishlist",
-      through: "userWishlist",
       foreignKey: "idWishlist",
-      otherKey: "idUser",
-      timestamps: true,
+      otherKey: "idUsuario",
+      timestamps: false,
     });
 
     Wishlist.belongsTo(models.Publication, {

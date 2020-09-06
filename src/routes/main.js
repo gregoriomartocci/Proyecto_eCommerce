@@ -22,7 +22,7 @@ router.get(
 // Probando las consultas
 
 router.get("/idUsuario", function (req, res) {
-  res.send(`el id del usuario logueado es ${req.session.idUsuario}`);
+  res.json(req.session.user.idUsuario);
 });
 
 // Trayendo Producto
@@ -73,7 +73,7 @@ router.get("/traer", function (req, res) {
 // Trayendo Usuarios
 router.get("/traerUsuarios", function (req, res) {
   db.User.findAll({
-    include: ["Cart", "Facturacion"],
+    include: ["Cart", "Facturacion", "Wishlist"],
     raw: true,
     nest: true,
   })

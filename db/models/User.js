@@ -47,17 +47,25 @@ module.exports = function (sequelize, dataTypes) {
       as: "Cart",
     });
 
+    User.belongsToMany(models.Comments, {
+      through: "usercomments",
+      as: "Comments",
+      foreignKey: "idUsuario",
+      otherKey: "idComentario",
+      timestamps: false,
+    });
+
     User.belongsToMany(models.Invoice, {
-      as: "Facturacion",
       through: "usuariofactura",
+      as: "Facturacion",
       foreignKey: "idUsuario",
       otherKey: "idFactura",
       timestamps: false,
     });
 
     User.belongsToMany(models.Wishlist, {
+      through: "userwishlist",
       as: "Wishlist",
-      through: "usuariofactura",
       foreignKey: "idUsuario",
       otherKey: "idWishlist",
       timestamps: false,

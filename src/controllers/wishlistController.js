@@ -6,12 +6,16 @@ const db = require(dbDir);
 module.exports = {
   // Create
 
-  show: function(req,res){
-    res.json(req.session.wishlist)
+  show: function (req, res) {
+    res.json(req.session.wishlist);
   },
 
   view: function (req, res) {
-    res.render("wishlist", { wishlist: req.session.wishlist, session: req.session, cart:req.session.cart });
+    res.render("wishlist", {
+      wishlist: req.session.wishlist,
+      session: req.session,
+      cart: req.session.cart,
+    });
   },
 
   add: function (req, res) {
@@ -55,8 +59,6 @@ module.exports = {
         .then((product) => {
           newWishlist = {
             idUsuario: req.session.idUsuario,
-            shippingAddress: "",
-            billingAddress: "",
             items: [],
             totalItems: 0,
             total: 0,
@@ -74,6 +76,16 @@ module.exports = {
           newWishlist.totalItems++;
           newWishlist.total = new Number(product.precio);
           req.session.wishlist = newWishlist;
+
+          
+          db.User.findByPk(req.session.user.idUsuario).then((user)=>{
+
+            db.Wishlist.create({idPublicacion:product.idProducto}).then(wish => {
+              user.addWishlist(wish)
+            })
+            
+          })
+
           res.redirect("/");
         })
         .catch((error) => {
