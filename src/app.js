@@ -5,7 +5,8 @@ const usersRouter = require("./routes/users"); // Rutas Users
 const dashboardRouter = require("./routes/dashboard"); // Dashboard
 const cartRouter = require("./routes/cart");
 const publicationRouter = require("./routes/publication");
-const wishlistRouter = require("./routes/wishlist")
+const wishlistRouter = require("./routes/wishlist");
+const checkoutRouter = require("./routes/checkout");
 const multer = require("multer");
 const path = require("path");
 multerDir = path.resolve("src", "config", "multer");
@@ -68,7 +69,10 @@ app.use(function (req, res, next) {
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views")); // Define la ubicación de la carpeta de las Vistas
-app.use('/static',express.static(path.join(__dirname, '../react/build/static')));
+app.use(
+  "/static",
+  express.static(path.join(__dirname, "../react/build/static"))
+);
 
 app.use("/", mainRouter);
 app.use("/users", usersRouter);
@@ -76,7 +80,8 @@ app.use("/publication", publicationRouter);
 app.use("/product", productsRouter);
 app.use("/cart", cartRouter);
 app.use("/dashboard", dashboardRouter);
-app.use("/wishlist", wishlistRouter)
+app.use("/wishlist", wishlistRouter);
+app.use("/checkout", checkoutRouter);
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************

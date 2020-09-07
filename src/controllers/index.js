@@ -8,5 +8,6 @@ module.exports = {
   dashboard:require("./dashboardControlller"),
   publication:require("./publicationController"),
   wishlist:require("./wishlistController"),
-  comments:require("./commentsController")
+  comments:require("./commentsController"),
+  checkout:require("./checkoutController")
 };
