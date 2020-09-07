@@ -14,7 +14,6 @@ module.exports = {
 
   order: function (req, res) {
 
-    res.send(req.session.cart)
     db.Order.create({
       idUsuario: req.session.user.idUsuario,
     }).then((order) => {

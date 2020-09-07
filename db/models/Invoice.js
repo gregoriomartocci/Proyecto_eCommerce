@@ -8,10 +8,13 @@ module.exports = function (sequelize, dataTypes) {
         allowNull: false,
         autoIncrement: true,
       },
-      fechaAlta: {
+      createdAt: {
         type: dataTypes.DATE,
       },
-      garantia: {
+      updatedAt: {
+        type: dataTypes.DATE,
+      },
+      deletedAt: {
         type: dataTypes.DATE,
       },
     },
