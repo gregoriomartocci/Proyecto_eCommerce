@@ -48,38 +48,19 @@
                   <h2 class="title">Categorias</h2>
 
                   <ul class="list-group">
-                    <li>
-                      <a href=""> <span class="pull-right">(50)</span>Acne</a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="pull-right">(56)</span>Grüne Erde</a
-                      >
-                    </li>
-                    <li>
-                      <a href=""> <span class="pull-right">(27)</span>Albiro</a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="pull-right">(32)</span>Ronhill</a
-                      >
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="pull-right">(5)</span>Oddmolly</a
-                      >
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="pull-right">(9)</span>Boudestijn</a
-                      >
-                    </li>
-                    <li>
-                      <a href="">
-                        <span class="pull-right">(4)</span>Rösch creative
-                        culture</a
-                      >
-                    </li>
+                    <% for(let i=0; i < categorias.length; i++) { %>
+                      <form action="/store "method="POST">
+                        <li>
+                          <input
+                            style='width: 1px; color:white;'
+                            type="text"
+                            name='search'
+                            value=<%= categorias[i]%>
+                          />
+                          <button ><%= categorias[i]%></button>
+                        </li>
+                    </form>
+                    <% } %>
                   </ul>
                 </div>
                 <!--/Categorias-->
@@ -91,63 +72,23 @@
                   </div>
                   <div class="brands">
                     <ul class="list-group">
-                      <li>
-                        <a href=""> <span class="pull-right">(50)</span>Acne</a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(56)</span>Grüne Erde</a
-                        >
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(27)</span>Albiro</a
-                        >
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(32)</span>Ronhill</a
-                        >
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(5)</span>Oddmolly</a
-                        >
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(9)</span>Boudestijn</a
-                        >
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="pull-right">(4)</span>Rösch creative
-                          culture</a
-                        >
-                      </li>
+                      <% for(let i=0; i < marcas.length; i++) { %>
+                        <form action="/store "method="POST">
+                          <li>
+                            <input
+                              style='width: 1px; color:white;'
+                              type="text"
+                              name='search'
+                              value=<%= marcas[i]%>
+                            />
+                            <button ><%= marcas[i]%></button>
+                          </li>
+                      </form>
+                      <% } %>
                     </ul>
                   </div>
                 </div>
                 <!--/Marcas -->
-
-                <!--Condicion-->
-                <div class="p-4">
-                  <!--brands_products-->
-                  <div class="title">
-                    <h2>Condicion</h2>
-                  </div>
-                  <div class="brands">
-                    <ul class="list-group">
-                      <li>
-                        <a href="">Nuevo</a>
-                      </li>
-                      <li>
-                        <a href=""> Usado</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!--/Condicion -->
               </div>
             </div>
           </div>
