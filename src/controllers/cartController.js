@@ -6,12 +6,16 @@ const db = require(dbDir);
 module.exports = {
   // Create
 
-  show: function(req,res){
-    res.json(req.session.cart)
+  show: function (req, res) {
+    res.json(req.session.cart);
   },
 
   view: function (req, res) {
-    res.render("cart-view", { cart: req.session.cart, session: req.session , wishlist:req.session.wishlist});
+    res.render("cart-view", {
+      cart: req.session.cart,
+      session: req.session,
+      wishlist: req.session.wishlist,
+    });
   },
 
   add: function (req, res) {
@@ -80,5 +84,28 @@ module.exports = {
           console.log(error);
         });
     }
+  },
+
+  remove: function (req, res) {
+    const cart = req.session.cart;
+
+    const isExisting = cart.items.findIndex(
+      (p) => p.idProducto == req.params.id
+    );
+
+    if (isExisting >= 0) {
+      const deletedProduct = cart.items[isExisting];
+
+      if (deletedProduct.cantidad == 1) {
+        cart.items.splice(isExisting, 1);
+      } else {
+        deletedProduct.cantidad--;
+      }
+
+      cart.total -= deletedProduct.precio * deletedProduct.cantidad;
+      cart.totalItems--;
+    }
+
+    res.redirect("/");
   },
 };

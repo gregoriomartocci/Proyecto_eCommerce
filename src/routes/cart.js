@@ -15,6 +15,7 @@ const { RequestHeaderFieldsTooLarge } = require("http-errors");
 router.get("/show", controllers.cart.show)
 router.get("/view", controllers.cart.view)
 router.get("/add/:id", controllers.cart.add)
+router.post("/delete/:id", controllers.cart.remove)
 
 
 module.exports = router;
