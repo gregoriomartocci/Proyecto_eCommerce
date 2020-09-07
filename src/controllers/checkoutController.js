@@ -13,8 +13,14 @@ module.exports = {
   },
 
   order: function (req, res) {
-    res.send("ok");
-
-    
+    db.Order.create({
+      idUsuario: req.session.user.idUsuario,
+    }).then((order) => {
+      db.Invoice.create({
+        idUsuario: req.session.user.idUsuario,
+        idVenta: order.idVenta,
+      });
+    })
+    res.redirect("/")
   },
 };
