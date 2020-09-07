@@ -30,8 +30,19 @@ module.exports = function (sequelize, dataTypes) {
     {
       tableName: "concepto",
       timestamps: false,
+      paranoid: false,
     }
   );
+
+  Concept.associate = function (models) {
+    Concept.belongsToMany(models.Order, {
+      through: "orderconcept",
+      as: "Concept",
+      foreignKey: "idConcepto",
+      otherKey: "idVenta",
+      timestamps: false,
+    });
+  };
 
   return Concept;
 };

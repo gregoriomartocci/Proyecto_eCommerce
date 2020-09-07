@@ -1,0 +1,28 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <!-- section title -->
+      <div class="col-md-12">
+        <div class="section-title">
+          <h3 class="title">Basados en tu Última visita</h3>
+          <div class="section-nav">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- /section title -->
+
+      <% listing2.forEach(publication => { %>
+
+        <div class="col-xs-12 col-md-3 col-lg-3">
+
+          <%- include('product', {publication}) %>
+
+        </div>
+
+      <% }) %>
+     
+    </div>
+  </div>
+</div>

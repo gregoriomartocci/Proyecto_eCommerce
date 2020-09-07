@@ -5,27 +5,27 @@ const swal = require("sweetalert");
 dbDir = path.resolve("db", "models");
 const db = require(dbDir);
 
-/*
-const productsFilePath = path.join(__dirname, "../data/productsDataBase.json");
-const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-*/
-
-// const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
 module.exports = {
   // Root
   root: function (req, res) {
+    
     db.Publication.findAll({
       include: ["product"],
       limit: 4,
     })
       .then((publications) => {
-        console.log(publications, req.session.cart);
-        res.render("index", {
-          publications,
-          session: req.session.user,
-          cart: req.session.cart,
-          wishlist:req.session.wishlist,
+        db.Publication.findAll({
+          include: ["product"],
+          offset: 8,
+          limit: 4,
+        }).then((listing2) => {
+          res.render("index", {
+            listing2,
+            publications,
+            session: req.session.user,
+            cart: req.session.cart,
+            wishlist: req.session.wishlist,
+          });
         });
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ module.exports = {
     res.render("checkout", {
       session: req.session.user,
       cart: req.session.cart,
-      wishlist:req.session.wishlist
+      wishlist: req.session.wishlist,
     });
   },
 };

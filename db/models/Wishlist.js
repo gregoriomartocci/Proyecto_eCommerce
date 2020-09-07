@@ -17,7 +17,7 @@ module.exports = function (sequelize, dataTypes) {
   );
 
   Wishlist.associate = function (models) {
-    Wishlist.belongsTo(models.User, {
+    Wishlist.belongsToMany(models.User, {
       through: "userwishlist",
       as: "Wishlist",
       foreignKey: "idWishlist",

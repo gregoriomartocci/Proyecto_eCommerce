@@ -14,14 +14,39 @@ module.exports = {
 
   order: function (req, res) {
 
-    db.Order.create({
-      idUsuario: req.session.user.idUsuario,
-    }).then((order) => {
-      db.Invoice.create({
+    let cart = req.session.cart;
+    let concept = [];
+
+    cart.items.forEach(function (item) {
+      const conceptItem = {
+        idItem: item.idProducto,
+        precio: item.precio,
+        cantidad: item.cantidad,
+        totalItems: cart.totalItems,
+        envio: 0,
+        total: cart.total,
+      };
+      concept.push(conceptItem);
+    });
+
+    db.Concept.bulkCreate(concept, { returning: true }).then((concepto) => {
+      db.Order.create({
+        idConcepto: concepto,
         idUsuario: req.session.user.idUsuario,
-        idVenta: order.idVenta,
+      }).then((order) => {
+        order.addConcept(concept.idConcepto);
       });
-    })
-    res.redirect("/")
+      res.redirect("/");
+    });
   },
 };
+
+/*
+
+db.Invoice.create({
+          idUsuario: req.session.user.idUsuario,
+          idVenta: order.idVenta,
+        });
+
+        
+*/

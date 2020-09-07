@@ -29,6 +29,14 @@ module.exports = function (sequelize, dataTypes) {
       foreignKey: "idUsuario",
       as: "Ordenes",
     });
+
+    Order.belongsToMany(models.Concept, {
+      through: "orderconcept",
+      as: "Concept",
+      foreignKey: "idVenta",
+      otherKey: "idConcepto",
+      timestamps: false,
+    });
   };
 
   return Order;
