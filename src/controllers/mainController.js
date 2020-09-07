@@ -20,12 +20,11 @@ module.exports = {
       limit: 4,
     })
       .then((publications) => {
-        console.log(publications, req.session.cart);
         res.render("index", {
           publications,
           session: req.session.user,
           cart: req.session.cart,
-          wishlist:req.session.wishlist,
+          wishlist: req.session.wishlist,
         });
       })
       .catch((err) => {
@@ -39,7 +38,7 @@ module.exports = {
     res.render("checkout", {
       session: req.session.user,
       cart: req.session.cart,
-      wishlist:req.session.wishlist
+      wishlist: req.session.wishlist,
     });
   },
 };

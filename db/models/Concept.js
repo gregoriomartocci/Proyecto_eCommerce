@@ -2,7 +2,7 @@ module.exports = function (sequelize, dataTypes) {
   let Concept = sequelize.define(
     "Concept",
     {
-      idConcepto: {
+      id: {
         type: dataTypes.INTEGER(11),
         primaryKey: true,
         allowNull: false,
@@ -30,8 +30,21 @@ module.exports = function (sequelize, dataTypes) {
     {
       tableName: "concepto",
       timestamps: false,
+      paranoid: false,
     }
   );
+
+  Concept.associate = function (models) {
+    Concept.belongsTo(models.Order, {
+      foreignKey: "idVenta",
+      as: "Recibo",
+    });
+
+    Concept.belongsTo(models.Invoice, {
+      foreignKey: "idFactura",
+      as: "Factura",
+    });
+  };
 
   return Concept;
 };

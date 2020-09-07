@@ -13,16 +13,35 @@ module.exports = {
   },
 
   order: function (req, res) {
-
-    res.send(req.session.cart)
     db.Order.create({
       idUsuario: req.session.user.idUsuario,
     }).then((order) => {
       db.Invoice.create({
         idUsuario: req.session.user.idUsuario,
         idVenta: order.idVenta,
+      }).then((factura) => {
+        //User.bulkCreate([{ /*  record one */ }, { /* record two */ }.. ])
+
+        let cart = req.session.cart;
+        let concept = [];
+
+        cart.items.forEach(function (item) {
+          const conceptItem = {
+            idVenta: order.idVenta,
+            idFactura: factura.idFactura,
+            idItem: item.idProducto,
+            precio: item.precio,
+            cantidad: item.cantidad,
+            totalItems: cart.totalItems,
+            envio: 0,
+            total: cart.total,
+          };
+          concept.push(conceptItem);
+        });
+
+        db.Concept.bulkCreate(concept, { returning: true });
       });
-    })
+    });
     res.redirect("/")
   },
 };
