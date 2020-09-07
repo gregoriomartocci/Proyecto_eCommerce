@@ -16,7 +16,7 @@ module.exports = {
       .then((publications) => {
         db.Publication.findAll({
           include: ["product"],
-          offset: 8,
+          offset: 9,
           limit: 4,
         }).then((listing2) => {
           res.render("index", {
