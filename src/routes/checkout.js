@@ -13,5 +13,6 @@ const usuariosMiddlewares = require("../middlewares/usuariosMiddlewares");
 const errors = require("http-errors");
 
 router.post("/", controllers.checkout.summary)
+router.post("/order", controllers.checkout.order)
 
 module.exports = router;

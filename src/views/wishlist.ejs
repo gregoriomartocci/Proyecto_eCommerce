@@ -34,7 +34,7 @@
                   </tr>
                 </thead>
 
-                <% wishlist.items.forEach(item=> { %>
+                <% if(wishlist){ %> <% wishlist.items.forEach(item=> { %>
                 <tbody>
                   <tr>
                     <td>
@@ -84,7 +84,7 @@
                     </td>
                   </tr>
                 </tbody>
-                <% }) %>
+                <% }) %> <% } %>
               </table>
             </div>
           </div>
