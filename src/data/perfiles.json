@@ -11,11 +11,6 @@
             "label":"Vender"
         },
         {
-            "href":"/checkout", 
-            "icon":"fa-power-off", 
-            "label":"Mi Compras"
-        },
-        {
             "href":"users/logout", 
             "icon":"fa-power-off", 
             "label":"Cerrar Sesión"
