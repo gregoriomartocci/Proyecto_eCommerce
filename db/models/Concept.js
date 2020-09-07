@@ -2,7 +2,7 @@ module.exports = function (sequelize, dataTypes) {
   let Concept = sequelize.define(
     "Concept",
     {
-      id: {
+      idConcepto: {
         type: dataTypes.INTEGER(11),
         primaryKey: true,
         allowNull: false,
@@ -35,14 +35,12 @@ module.exports = function (sequelize, dataTypes) {
   );
 
   Concept.associate = function (models) {
-    Concept.belongsTo(models.Order, {
-      foreignKey: "idVenta",
-      as: "Recibo",
-    });
-
-    Concept.belongsTo(models.Invoice, {
-      foreignKey: "idFactura",
-      as: "Factura",
+    Concept.belongsToMany(models.Order, {
+      through: "orderconcept",
+      as: "Concept",
+      foreignKey: "idConcepto",
+      otherKey: "idVenta",
+      timestamps: false,
     });
   };
 
