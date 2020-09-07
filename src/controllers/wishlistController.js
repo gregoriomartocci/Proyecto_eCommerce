@@ -94,10 +94,6 @@ module.exports = {
   },
 
   remove: function (req, res) {
-
-    res.send("ok")
-    
-    /*
     const wishlist = req.session.wishlist;
 
     const isExisting = wishlist.items.findIndex(
@@ -117,8 +113,6 @@ module.exports = {
       wishlist.totalItems--;
     }
 
-    res.redirect("/");
-
-    */
+    res.redirect("/wishlist");
   },
 };

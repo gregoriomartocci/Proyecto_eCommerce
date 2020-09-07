@@ -15,7 +15,8 @@ const errors = require("http-errors");
 router.get("/", controllers.wishlist.view)
 router.get("/show", controllers.wishlist.show)
 router.get("/add/:id", controllers.wishlist.add)
-router.post("/delete", controllers.wishlist.remove)
+router.post("/delete/:id", controllers.wishlist.remove)
+router.post("/cart/add/:id", controllers.cart.add)
 
 
 module.exports = router;
