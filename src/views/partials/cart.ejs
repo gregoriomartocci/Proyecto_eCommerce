@@ -17,9 +17,11 @@
           cart.items[i].precio%>
         </h4>
       </div>
-      <button class="delete">
-        <i class="fa fa-close"></i>
-      </button>
+      <form action="/cart/delete/<%= cart.items[i].idProducto %>" method="POST">   
+        <button type="submit" class="delete">
+          <i class="fa fa-close"></i>
+        </button>
+      </form>
     </div>
 
     <% } %>

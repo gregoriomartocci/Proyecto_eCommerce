@@ -77,12 +77,13 @@ module.exports = {
           newWishlist.total = new Number(product.precio);
           req.session.wishlist = newWishlist;
 
-          
-          db.User.findByPk(req.session.user.idUsuario).then((user)=>{
-            db.Wishlist.create({idPublicacion:product.idProducto}).then(wish => {
-              user.addWishlist(wish)
-            })
-          })
+          db.User.findByPk(req.session.user.idUsuario).then((user) => {
+            db.Wishlist.create({ idPublicacion: product.idProducto }).then(
+              (wish) => {
+                user.addWishlist(wish);
+              }
+            );
+          });
 
           res.redirect("/");
         })
@@ -90,5 +91,28 @@ module.exports = {
           console.log(error);
         });
     }
+  },
+
+  remove: function (req, res) {
+    const wishlist = req.session.wishlist;
+
+    const isExisting = wishlist.items.findIndex(
+      (p) => p.idProducto == req.params.id
+    );
+
+    if (isExisting >= 0) {
+      const deletedProduct = wishlist.items[isExisting];
+
+      if (deletedProduct.cantidad == 1) {
+        wishlist.items.splice(isExisting, 1);
+      } else {
+        deletedProduct.cantidad--;
+      }
+
+      wishlist.total -= deletedProduct.precio * deletedProduct.cantidad;
+      wishlist.totalItems--;
+    }
+
+    res.redirect("/wishlist");
   },
 };

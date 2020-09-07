@@ -22,53 +22,71 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <form action="#">
-              <div class="cart-table table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Product</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
-                      <th>Acciones</th>
-                    </tr>
-                  </thead>
+            <div class="cart-table table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
 
-                  <% wishlist.items.forEach(item=> { %>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <a href="#"
-                          ><img
-                            src="<%=item.img%>"
-                            alt="Product"
-                            style="width: 150px"
-                        /></a>
-                      </td>
-                      <td class="pro-title">
-                        <a href="#"><%=item.nombre%></a>
-                      </td>
-                      <td class="pro-price"><span>$<%=item.precio%></span></td>
-                      <td class="pro-quantity">
-                        <div class="pro-qty">
-                          <input type="text" value="<%=item.cantidad%>" />
-                        </div>
-                      </td>
-                      <td class="pro-addtocart">
-                        <a href="#" class="btn btn-primary "
-                          ><i class="fa fa-shopping-cart"></i
-                        ></a>
-                        <a class="btn btn-danger" href="#"
-                          ><i class="fa fa-trash-o"></i
-                        ></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                  <% }) %>
-                </table>
-              </div>
-            </form>
+                <% if(wishlist){ %> <% wishlist.items.forEach(item=> { %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href=""
+                        ><img
+                          src="<%=item.img%>"
+                          alt="Product"
+                          style="width: 150px"
+                      /></a>
+                    </td>
+                    <td class="pro-title">
+                      <a href=""><%=item.nombre%></a>
+                    </td>
+                    <td class="pro-price"><span>$<%=item.precio%></span></td>
+                    <td class="pro-quantity">
+                      <div class="pro-qty">
+                        <input type="text" value="<%=item.cantidad%>" />
+                      </div>
+                    </td>
+                    <td>
+                      <div class="row">
+                        <form
+                          action="/wishlist/cart/add/<%=item.idProducto%>"
+                          method="POST"
+                        >
+                          <div class="add-to-cart m-1">
+                            <button type="submit">
+                              <a class="btn btn-primary rounded"
+                                ><i class="fa fa-shopping-cart text-white"></i
+                              ></a>
+                            </button>
+                          </div>
+                        </form>
+                        <form
+                          action="/wishlist/delete/<%=item.idProducto%>"
+                          method="POST"
+                        >
+                          <div class="delete m-1">
+                            <button type="submit">
+                              <a class="btn btn-danger rounded"
+                                ><i class="fa fa-trash-o text-white"></i
+                              ></a>
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <% }) %> <% } %>
+              </table>
+            </div>
           </div>
         </div>
       </div>
